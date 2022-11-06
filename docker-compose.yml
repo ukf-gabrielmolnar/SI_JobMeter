@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+    mysql: # Service name
+        image: mariadb:latest # Image name
+        container_name: jobmeter_mysql # Container name
+        restart: always # Restart policy
+        environment: # Environment variables
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        volumes: # Volumes
+            - ./docker/mysql:/var/lib/mysql
+
+    php:
+        build:
+            context: ./
+            dockerfile: ./docker/app/Dockerfile
+        container_name: jobmeter_php
+        restart: always
+        volumes:
+            - ./:/var/www/html
+        depends_on: # Dependencies
+            - mysql
+
+    nginx:
+        image: nginx:latest
+        container_name: jobmeter_nginx
+        restart: always
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/var/www/html
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: jobmeter_phpmyadmin
+        restart: always
+        ports:
+            - "8081:80"
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_USER: test
+            PMA_PASSWORD: test
+        depends_on:
+            - mysql
