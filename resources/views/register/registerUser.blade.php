@@ -82,7 +82,7 @@
             </div>
 
             <div class="form-group">
-                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname">
+                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="First name">
 
                 <div class="help-block">
                     @if($errors->has('firstname'))
@@ -92,7 +92,7 @@
             </div>
 
             <div class="form-group">
-                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname">
+                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last name">
 
                 <div class="help-block">
                     @if($errors->has('lastname'))
@@ -111,7 +111,7 @@
             </div>
 
             <div class="form-group">
-                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" placeholder="Password repeat">
+                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" placeholder="Password again">
                 <div class="help-block">
                     @if($errors->has('repeatPassword'))
                         {{ $errors->first('repeatPassword') }}
