@@ -1,10 +1,19 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>My App</title>
+        <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="icon" type="image/x-icon" href="../../../public/favicon.png">
+
+        <style>
+            body{
+                background: #497e9f;
+                min-height: 100vh;
+            }
+        </style>
+
     </head>
-    <body style="min-height: 100vh">
+    <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4">
         <div class="container-fluid">
@@ -29,7 +38,7 @@
                 <ul class="navbar-nav ">
                     <?php if (auth()->user()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->name?>)</a>
+                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>)</a>
                     </li>
                     <?php else: ?>
                     <li class="nav-item">
