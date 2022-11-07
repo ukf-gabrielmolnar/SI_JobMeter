@@ -3,12 +3,29 @@
     <head>
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+ Login-Register-Style
+        <link rel="icon" type="image/x-icon" href="../../../public/favicon.png">
+
+        <style>
+            body{
+                background: #497e9f;
+                min-height: 100vh;
+            }
+        </style>
+
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4">
+        <div class="container-fluid">
+==
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
     <body class="bg" style="min-height: 100vh">
     <div style="margin-top: -20px">
     <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4">
         <div class="container-fluid" style="padding-top: 20px">
+ Navbar_Dashboard_style
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
