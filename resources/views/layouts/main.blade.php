@@ -3,17 +3,17 @@
     <head>
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
     <body class="bg" style="min-height: 100vh">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4">
-        <div class="container-fluid">
+    <div style="margin-top: -20px">
+    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4">
+        <div class="container-fluid" style="padding-top: 20px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand navbarpadding_left" href="/">JobMeter</a>
+                <a class="navbar-brand navbarpadding title" href="/">JobMeter</a>
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
@@ -23,12 +23,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Prax
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
@@ -37,21 +36,34 @@
                     <?php if (auth()->user()?->inRole('student')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/praxReg">Prax</a>
-                        <div class="dropdown">
-                            <button class="dropbtn">Prax
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                        </div>
-                        <a class="nav-link" href="/rbac/users">Prax</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <?php if (auth()->user()?->inRole('manager')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nepriradené praxi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nepriradené praxi</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <?php if (auth()->user()?->inRole('ppp')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Praxy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Requesty</a>
                     </li>
                     <?php endif; ?>
 
                     <?php if (auth()->user()?->inRole('admin')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rbac/users">RBAC</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <?php if (auth()->user()?->inRole('ceo')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/rbac/users">RBAC</a>
                     </li>
@@ -76,9 +88,44 @@
             </div>
         </div>
     </nav>
+    </div>
 
-    <div class="container blue">
-        @yield('content')
+    <div class="container blue" style="margin-top: -50px">
+        <div style="padding: 100px">
+            @yield('content')
+        </div>
+    </div>
+
+    <div class="container-fluid container bg-dark roundcorner" style="margin-top: -30px; padding-top: 30px">
+    <!-- Footer -->
+        <footer class="bg-dark text-center text-lg-start text-white">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-5">
+                        <h5 class="text-uppercase">Footer text</h5>
+
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+                            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
+                            aliquam voluptatem veniam, est atque cumque eum delectus sint!
+                        </p>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -12px; margin-right: -12px;">
+                © 2022 Copyright:
+                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
     </div>
 
     <script src="/vendor/jquery/jquery.min.js"></script>

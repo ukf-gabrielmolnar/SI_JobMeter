@@ -1,5 +1,5 @@
 .blue {
-    background-color : #86b7fe;
+    background-color : #ffffff;
 }
 
 .bg {
@@ -9,6 +9,24 @@
     background-size: cover;
 }
 
-.navbarpadding_left {
+.navbarpadding {
     padding-left: 20px;
+    padding-right: 10px;
+}
+
+.roundcorner-dis {
+    border-radius: 30px;
+
+}
+
+.glowborder {
+    border: 2px solid #bff7ff;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.nav-link {
+    font-size: 20px;
 }
