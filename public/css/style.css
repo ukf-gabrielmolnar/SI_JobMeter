@@ -1,0 +1,32 @@
+.blue {
+    background-color : #ffffff;
+}
+
+.bg {
+    background-image: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbarpadding {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.roundcorner-dis {
+    border-radius: 30px;
+
+}
+
+.glowborder {
+    border: 2px solid #bff7ff;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.nav-link {
+    font-size: 20px;
+}

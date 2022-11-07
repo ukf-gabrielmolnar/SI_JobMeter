@@ -125,6 +125,7 @@
                 </label>
             </div>
             <button style="border-radius: 0px 0px 30px 30px; "  class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+
         </form>
     </main>
 
