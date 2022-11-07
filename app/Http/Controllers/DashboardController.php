@@ -38,7 +38,7 @@ class DashboardController extends Controller
               'id'
           ]
         ];
-        
+
         return response()->json($jobs);
     }
 
