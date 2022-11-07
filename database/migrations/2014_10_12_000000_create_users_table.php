@@ -21,21 +21,22 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('tel')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
 
-            $table->unsignedBigInteger('study_programs_id')->nullable();
-            $table->foreign('study_programs_id')
-                ->references('id')
-                ->on('study_programs')
-                ->onDelete('set null');
-
-            $table->unsignedBigInteger('companies_id')->nullable();
+        Schema::table('users', function (Blueprint $table){
+            $table->BigInteger('companies_id')->unsigned()->nullable();
             $table->foreign('companies_id')
                 ->references('id')
                 ->on('companies')
                 ->onDelete('set null');
 
-            $table->rememberToken();
-            $table->timestamps();
+            $table->BigInteger('study_programs_id')->unsigned()->nullable();
+            $table->foreign('study_programs_id')
+                ->references('id')
+                ->on('study_programs')
+                ->onDelete('set null');
         });
     }
 
