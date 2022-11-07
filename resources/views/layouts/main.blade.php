@@ -29,7 +29,7 @@
                 <ul class="navbar-nav ">
                     <?php if (auth()->user()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->name?>)</a>
+                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>)</a>
                     </li>
                     <?php else: ?>
                     <li class="nav-item">
