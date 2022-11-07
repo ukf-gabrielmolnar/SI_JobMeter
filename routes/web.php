@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
-Route::get('/register/user', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
+Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
 Route::post('/register/user', 'App\Http\Controllers\RegisterController@storeUser')->name('store.user');
 
 Route::get('/login', 'App\Http\Controllers\UserController@login')->name('user.login');
