@@ -11,6 +11,37 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
+    public function praxRegistration(){
+        return view('dashboard.praxRegistration');
+    }
+
+    public function companies(): JsonResponse{
+        $companies = [
+            [
+                'id'=>1,
+                'name'=>'fasz',
+                'address'=>'fasztudja'
+            ],
+            [
+                'id'=>2,
+                'name'=>'fasz2',
+                'address'=>'fasztudja'
+            ],
+        ];
+
+        return response()->json($companies);
+    }
+
+    public function jobs(): JsonResponse{
+        $jobs = [
+          [
+              'id'
+          ]
+        ];
+        
+        return response()->json($jobs);
+    }
+
     public function members(): JsonResponse{
         $members = [
             [

@@ -14,6 +14,9 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">Jobmeter</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/praxReg">Prax</a>
+                    </li>
                     <?php if (auth()->user()?->inRole('admin')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/rbac/users">RBAC</a>
@@ -46,21 +49,27 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
+        $selectedCompanyId = 0;
+
         $(function() {
-            $.get('/members', function(data) {
-                var members = $('#members');
-                $.each(data, function(index, member) {
-                    members.append('<option value="' + member.id + '">' + member.name + '</option>');
+            $.get('/companies', function(data) {
+                var companies = $('#companies');
+                $.each(data, function(index, company) {
+                    companies.append('<option value="' + company.id + '">' + company.name + '</option>');
                 });
             });
 
-            $('#members').on('change', function() {
-                console.log($('#memberform').serialize())
+            $('#companies').on('change', function() {
+                console.log($('#companyform').serialize())
+                $selectedCompanyId = $(this).children(":selected").attr("value");
+                document.getElementById("proba").innerHTML = $selectedCompanyId;
+
             });
 
-
-
         });
+
+
+
     </script>
     </body>
 </html>

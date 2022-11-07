@@ -23,4 +23,7 @@ Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.a
 
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
 
+Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistration')->name('praxReg');
+Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
+
 Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
