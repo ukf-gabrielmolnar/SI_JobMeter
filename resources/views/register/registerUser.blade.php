@@ -67,12 +67,6 @@
                     @endif
                 </div>
             </div>
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
             <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
         </form>
