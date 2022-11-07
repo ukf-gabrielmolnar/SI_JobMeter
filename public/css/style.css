@@ -1,0 +1,14 @@
+.blue {
+    background-color : #86b7fe;
+}
+
+.bg {
+    background-image: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbarpadding_left {
+    padding-left: 20px;
+}
