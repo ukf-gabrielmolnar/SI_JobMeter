@@ -16,7 +16,8 @@ class RegisterController extends Controller
         $data = $request->validated();
 
         $user = new \App\Models\User();
-        $user->name = $data['name'];
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
         $user->save();

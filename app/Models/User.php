@@ -14,7 +14,8 @@ use Laravel\Sanctum\HasApiTokens;
  * Class App\Models\User
  *
  * @property int $id
- * @property string $name
+ * @property string $firstname
+ * @property string $lastname
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -29,7 +30,8 @@ class User extends Authenticatable implements RbacUserInterface
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
     ];

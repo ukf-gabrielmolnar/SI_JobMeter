@@ -27,12 +27,23 @@
             </div>
 
             <div class="form-group">
-                <label for="name">Name</label>
-                <input name="name" type="text" class="form-control" id="name" placeholder="John Doe">
+                <label for="firstname">Firstname</label>
+                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="John">
 
                 <div class="help-block">
-                    @if($errors->has('name'))
-                        {{ $errors->first('name') }}
+                    @if($errors->has('firstname'))
+                        {{ $errors->first('firstname') }}
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Doe">
+
+                <div class="help-block">
+                    @if($errors->has('lastname'))
+                        {{ $errors->first('lastname') }}
                     @endif
                 </div>
             </div>

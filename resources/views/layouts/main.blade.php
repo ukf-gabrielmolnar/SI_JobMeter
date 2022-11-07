@@ -14,9 +14,11 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">Jobmeter</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" href="/praxReg">Prax</a>
                     </li>
+                    @endauth
                     <?php if (auth()->user()?->inRole('admin')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/rbac/users">RBAC</a>

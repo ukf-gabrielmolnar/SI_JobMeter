@@ -24,7 +24,7 @@ class UserController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('user.login');
+        return redirect()->route('login.login');
 
     }
 }
