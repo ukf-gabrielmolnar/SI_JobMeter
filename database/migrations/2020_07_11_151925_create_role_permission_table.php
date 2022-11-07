@@ -22,7 +22,10 @@ class CreateRolePermissionTable extends Migration
             $table->unsignedInteger('permission_id');
             $table->timestamps();
             $table->unique(['permission_id','role_id']);
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade');
             $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
         });
     }
