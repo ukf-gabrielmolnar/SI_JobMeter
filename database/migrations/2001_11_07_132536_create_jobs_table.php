@@ -13,30 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('tel')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
+            $table->string('job_type');
 
-        Schema::table('users', function (Blueprint $table){
-            $table->BigInteger('companies_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('companies_id')->nullable();
             $table->foreign('companies_id')
                 ->references('id')
                 ->on('companies')
                 ->onDelete('set null');
 
-            $table->BigInteger('study_programs_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('study_programs_id')->nullable();
             $table->foreign('study_programs_id')
                 ->references('id')
                 ->on('study_programs')
                 ->onDelete('set null');
+
+            $table->timestamps();
         });
     }
 
@@ -47,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('jobs');
     }
 };
