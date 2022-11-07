@@ -84,7 +84,7 @@
             @csrf
 
             <div class="form-group">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email">
                 <div class="help-block">
                     @if($errors->has('email'))
                         {{ $errors->first('email') }}
