@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function registerStaff(){
-        return view('register.registerStaff');
+    public function registerUser(){
+        return view('register.registerUser');
     }
 
-    public function storeStaff(RegisterStaffRequest $request){
+    public function storeUser(RegisterStaffRequest $request){
 
         $data = $request->validated();
 
@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
-        return redirect()->route('login.staff');
+        return redirect()->route('login.user');
     }
 
 }
