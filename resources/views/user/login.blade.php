@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-
     <style>
         .form-group{
             margin-bottom: 15px;
@@ -12,7 +11,7 @@
     </style>
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1">
-        <form method="post" action="/register/staff">
+        <form method="post" action="/login">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
             @csrf
 
@@ -27,17 +26,6 @@
             </div>
 
             <div class="form-group">
-                <label for="name">Name</label>
-                <input name="name" type="text" class="form-control" id="name" placeholder="John Doe">
-
-                <div class="help-block">
-                    @if($errors->has('name'))
-                        {{ $errors->first('name') }}
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label for="floatingPassword">Password</label>
                 <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <div class="help-block">
@@ -47,22 +35,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="passwordRepeat">Repeat Password</label>
-                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" placeholder="Password">
-                <div class="help-block">
-                    @if($errors->has('repeatPassword'))
-                        {{ $errors->first('repeatPassword') }}
-                    @endif
-                </div>
-            </div>
-
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
         </form>
     </main>

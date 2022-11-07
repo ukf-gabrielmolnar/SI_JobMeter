@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
 Route::get('/register/staff', 'App\Http\Controllers\RegisterController@registerStaff')->name('register.staff');
 Route::post('/register/staff', 'App\Http\Controllers\RegisterController@storeStaff')->name('store.staff');
 
-Route::get('/login/staff', 'App\Http\Controllers\LoginController@loginStaff')->name('login.staff');
+Route::get('/login', 'App\Http\Controllers\UserController@login')->name('user.login');
+Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('user.auth');
+
+Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
+
+Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
