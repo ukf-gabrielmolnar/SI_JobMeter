@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function login(){
 
-        return view('user.login');
+        return view('login.login');
     }
 
     public function auth(LoginRequest $request){

@@ -18,8 +18,8 @@ Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->na
 Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
 Route::post('/register/user', 'App\Http\Controllers\RegisterController@storeUser')->name('store.user');
 
-Route::get('/login', 'App\Http\Controllers\UserController@login')->name('user.login');
-Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('user.auth');
+Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login.login');
+Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.auth');
 
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
 

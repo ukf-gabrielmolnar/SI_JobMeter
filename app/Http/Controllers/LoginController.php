@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function loginStaff(){
 
-        return view('login.loginStaff');
+        return view('login.login');
     }
 
     public function authStaff(LoginRequest $request){
@@ -19,7 +19,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('login.staff');
+        return redirect()->route('login.login');
 
     }
 }
