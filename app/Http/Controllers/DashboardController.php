@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Models\Company;
 
 class DashboardController extends Controller
 {
@@ -16,18 +17,7 @@ class DashboardController extends Controller
     }
 
     public function companies(): JsonResponse{
-        $companies = [
-            [
-                'id'=>1,
-                'name'=>'fasz',
-                'address'=>'fasztudja'
-            ],
-            [
-                'id'=>2,
-                'name'=>'fasz2',
-                'address'=>'fasztudja'
-            ],
-        ];
+        $companies = Company::all();
 
         return response()->json($companies);
     }

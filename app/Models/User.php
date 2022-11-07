@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Itstructure\LaRbac\Interfaces\RbacUserInterface;
@@ -34,6 +36,9 @@ class User extends Authenticatable implements RbacUserInterface
         'lastname',
         'email',
         'password',
+        'tel',
+        'companies_id',
+        'study_programs_id',
     ];
 
     /**
@@ -54,4 +59,20 @@ class User extends Authenticatable implements RbacUserInterface
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function companyuser(): BelongsTo{
+        return $this->belongsTo(Company::class);
+    }
+
+    public function study_programuser(): BelongsTo{
+        return $this->belongsTo(Study_program::class);
+    }
+
+    public function usercontract(): HasMany{
+        return $this->hasMany(Contract::class);
+    }
+
+    public function userfeedback_report(): HasMany{
+        return $this->hasMany(Feedback_Report::class);
+    }
 }
