@@ -4,8 +4,6 @@
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
-
-        <p id="probaAA"></p>
         <!--UserID hidden!-->
         <input hidden id="users_id" name="users_id" value="{{auth()->user()->id}}">
 

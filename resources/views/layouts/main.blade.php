@@ -147,8 +147,6 @@
         document.getElementById('timePickerForm').style.display = 'none';
         document.getElementById('submitButtonPrax').style.display = 'none';
 
-        document.getElementById("probaAA").innerHTML = "Asd";
-
         $.get('/companies', function(data) {
             var companies = $('#companies');
             $.each(data, function(index, company) {
