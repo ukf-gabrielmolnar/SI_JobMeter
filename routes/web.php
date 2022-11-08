@@ -25,5 +25,5 @@ Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.
 
 Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistration')->name('praxReg');
 Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
-
-Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
+Route::get('/jobs', 'App\Http\Controllers\DashboardController@jobs')->name('jobs');
+Route::get('/contacts', 'App\Http\Controllers\DashboardController@contacts')->name('contacts');

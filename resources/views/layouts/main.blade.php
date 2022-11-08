@@ -15,25 +15,28 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand navbarpadding title" href="/">JobMeter</a>
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Prax
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/praxReg">Prax</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
                     @endauth
 
                     <?php if (auth()->user()?->inRole('student')): ?>
@@ -93,7 +96,7 @@
     </nav>
     </div>
 
-    <div class="container blue" style="margin-top: -50px">
+    <div class="container blue" style="margin-top: -50px; transition: height 2s;">
         <div style="padding: 100px">
             @yield('content')
         </div>
@@ -134,26 +137,64 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $selectedCompanyId = 0;
+        $
+        var selectedCompanyId = 1;
+        var selectedJobId = 1;
+        var selectedContractId = 1;
 
-        $(function() {
-            $.get('/companies', function(data) {
-                var companies = $('#companies');
-                $.each(data, function(index, company) {
-                    companies.append('<option value="' + company.id + '">' + company.name + '</option>');
-                });
+        document.getElementById('jobform').style.display = 'none';
+        document.getElementById('contactform').style.display = 'none';
+        document.getElementById('timePickerForm').style.display = 'none';
+        document.getElementById('submitButtonPrax').style.display = 'none';
+
+        $.get('/companies', function(data) {
+            var companies = $('#companies');
+            $.each(data, function(index, company) {
+                companies.append('<option value="' + company.id + '">' + company.name + '</option>');
             });
-
-            $('#companies').on('change', function() {
-                console.log($('#companyform').serialize())
-                $selectedCompanyId = $(this).children(":selected").attr("value");
-                document.getElementById("proba").innerHTML = $selectedCompanyId;
-
-            });
-
         });
 
+        $('#companies').on('change', function() {
+            var jobForm = $('#jobform');
+            jobForm.fadeToggle(1000);
+            $("#jobs").empty();
+            $selectedCompanyId = $(this).children(":selected").attr("value");
 
+
+            $.get('/jobs', function(data) {
+                var jobs = $('#jobs');
+                jobs.append('<option value="" selected disabled hidden>Choose here</option>');
+                $.each(data, function(index, job) {
+                    if (job.companies_id == $selectedCompanyId){
+                        jobs.append('<option value="' + job.id + '">' + job.job_type + '</option>');
+                    }
+                });
+            });
+        });
+
+        $('#jobs').on('change', function() {
+            var contactForm = $('#contactform');
+            contactForm.fadeToggle(1000);
+            $("#contacts").empty();
+            selectedJobId = $(this).children(":selected").attr("value");
+
+            $.get('/contacts', function(data) {
+                var contacts = $('#contacts');
+                contacts.append('<option value="" selected disabled hidden>Choose here</option>');
+                $.each(data, function(index, contact) {
+                    if (contact.companies_id == $selectedCompanyId){
+                    contacts.append('<option value="' + contact.id + '">' + contact.firstname +'</option>');
+                    }
+                });
+            });
+        });
+
+        $('#contacts').on('change', function (){
+            var timePickerForm = $('#timePickerForm');
+            var submitButtonPrax = $('#submitButtonPrax');
+            timePickerForm.fadeToggle(1000);
+            submitButtonPrax.fadeToggle(2500);
+        });
 
     </script>
     </body>
