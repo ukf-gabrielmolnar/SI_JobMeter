@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,8 @@ Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistratio
 Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
 
 Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
+
+Route::get('/manager', [App\Http\Controllers\ManagerController::class, 'index'])->name('manager.index');
+Route::get('/manager/users',[App\Http\Controllers\ManagerController::class,'showusers'])->name('manager.show_users');
+Route::get('/manager/companies',[App\Http\Controllers\ManagerController::class,'showcompanies'])->name('manager.show_companies');
+Route::resource('manager', ManagerController::class);
