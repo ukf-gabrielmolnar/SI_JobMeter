@@ -25,12 +25,13 @@
             width: 400px;
             height: 350px;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
             border-radius: 30px;
             padding-top: 22px;
+            margin-bottom: 20px;
         }
         .box input[type="email"],.box input[type="password"]{
             border: 0px;
@@ -109,5 +110,7 @@
             <button class="btn-primary" type="submit">Sign in</button>
         </form>
     </main>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 @endsection
