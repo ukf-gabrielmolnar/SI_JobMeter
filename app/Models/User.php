@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Itstructure\LaRbac\Interfaces\RbacUserInterface;
 use Itstructure\LaRbac\Traits\Administrable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Study_program;
 
 /**
  * Class App\Models\User
@@ -64,7 +66,7 @@ class User extends Authenticatable implements RbacUserInterface
         return $this->belongsTo(Company::class);
     }
 
-    public function study_programuser(): BelongsTo{
+    public function study_program(): BelongsTo{
         return $this->belongsTo(Study_program::class);
     }
 
