@@ -16,6 +16,11 @@ class DashboardController extends Controller
         return view('dashboard.praxRegistration');
     }
 
+    public function tableview(){
+        return view('admin.adminView');
+    }
+
+
     public function companies(): JsonResponse{
         $companies = Company::all();
 

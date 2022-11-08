@@ -27,3 +27,12 @@ Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistratio
 Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
 
 Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
+
+Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adminView');
+//Route::get('/adminView', 'App\Http\Controllers\AdminController@destroy');
+Route::post('/adminView', 'App\Http\Controllers\AdminController@destroy')->name('admin.destroy');
+//Route::post('/admin', 'App\Http\Controllers\AdminController@asd')->name('admin.asd');
+Route::resource('adminView', \App\Http\Controllers\AdminController::class);
+
+
+
