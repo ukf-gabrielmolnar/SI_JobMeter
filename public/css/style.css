@@ -2,8 +2,14 @@
     background-color : #ffffff;
 }
 
+.btn-darkgrey {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    outline-color: #3a3a3a;
+}
+
 .bg {
-    background-image: url("bg.jpg");
+    background-image: url("bg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -29,4 +35,13 @@
 
 .nav-link {
     font-size: 20px;
+}
+
+.btn-darkgrey:hover {
+    background-color:#86f4ff;
+    transition: 0.4s;
+}
+
+.nav-link:hover {
+    color: #86f4ff;
 }

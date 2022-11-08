@@ -1,10 +1,13 @@
 <!DOCTYPE>
 <html>
+
     <head>
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="icon" type="image/x-icon" href="../../../public/favicon.png">
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
+
     <body class="bg" style="min-height: 100vh">
     <div style="margin-top: -20px">
     <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4">
