@@ -1,43 +1,50 @@
 @extends('layouts.main')
 @section('content')
+    @auth
+    <form method="post" action="{{ route('contract.store') }}">
+        @csrf
 
-    <form>
-        <form class="h6" action="" id="companyform">
+
+        <p id="probaAA"></p>
+        <!--UserID hidden!-->
+        <input hidden id="users_id" name="users_id" value="{{auth()->user()->id}}">
+
+        <div class="h6" id="companyform">
             <label for="companies" class="form-label">Firma</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="companies" name="company">
+            <select class="form-select form-select-lg mb-3 text-dark" id="companies" name="companies">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
-        </form>
+        </div>
 
-
-        <form class="h6" action="" id="jobform">
-            <label for="jobs" class="form-label">Job</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="jobs" name="job">
+        <div class="h6" id="jobform">
+            <label for="jobs_id" class="form-label">Job</label>
+            <select class="form-select form-select-lg mb-3 text-dark" id="jobs_id" name="jobs_id">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
-        </form>
+        </div>
 
-        <form class="h6" action="" id="contactform">
-            <label for="contacts" class="form-label">Contract</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="contacts" name="contact">
+        <div class="h6" id="contactform">
+            <label for="contacts_id" class="form-label">Contract</label>
+            <select class="form-select form-select-lg mb-3 text-dark" id="contacts_id" name="contacts_id">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
-        </form>
+        </div>
 
         <p id="probaC"> </p>
 
         <div id="timePickerForm">
-            <label class="h6" for="start">Datum do</label>
+            <label class="h6" for="od">Datum do</label>
             <p></p>
-            <input type="date" id="start" value='<?php echo date('Y-m-d');?>'>
+            <input type="date" id="od" name="od" value='<?php echo date('Y-m-d');?>'>
             <p></p>
-            <label class="h6" for="stop">Datum do</label>
+            <label class="h6" for="do">Datum do</label>
             <p></p>
-            <input type="date" id="stop" value='<?php echo date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m-d'))));?>'>
+            <input type="date" id="do" name="do" value='<?php echo date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m-d'))));?>'>
         </div>
 
         <br>
-        <a id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</a>
+        <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
     </form>
+    @endauth
 
 @endsection

@@ -10,7 +10,7 @@
 
     <body class="bg" style="min-height: 100vh">
     <div style="margin-top: -20px">
-    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4">
+    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 ">
         <div class="container-fluid" style="padding-top: 20px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -137,7 +137,7 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $
+        var fades = [true,true,true];
         var selectedCompanyId = 1;
         var selectedJobId = 1;
         var selectedContractId = 1;
@@ -146,6 +146,8 @@
         document.getElementById('contactform').style.display = 'none';
         document.getElementById('timePickerForm').style.display = 'none';
         document.getElementById('submitButtonPrax').style.display = 'none';
+
+        document.getElementById("probaAA").innerHTML = "Asd";
 
         $.get('/companies', function(data) {
             var companies = $('#companies');
@@ -156,13 +158,18 @@
 
         $('#companies').on('change', function() {
             var jobForm = $('#jobform');
+            if (fades[0]){
+
+                fades[0] = false;
+            }
             jobForm.fadeToggle(1000);
-            $("#jobs").empty();
+
+            $("#jobs_id").empty();
             $selectedCompanyId = $(this).children(":selected").attr("value");
 
 
             $.get('/jobs', function(data) {
-                var jobs = $('#jobs');
+                var jobs = $('#jobs_id');
                 jobs.append('<option value="" selected disabled hidden>Choose here</option>');
                 $.each(data, function(index, job) {
                     if (job.companies_id == $selectedCompanyId){
@@ -172,14 +179,17 @@
             });
         });
 
-        $('#jobs').on('change', function() {
+        $('#jobs_id').on('change', function() {
             var contactForm = $('#contactform');
-            contactForm.fadeToggle(1000);
-            $("#contacts").empty();
+            if (fades[2]){
+                contactForm.fadeToggle(1000);
+                fades[2] = false;
+            }
+            $("#contacts_id").empty();
             selectedJobId = $(this).children(":selected").attr("value");
 
             $.get('/contacts', function(data) {
-                var contacts = $('#contacts');
+                var contacts = $('#contacts_id');
                 contacts.append('<option value="" selected disabled hidden>Choose here</option>');
                 $.each(data, function(index, contact) {
                     if (contact.companies_id == $selectedCompanyId){
@@ -189,11 +199,16 @@
             });
         });
 
-        $('#contacts').on('change', function (){
+        $('#contacts_id').on('change', function (){
             var timePickerForm = $('#timePickerForm');
             var submitButtonPrax = $('#submitButtonPrax');
-            timePickerForm.fadeToggle(1000);
-            submitButtonPrax.fadeToggle(2500);
+
+            if (fades[3]){
+                timePickerForm.fadeToggle(1000);
+                submitButtonPrax.fadeToggle(2500);
+                fades[3] = false;
+            }
+
         });
 
     </script>

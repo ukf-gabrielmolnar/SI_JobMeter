@@ -27,3 +27,5 @@ Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistratio
 Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
 Route::get('/jobs', 'App\Http\Controllers\DashboardController@jobs')->name('jobs');
 Route::get('/contacts', 'App\Http\Controllers\DashboardController@contacts')->name('contacts');
+
+Route::resource('contract', \App\Http\Controllers\ContractController::class);

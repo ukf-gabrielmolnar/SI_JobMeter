@@ -36,7 +36,17 @@ class ContractController extends Controller
      */
     public function store(StoreContractRequest $request)
     {
-        //
+        $contract = new Contract();
+
+        $contract->users_id = $request->users_id;
+        $contract->jobs_id = $request->jobs_id;
+        $contract->contacts_id = $request->contacts_id;
+        $contract->od = $request->od;
+        $contract->do = $request->do;
+
+        $contract->save();
+
+        return redirect()->route('home');
     }
 
     /**
