@@ -19,7 +19,7 @@
                 <td>{{$user-> email}}</td>
                 <td>{{$user-> tel}}</td>
                 <td>
-                    <form method="POST" action="{{ route('admin.destroy', -)}}">
+                    <form method="post" action="{{ route('admin.destroy', $user->id)}}">
                         @csrf
                         @method('delete')
                         <button type="submit">

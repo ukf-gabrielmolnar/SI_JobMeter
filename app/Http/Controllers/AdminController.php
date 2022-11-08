@@ -14,16 +14,10 @@ class AdminController extends Controller
         return view('admin.adminView', compact('users'));
     }
 
-    public function asd(){
-        dd();
-    }
-
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        dd($user);
+        $user = User::find($id);
         $user->delete();
-        return redirect()->route('admin.adminView');
+        return redirect()->route('adminView');
     }
-
-
 }

@@ -30,9 +30,9 @@ Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name
 
 Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adminView');
 //Route::get('/adminView', 'App\Http\Controllers\AdminController@destroy');
-Route::post('/adminView', 'App\Http\Controllers\AdminController@destroy')->name('admin.destroy');
-//Route::post('/admin', 'App\Http\Controllers\AdminController@asd')->name('admin.asd');
-Route::resource('adminView', \App\Http\Controllers\AdminController::class);
+//Route::post('/delete', 'App\Http\Controllers\AdminController@destroy')->name('admin.destroy');
+Route::resource('admin',\App\Http\Controllers\AdminController::class);
+
 
 
 
