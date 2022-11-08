@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainLoginRegister')
 
 @section('content')
 
@@ -30,7 +30,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            border-radius: 30px;
+            border-radius: 0px;
             padding-top: 22px;
         }
         .box input[type="email"],.box input[type="password"],.box input[type="text"]{
@@ -39,19 +39,19 @@
             display: block;
             margin: 20px auto;
             text-align: center;
-            border: 2px solid green;
+            border: 2px solid #3a3a3a;
             padding: 14px 10px;
             width: 280px;
-            border-radius: 25px;
+            border-radius: 0px;
             color: white;
         }
         button {
             display: block;
             margin: 20px auto;
             text-align: center;
-            padding: 14px 10px;
+            padding-top: 14px;
             width: 120px;
-            border-radius: 25px;
+            border-radius: 0px;
             color: white;
             outline: none;
             text-transform: uppercase;
@@ -60,7 +60,7 @@
 
         .box input[type="email"]:hover,.box input[type="password"]:hover,.box input[type="text"]:hover{
             width: 320px;
-            border-color: #2E9AD5;
+            border-color: #86F4FFFF;
             transition: 0.4s;
         }
 
@@ -69,7 +69,7 @@
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1">
         <form method="post" action="/register/user" class="box">
-            <h1 class="h3 mb-3 fw-normal">Please register</h1>
+            <h1 class="h3 mb-3 fw-normal" style="padding: 5px">Registrácia</h1>
             @csrf
 
             <div class="form-group">
@@ -118,13 +118,7 @@
                     @endif
                 </div>
             </div>
-
-            <div class="checkbox mb-3">
-                <label style="color: white">
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button style="border-radius: 0px 0px 30px 30px; "  class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Registrovať</button>
 
         </form>
     </main>

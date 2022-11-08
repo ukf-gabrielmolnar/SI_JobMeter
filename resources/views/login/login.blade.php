@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainLoginRegister')
 
 @section('content')
     <style>
@@ -23,56 +23,44 @@
         .box{
             background: #212529;
             width: 400px;
-            height: 350px;
+            height: 300px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            border-radius: 30px;
+            border-radius: 0px;
             padding-top: 22px;
         }
-        .box input[type="email"],.box input[type="password"]{
+        .box input[type="email"],.box input[type="password"],.box input[type="text"]{
             border: 0px;
             background: none;
             display: block;
             margin: 20px auto;
             text-align: center;
-            border: 2px solid green;
+            border: 2px solid #3a3a3a;
             padding: 14px 10px;
             width: 280px;
-            border-radius: 25px;
+            border-radius: 0px;
             color: white;
         }
         button {
-            border: 0px;
-            background: green;
             display: block;
             margin: 20px auto;
             text-align: center;
-            border: 2px solid green;
-            padding: 14px 10px;
+            padding-top: 14px;
             width: 120px;
-            border-radius: 25px;
+            border-radius: 0px;
             color: white;
             outline: none;
             text-transform: uppercase;
             font-weight: bold;
         }
-        button:hover{
-            background-color:  #2E9AD5 ;
-            border-color: #2E9AD5;
-            cursor: pointer;
-            /*  transition: 0.4s;*/
-        }
 
-        .box input[type="email"]:hover,.box input[type="password"]:hover{
+        .box input[type="email"]:hover,.box input[type="password"]:hover,.box input[type="text"]:hover{
             width: 320px;
-            border-color: #2E9AD5;
+            border-color: #86F4FFFF;
             transition: 0.4s;
-        }
-        button:active{
-            color: #2E9AD5;
         }
 
 
@@ -80,7 +68,7 @@
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1 main">
         <form method="post" action="/login" class="box">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 fw-normal" style="padding: 5px">Prihlásenie</h1>
             @csrf
 
             <div class="form-group">
@@ -106,7 +94,7 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn-primary" type="submit">Sign in</button>
+            <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
         </form>
     </main>
 
