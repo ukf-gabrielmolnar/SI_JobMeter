@@ -128,7 +128,7 @@
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -12px; margin-right: -12px;">
                 © 2022 Copyright:
-                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                <p class="text-white">Traditional Hungarian Devteam</p>
             </div>
             <!-- Copyright -->
         </footer>
