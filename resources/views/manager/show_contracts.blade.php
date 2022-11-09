@@ -29,7 +29,9 @@
                 <td>{{$contract->do}}</td>
                 <td>{{$contract->approved}}</td>
                 <td>{{$contract->closed}}</td>
-                <a class="btn btn-sm btn-outline-warning" href="{{route('contract.show', $contract->id)}}">Show</a>
+                <td>
+                    <a class="btn btn-sm btn-outline-warning" >Show</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
