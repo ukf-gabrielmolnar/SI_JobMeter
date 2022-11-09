@@ -70,7 +70,7 @@ class User extends Authenticatable implements RbacUserInterface
         return $this->belongsTo(Study_program::class);
     }
 
-    public function usercontract(): HasMany{
+    public function contract(): HasMany{
         return $this->hasMany(Contract::class);
     }
 

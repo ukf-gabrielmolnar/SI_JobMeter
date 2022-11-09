@@ -32,4 +32,5 @@ Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name
 Route::get('/manager', [App\Http\Controllers\ManagerController::class, 'index'])->name('manager.index');
 Route::get('/manager/users',[App\Http\Controllers\ManagerController::class,'showusers'])->name('manager.show_users');
 Route::get('/manager/companies',[App\Http\Controllers\ManagerController::class,'showcompanies'])->name('manager.show_companies');
+Route::get('/manager/contracts',[App\Http\Controllers\ManagerController::class,'showcontracts'])->name('manager.show_contracts');
 Route::resource('manager', ManagerController::class);
