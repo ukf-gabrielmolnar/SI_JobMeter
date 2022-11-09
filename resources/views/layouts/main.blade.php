@@ -10,8 +10,8 @@
 
     <body class="bg" style="min-height: 100vh">
     <div style="margin-top: -20px">
-    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 ">
-        <div class="container-fluid" style="padding-top: 20px">
+    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
+        <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -95,6 +95,8 @@
         </div>
     </nav>
     </div>
+
+    <br><br><br>
 
     <div class="container blue" style="margin-top: -50px; transition: height 2s;">
         <div style="padding: 100px">
