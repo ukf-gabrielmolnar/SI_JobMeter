@@ -25,12 +25,13 @@
             width: 400px;
             height: 300px;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
             border-radius: 0px;
             padding-top: 22px;
+            margin-bottom: 20px;
         }
         .box input[type="email"],.box input[type="password"],.box input[type="text"]{
             border: 0px;
@@ -97,5 +98,7 @@
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
         </form>
     </main>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 @endsection
