@@ -1,4 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <h1>kecske</h1>
+
+    <h1>dashboard</h1>
+
 @endsection

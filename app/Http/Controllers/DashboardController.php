@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Models\Job;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use App\Models\Company;
 
 class DashboardController extends Controller
@@ -28,26 +29,14 @@ class DashboardController extends Controller
     }
 
     public function jobs(): JsonResponse{
-        $jobs = [
-          [
-              'id'
-          ]
-        ];
+        $jobs = Job::all();
 
         return response()->json($jobs);
     }
 
-    public function members(): JsonResponse{
-        $members = [
-            [
-                'id'=> 1,
-                'name' => 'Laci'
-            ],
-            [
-                'id'=> 2,
-                'name' => 'Gabi',
-            ]
-        ];
-        return response()->json($members);
+    public function contacts(): JsonResponse{
+        $contacts = Contact::all();
+
+        return response()->json($contacts);
     }
 }

@@ -14,20 +14,24 @@ class Contract extends Model
     protected $fillable = [
         'users_id',
         'jobs_id',
+        'contact_id',
         'od',
         'do',
         'approved',
         'closed',
     ];
 
-    public function usercontract(): BelongsTo{
+    public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
 
-    public function jobcontract(): BelongsTo{
+    public function job(): BelongsTo{
         return $this->belongsTo(Job::class);
     }
 
+    public function contactcontract(): BelongsTo{
+        return $this->belongsTo(Contact::class);
+    }
 
     public function contractstudent_feedback(): HasMany{
         return $this->hasMany(Student_feedback::class);
