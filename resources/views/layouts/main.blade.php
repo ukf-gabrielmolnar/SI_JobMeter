@@ -44,7 +44,7 @@
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
                         </li>
-                        
+
                     @endauth
 
                     <?php if (auth()->user()?->inRole('student')): ?>
@@ -134,12 +134,8 @@
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -12px; margin-right: -12px;">
-
                 © 2022 Copyright:
                 <p class="text-white">Traditional Hungarian Devteam</p>
-
-                <p style="color: white;margin-bottom: 0p">Traditional Hungarian Devteam </p>
-
             </div>
             <!-- Copyright -->
         </footer>
