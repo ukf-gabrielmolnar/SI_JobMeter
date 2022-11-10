@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Study_program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,6 +15,8 @@ class StudyProgramFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Study_program::class;
+
     public function definition()
     {
         return [

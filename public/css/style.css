@@ -37,6 +37,13 @@
     font-size: 20px;
 }
 
+footer {
+    bottom: 0;
+    text-align: center;
+    padding-top: 10px;
+    left: 7%;
+}
+
 .btn-darkgrey:hover {
     background-color:#86f4ff;
     transition: 0.4s;
@@ -44,6 +51,7 @@
 
 .nav-link:hover {
     color: #86f4ff;
+
 }
 
 .custom-select {
