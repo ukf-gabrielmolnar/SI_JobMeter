@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Contract;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,6 +15,8 @@ class ContractFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Contract::class;
+
     public function definition()
     {
         return [

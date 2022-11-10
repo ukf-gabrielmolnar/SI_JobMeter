@@ -16,15 +16,15 @@ class Job extends Model
         'study_programs_id',
     ];
 
-    public function companyjob(): BelongsTo{
+    public function company(): BelongsTo{
         return $this->belongsTo(Company::class);
     }
 
-    public function study_programjob(): BelongsTo{
+    public function study_program(): BelongsTo{
         return $this->belongsTo(Study_program::class);
     }
 
-    public function jobcontract(): HasMany{
+    public function contract(): HasMany{
         return $this->hasMany(Contract::class);
     }
 }

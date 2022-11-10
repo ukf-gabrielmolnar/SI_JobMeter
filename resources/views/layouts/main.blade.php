@@ -1,5 +1,6 @@
 <!DOCTYPE>
 <html>
+
     <head>
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
@@ -7,6 +8,7 @@
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
 
     </head>
+
     <body class="bg" style="min-height: 100vh">
     <div style="margin-top: -20px">
     <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
@@ -33,6 +35,15 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
+                        <li class="nav-item" >
+                            <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="navbar-brand" href="{{route('manager.show_companies')}}" >Evidované pracoviská</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="navbar-brand" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                        </li>
                     @endauth
 
                     <?php if (auth()->user()?->inRole('student')): ?>
@@ -42,12 +53,7 @@
                     <?php endif; ?>
 
                     <?php if (auth()->user()?->inRole('manager')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nepriradené praxi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nepriradené praxi</a>
-                    </li>
+
                     <?php endif; ?>
 
                     <?php if (auth()->user()?->inRole('ppp')): ?>
