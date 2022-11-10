@@ -10,8 +10,7 @@
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    <div style="margin-top: -20px">
-    <nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,10 +38,10 @@
                             <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="navbar-brand" href="{{route('manager.show_companies')}}" >Evidované pracoviská</a>
+                            <a class="nav-link" href="{{route('manager.show_companies')}}" >Evidované pracoviská</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="navbar-brand" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                            <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
                         </li>
                     @endauth
 
@@ -98,14 +97,14 @@
     </nav>
     </div>
 
-    <div class="container blue" style="margin-top: -50px">
+    <div class="container blue">
         <div style="padding: 100px">
             @yield('content')
         </div>
     </div>
 
     <!-- Footer -->
-    <div class="container-fluid container bg-dark roundcorner">
+    <div class="container-fluid container bg-dark">
         <footer class="bg-dark text-center text-lg-start text-white container">
             <!-- Grid container -->
             <div class="container p-4">
