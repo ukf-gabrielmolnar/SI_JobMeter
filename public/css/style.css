@@ -53,3 +53,16 @@ footer {
     color: #86f4ff;
 
 }
+
+.custom-select {
+    border-radius: 0;!important;
+    background-color: #dcdcdc;
+}
+
+.custom-select:hover{
+    width: 102%;
+    transition: 0.4s;
+    box-shadow: 0 0 10px 100px #8abcc5 inset;
+}
+
+

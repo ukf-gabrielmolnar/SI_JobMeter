@@ -14,6 +14,7 @@ class Contract extends Model
     protected $fillable = [
         'users_id',
         'jobs_id',
+        'contact_id',
         'od',
         'do',
         'approved',
@@ -28,6 +29,9 @@ class Contract extends Model
         return $this->belongsTo(Job::class);
     }
 
+    public function contactcontract(): BelongsTo{
+        return $this->belongsTo(Contact::class);
+    }
 
     public function contractstudent_feedback(): HasMany{
         return $this->hasMany(Student_feedback::class);
