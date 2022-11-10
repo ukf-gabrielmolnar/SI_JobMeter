@@ -100,12 +100,8 @@
     </div>
 
 
-
-    <div class="container blue" style="margin-top: -50px; transition: height 2s;">
-
-    <div class="container blue">
-
-        <div style="padding: 100px">
+    <div class="container blue" style="padding: 100px; transition: height 2s;">
+        <div >
             @yield('content')
         </div>
     </div>
@@ -133,9 +129,8 @@
             <!-- Grid container -->
 
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -12px; margin-right: -12px;">
-                © 2022 Copyright:
-                <p class="text-white">Traditional Hungarian Devteam</p>
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -24px; margin-right: -24px;">
+                © 2022 Copyright: <a style="color: #000000">Traditional Hungarian Devteam</a>
             </div>
             <!-- Copyright -->
         </footer>
