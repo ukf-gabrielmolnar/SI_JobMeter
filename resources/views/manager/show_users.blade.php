@@ -1,4 +1,4 @@
-@extends('manager.index')
+@extends('layouts.main')
 
 @section('content')
     <div class="row mb-3">

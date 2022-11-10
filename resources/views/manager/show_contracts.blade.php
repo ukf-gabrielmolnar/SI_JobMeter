@@ -1,4 +1,4 @@
-@extends('manager.index')
+@extends('layouts.main')
 
 @section('content')
     <table class="table table-white table-hover">
