@@ -24,9 +24,9 @@
         .box{
             background: #212529;
             width: 400px;
-            height: 550px;
+            height: 530px;
             position: absolute;
-            top: 50%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -47,7 +47,7 @@
         }
         button {
             display: block;
-            margin: 20px auto;
+            margin: 20px auto 0px auto;
             text-align: center;
             padding-top: 14px;
             width: 120px;
@@ -64,8 +64,19 @@
             transition: 0.4s;
         }
 
+        /* Responsivity */
+        @media screen and (max-width: 600px) {
+            .box {
+                width: 100%;
+                position: relative;
+                margin-top: 300px;
+            }
+        }
+
 
     </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1">
         <form method="post" action="/register/user" class="box">
@@ -122,6 +133,4 @@
 
         </form>
     </main>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 @endsection

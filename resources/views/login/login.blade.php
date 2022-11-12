@@ -25,7 +25,7 @@
             width: 400px;
             height: 300px;
             position: absolute;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -64,8 +64,19 @@
             transition: 0.4s;
         }
 
+        /* Responsivity */
+        @media screen and (max-width: 550px) {
+            .box {
+                width: 100%;
+                position: relative;
+                margin-top: 160px;
+            }
+        }
+
 
     </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1 main">
         <form method="post" action="/login" class="box">
@@ -98,7 +109,5 @@
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
         </form>
     </main>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 @endsection
