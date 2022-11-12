@@ -69,7 +69,7 @@
             .box {
                 width: 100%;
                 position: relative;
-                margin-top: 160px;
+                margin-top: 180px;
             }
         }
 

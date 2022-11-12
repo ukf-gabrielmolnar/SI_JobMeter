@@ -4,6 +4,9 @@
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!--UserID hidden!-->
         <input hidden id="users_id" name="users_id" value="{{auth()->user()->id}}">
 

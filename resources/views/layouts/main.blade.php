@@ -11,7 +11,7 @@
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -95,7 +95,7 @@
     </div>
 
 
-    <div class="container blue" style="padding: 100px; transition: height 2s;">
+    <div class="container blue customSelectContainer" style="transition: height 2s;">
         <div >
             @yield('content')
         </div>
