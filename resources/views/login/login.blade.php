@@ -76,8 +76,6 @@
 
     </style>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1 main">
         <form method="post" action="/login" class="box">
             <h1 class="h3 mb-3 fw-normal" style="padding: 5px">Prihlásenie</h1>

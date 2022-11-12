@@ -4,8 +4,9 @@
 <head>
     <title>JobMeter</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="icon" type="image/x-icon" href="../../../public/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/css/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body class="bg" style="min-height: 100vh">
