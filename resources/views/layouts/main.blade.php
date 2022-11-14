@@ -81,13 +81,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>)</a>
-                    </li>-->
                     <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
