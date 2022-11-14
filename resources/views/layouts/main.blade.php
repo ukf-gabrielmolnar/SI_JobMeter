@@ -179,9 +179,9 @@
 
         $('#jobs_id').on('change', function() {
             var contactForm = $('#contactform');
-            if (fades[2]){
+            if (fades[1]){
                 contactForm.fadeToggle(1000);
-                fades[2] = false;
+                fades[1] = false;
             }
             $("#contacts_id").empty();
             selectedJobId = $(this).children(":selected").attr("value");
@@ -201,10 +201,10 @@
             var timePickerForm = $('#timePickerForm');
             var submitButtonPrax = $('#submitButtonPrax');
 
-            if (fades[3]){
+            if (fades[2]){
                 timePickerForm.fadeToggle(1000);
                 submitButtonPrax.fadeToggle(2500);
-                fades[3] = false;
+                fades[2] = false;
             }
 
         });
