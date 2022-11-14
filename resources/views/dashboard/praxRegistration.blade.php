@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    @auth
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
@@ -43,6 +42,5 @@
         <br>
         <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
     </form>
-    @endauth
 
 @endsection
