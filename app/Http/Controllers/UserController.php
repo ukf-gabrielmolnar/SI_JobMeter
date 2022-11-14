@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Study_program;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,5 +27,15 @@ class UserController extends Controller
 
         return redirect()->route('login.login');
 
+    }
+
+    public function profileInfo(){
+        $study_programs = Study_program::all();
+        return view('user.userInfo', compact('study_programs'));
+    }
+
+    public function profileSettings(){
+        $study_programs = Study_program::all();
+        return view('user.userSettings', compact('study_programs'));
     }
 }

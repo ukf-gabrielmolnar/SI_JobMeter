@@ -23,11 +23,10 @@ Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login.l
 Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.auth');
 
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
+Route::get('userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
+Route::get('userSettings' ,'App\Http\Controllers\UserController@profileInfo')->name('user.userSettings');
 
 Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistration')->name('praxReg');
-Route::get('/companies', 'App\Http\Controllers\DashboardController@companies')->name('companies');
-Route::get('/jobs', 'App\Http\Controllers\DashboardController@jobs')->name('jobs');
-Route::get('/contacts', 'App\Http\Controllers\DashboardController@contacts')->name('contacts');
 
 Route::resource('contract', \App\Http\Controllers\ContractController::class);
 Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
@@ -42,4 +41,3 @@ Route::get('/manager/users',[App\Http\Controllers\ManagerController::class,'show
 Route::get('/manager/companies',[App\Http\Controllers\ManagerController::class,'showcompanies'])->name('manager.show_companies');
 Route::get('/manager/contracts',[App\Http\Controllers\ManagerController::class,'showcontracts'])->name('manager.show_contracts');
 Route::resource('manager', ManagerController::class);
-
