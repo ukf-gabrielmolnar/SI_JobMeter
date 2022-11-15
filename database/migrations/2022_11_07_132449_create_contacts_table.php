@@ -26,6 +26,7 @@ return new class extends Migration
                 ->on('companies')
                 ->onDelete('set null');
 
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
