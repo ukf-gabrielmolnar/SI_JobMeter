@@ -23,15 +23,13 @@ class ContractFactory extends Factory
     public function definition()
     {
         return [
-
-/*
             'users_id'=> User::factory(),
             'jobs_id'=> Job::factory(),
-            'contact_id'=> Contact::factory(),
+            'contacts_id'=> Contact::factory(),
             'od'=>$this->faker->date,
             'do'=>$this->faker->date,
             'approved'=>$this->faker->boolean,
-            'closed'=>$this->faker->boolean,*/
+            'closed'=>$this->faker->boolean,
         ];
     }
 }

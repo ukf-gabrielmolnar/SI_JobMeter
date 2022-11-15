@@ -20,7 +20,7 @@ class ContactFactory extends Factory
         return [
             'firstname'=>$this->faker->firstName,
             'lastname'=>$this->faker->lastName,
-            'e-mail'=>$this->faker->email,
+            'email'=>$this->faker->email,
             'tel'=>$this->faker->phoneNumber,
             'companies_id'=> Company::factory(),
         ];
