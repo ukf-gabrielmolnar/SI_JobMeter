@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CompanySeeder extends Seeder
+class YearSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('companies')->insert([
-        ]);
+        //
     }
 }

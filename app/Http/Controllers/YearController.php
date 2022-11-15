@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Http\Requests\StoreCompanyRequest;
-use App\Http\Requests\UpdateCompanyRequest;
+use App\Models\Year;
+use App\Http\Requests\StoreYearRequest;
+use App\Http\Requests\UpdateYearRequest;
 
-class CompanyController extends Controller
+class YearController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -31,10 +31,10 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCompanyRequest  $request
+     * @param  \App\Http\Requests\StoreYearRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCompanyRequest $request)
+    public function store(StoreYearRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Year $year)
     {
         //
     }
@@ -53,10 +53,10 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Year $year)
     {
         //
     }
@@ -64,11 +64,11 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCompanyRequest  $request
-     * @param  \App\Models\Company  $company
+     * @param  \App\Http\Requests\UpdateYearRequest  $request
+     * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCompanyRequest $request, Company $company)
+    public function update(UpdateYearRequest $request, Year $year)
     {
         //
     }
@@ -76,10 +76,10 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Year $year)
     {
         //
     }

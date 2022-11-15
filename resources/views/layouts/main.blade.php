@@ -6,12 +6,10 @@
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="/css/favicon.png">
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,13 +21,14 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/praxReg">Prax</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/adminView">Table</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/adminView">Table</a>
+                        </li>
+
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
                         </li>
@@ -38,6 +37,10 @@
                         </li>
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jobAdd">Add new job</a>
                         </li>
 
                     @endauth
@@ -75,10 +78,17 @@
 
                 </ul>
 
-                <ul class="navbar-nav ">
+                <ul class="navbar-nav">
                     <?php if (auth()->user()): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout (<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>)</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= auth()->user()->firstname. ' '. auth()->user()->lastname?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
+                            <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
                     </li>
                     <?php else: ?>
                     <li class="nav-item">
@@ -95,7 +105,7 @@
     </div>
 
 
-    <div class="container blue customSelectContainer" style="transition: height 2s;">
+    <div class="container blue" style="padding: 100px; transition: height 2s;">
         <div >
             @yield('content')
         </div>
@@ -132,80 +142,8 @@
     </div>
 
     <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        var fades = [true,true,true];
-        var selectedCompanyId = 1;
-        var selectedJobId = 1;
-        var selectedContractId = 1;
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 
-        document.getElementById('jobform').style.display = 'none';
-        document.getElementById('contactform').style.display = 'none';
-        document.getElementById('timePickerForm').style.display = 'none';
-        document.getElementById('submitButtonPrax').style.display = 'none';
-
-        $.get('/companies', function(data) {
-            var companies = $('#companies');
-            $.each(data, function(index, company) {
-                companies.append('<option value="' + company.id + '">' + company.name + '</option>');
-            });
-        });
-
-        $('#companies').on('change', function() {
-            var jobForm = $('#jobform');
-            if (fades[0]){
-
-                fades[0] = false;
-            }
-            jobForm.fadeToggle(1000);
-
-            $("#jobs_id").empty();
-            $selectedCompanyId = $(this).children(":selected").attr("value");
-
-
-            $.get('/jobs', function(data) {
-                var jobs = $('#jobs_id');
-                jobs.append('<option value="" selected disabled hidden>Choose here</option>');
-                $.each(data, function(index, job) {
-                    if (job.companies_id == $selectedCompanyId){
-                        jobs.append('<option value="' + job.id + '">' + job.job_type + '</option>');
-                    }
-                });
-            });
-        });
-
-        $('#jobs_id').on('change', function() {
-            var contactForm = $('#contactform');
-            if (fades[2]){
-                contactForm.fadeToggle(1000);
-                fades[2] = false;
-            }
-            $("#contacts_id").empty();
-            selectedJobId = $(this).children(":selected").attr("value");
-
-            $.get('/contacts', function(data) {
-                var contacts = $('#contacts_id');
-                contacts.append('<option value="" selected disabled hidden>Choose here</option>');
-                $.each(data, function(index, contact) {
-                    if (contact.companies_id == $selectedCompanyId){
-                    contacts.append('<option value="' + contact.id + '">' + contact.firstname +'</option>');
-                    }
-                });
-            });
-        });
-
-        $('#contacts_id').on('change', function (){
-            var timePickerForm = $('#timePickerForm');
-            var submitButtonPrax = $('#submitButtonPrax');
-
-            if (fades[3]){
-                timePickerForm.fadeToggle(1000);
-                submitButtonPrax.fadeToggle(2500);
-                fades[3] = false;
-            }
-
-        });
-
-    </script>
     </body>
 </html>

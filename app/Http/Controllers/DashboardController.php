@@ -10,33 +10,18 @@ use App\Models\Company;
 class DashboardController extends Controller
 {
     public function index(){
-        return view('dashboard.index');
+        return view('prax.index');
     }
 
     public function praxRegistration(){
-        return view('dashboard.praxRegistration');
+        $companies = Company::all();
+        $jobs = Job::all();
+        $contacts = Contact::all();
+
+        return view('prax.praxRegistration', compact('companies','jobs','contacts'));
     }
 
     public function tableview(){
         return view('admin.adminView');
-    }
-
-
-    public function companies(): JsonResponse{
-        $companies = Company::all();
-
-        return response()->json($companies);
-    }
-
-    public function jobs(): JsonResponse{
-        $jobs = Job::all();
-
-        return response()->json($jobs);
-    }
-
-    public function contacts(): JsonResponse{
-        $contacts = Contact::all();
-
-        return response()->json($contacts);
     }
 }
