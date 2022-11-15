@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Contract;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class StudentFeedbackFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'subject'=>$this->faker->words,
+            'text'=>$this->faker->text,
+            'contracts_id'=> Contract::factory(),
         ];
     }
 }

@@ -11,7 +11,6 @@ class Study_program extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'study_program',
         'year',
     ];

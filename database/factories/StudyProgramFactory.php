@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Study_program;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,8 @@ class StudyProgramFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'study_program'=>$this->faker->words,
+            'year'=>$this->faker->year,
         ];
     }
 }
