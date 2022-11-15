@@ -21,13 +21,14 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/praxReg">Prax</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/adminView">Table</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/adminView">Table</a>
+                        </li>
+
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
                         </li>
@@ -36,6 +37,10 @@
                         </li>
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jobAdd">Add new job</a>
                         </li>
 
                     @endauth
