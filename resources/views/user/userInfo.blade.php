@@ -1,8 +1,12 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 20rem;">
-        <img src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+    <div class="row">
+        <div class="column">
+            <img class="profile-picture" src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+        </div>
+    <div class="card text-center profile-card column" style="width: 20rem;">
+
         <div class="card-body">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -20,6 +24,7 @@
                 </li>
             </ul>
         </div>
+    </div>
     </div>
 
     <script>

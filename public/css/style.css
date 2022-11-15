@@ -67,16 +67,61 @@ footer {
 }
 
 .customSelectContainer {
-    padding: 100px 100px;
+    margin-top: 30px;
+    padding: 100px 100px 50px 100px;
+}
+
+.profile-card {
+    margin: auto;
+    width: 50%;
+    border: 5px solid #b7b7b7;
+}
+
+.profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 50px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    display: table;
+    clear: both;
+}
+
+input {
+    width: 100%;
+    padding: 2px;
+    height: 46px;
+    background-color: #dbdbdb;
+    border: none;
 }
 
 /* Responsivity */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .custom-select {
         width: 100%;
     }
     .customSelectContainer {
-        padding: 100px 10px;
+        padding: 100px 10px 50px 10px;
+    }
+    .column {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    .profile-card {
+        border: none;
     }
 }
 

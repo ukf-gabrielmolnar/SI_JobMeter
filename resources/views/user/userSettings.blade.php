@@ -1,8 +1,11 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 20rem;">
-        <img src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+    <div class="row">
+        <div class="column">
+            <img class="profile-picture" src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+        </div>
+    <div class="card text-center column profile-card" style="width: 20rem;">
         <div class="card-body">
             <input hidden name="study_id_hidden" id = "study_id_hidden" value="<?=auth()->user()->study_programs_id?>">
             <form method="post" action="{{ route('user.update') }}">
@@ -35,6 +38,7 @@
             </form>
         </div>
     </div>
+  </div>
 
     <script>
         window.onload = function (){

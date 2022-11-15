@@ -5,6 +5,7 @@
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="/css/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
 
@@ -105,7 +106,7 @@
     </div>
 
 
-    <div class="container blue" style="padding: 100px; transition: height 2s;">
+    <div class="container blue customSelectContainer">
         <div >
             @yield('content')
         </div>
