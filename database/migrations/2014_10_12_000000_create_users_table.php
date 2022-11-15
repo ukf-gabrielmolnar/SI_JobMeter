@@ -32,10 +32,10 @@ return new class extends Migration
                 ->on('companies')
                 ->onDelete('set null');
 
-            $table->BigInteger('study_programs_id')->unsigned()->nullable();
-            $table->foreign('study_programs_id')
+            $table->BigInteger('years_id')->unsigned()->nullable();
+            $table->foreign('years_id')
                 ->references('id')
-                ->on('study_programs')
+                ->on('years')
                 ->onDelete('set null');
         });
     }
