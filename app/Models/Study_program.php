@@ -13,12 +13,11 @@ class Study_program extends Model
     protected $fillable = [
         'id',
         'study_program',
-        'year',
     ];
 
 
-    public function users(): HasMany{
-        return $this->hasMany(User::class);
+    public function study_programyear(): HasMany{
+        return $this->hasMany(Year::class);
     }
 
     public function study_programjob(): HasMany{

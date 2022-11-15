@@ -66,8 +66,8 @@ class User extends Authenticatable implements RbacUserInterface
         return $this->belongsTo(Company::class);
     }
 
-    public function study_program(): BelongsTo{
-        return $this->belongsTo(Study_program::class);
+    public function yearuser(): BelongsTo{
+        return $this->belongsTo(Year::class);
     }
 
     public function contract(): HasMany{
