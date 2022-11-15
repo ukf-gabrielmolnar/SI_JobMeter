@@ -13,20 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('years', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email');
-            $table->string('tel');
+            $table->string('year');
 
-            $table->unsignedBigInteger('companies_id')->nullable();
-            $table->foreign('companies_id')
+            $table->BigInteger('study_programs_id')->unsigned()->nullable();
+            $table->foreign('study_programs_id')
                 ->references('id')
-                ->on('companies')
+                ->on('study_programs')
                 ->onDelete('set null');
 
-            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('years');
     }
 };
