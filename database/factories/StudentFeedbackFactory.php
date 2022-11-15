@@ -18,9 +18,11 @@ class StudentFeedbackFactory extends Factory
     public function definition()
     {
         return [
+            /*
             'subject'=>$this->faker->words,
             'text'=>$this->faker->text,
             'contracts_id'=> Contract::factory(),
+            */
         ];
     }
 }

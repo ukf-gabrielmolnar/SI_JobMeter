@@ -21,8 +21,10 @@ class StudyProgramFactory extends Factory
     public function definition()
     {
         return [
+            /*
             'study_program'=>$this->faker->words,
             'year'=>$this->faker->year,
+            */
         ];
     }
 }

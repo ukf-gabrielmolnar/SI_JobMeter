@@ -15,8 +15,10 @@ class StudentFeedbackSeeder extends Seeder
      */
     public function run()
     {
+       /*
         Student_feedback::factory()
             ->count(15)
             ->create();
+       */
     }
 }

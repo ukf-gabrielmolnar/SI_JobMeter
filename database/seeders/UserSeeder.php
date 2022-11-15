@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Study_program;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StudyProgramSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,8 @@ class StudyProgramSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        Study_program::factory()
-            ->count(15)
+        User::factory()
+            ->count(1)
             ->create();
-        */
     }
 }

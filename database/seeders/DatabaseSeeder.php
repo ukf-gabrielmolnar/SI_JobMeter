@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
             CompanySeeder::class,
             ContactSeeder::class,
             ContractSeeder::class,
-            FeedbackReport::class,
+            //FeedbackReport::class,
             JobSeeder::class,
-            RecordSeeder::class,
-            StudentFeedbackSeeder::class,
-            StudyProgramSeeder::class,
+            //RecordSeeder::class,
+            //StudentFeedbackSeeder::class,
+            //StudyProgramSeeder::class,
             UserSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
