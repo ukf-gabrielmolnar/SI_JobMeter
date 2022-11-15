@@ -61,9 +61,23 @@ footer {
 }
 
 .custom-select:hover{
-    width: 102%;
-    transition: 0.4s;
+    /*width: 102%;
+    transition: 0.4s; */
     box-shadow: 0 0 10px 100px #8abcc5 inset;
+}
+
+.customSelectContainer {
+    padding: 100px 100px;
+}
+
+/* Responsivity */
+@media screen and (max-width: 600px) {
+    .custom-select {
+        width: 100%;
+    }
+    .customSelectContainer {
+        padding: 100px 10px;
+    }
 }
 
 

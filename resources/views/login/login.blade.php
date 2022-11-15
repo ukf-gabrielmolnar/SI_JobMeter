@@ -25,7 +25,7 @@
             width: 400px;
             height: 300px;
             position: absolute;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -64,6 +64,15 @@
             transition: 0.4s;
         }
 
+        /* Responsivity */
+        @media screen and (max-width: 550px) {
+            .box {
+                width: 100%;
+                position: relative;
+                margin-top: 180px;
+            }
+        }
+
 
     </style>
 
@@ -73,21 +82,11 @@
             @csrf
 
             <div class="form-group">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email">
-                <div class="help-block">
-                    @if($errors->has('email'))
-                        {{ $errors->first('email') }}
-                    @endif
-                </div>
+                <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="Email" @endif>
             </div>
 
             <div class="form-group">
-                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <div class="help-block">
-                    @if($errors->has('password'))
-                        {{ $errors->first('password') }}
-                    @endif
-                </div>
+                <input name="password" type="password" class="form-control" id="floatingPassword" @if($errors->has('password')) placeholder="{{ $errors->first('password') }}" @else placeholder="Password" @endif>
             </div>
 
             <div class="checkbox mb-3">
@@ -98,7 +97,5 @@
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
         </form>
     </main>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 @endsection
