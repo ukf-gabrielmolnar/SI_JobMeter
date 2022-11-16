@@ -18,11 +18,9 @@ class RecordFactory extends Factory
     public function definition()
     {
         return [
-            /*
-            'subject'=>$this->faker->words,
-            'text'=>$this->faker->text,
+            'subject'=>$this->faker->name,
+            'text'=>$this->faker->name,
             'contracts_id'=> Contract::factory(),
-        */
         ];
     }
 }
