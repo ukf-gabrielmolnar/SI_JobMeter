@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Feedback_Report>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FeedbackReport>
  */
 class FeedbackReportFactory extends Factory
 {
@@ -19,14 +19,10 @@ class FeedbackReportFactory extends Factory
     public function definition()
     {
         return [
-        /*
             'subject'=>$this->faker->words,
-            'text'=>$this->faker->words,
-            'contract_id'=> Contract::factory(),
+            'text'=>$this->faker->text,
+            'contracts_id'=> Contract::factory(),
             'users_id'=> User::factory(),
-*/
-
-
         ];
     }
 }
