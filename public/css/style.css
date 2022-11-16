@@ -74,7 +74,11 @@ footer {
 .profile-card {
     margin: auto;
     width: 50%;
-    border: 5px solid #b7b7b7;
+    border: 5px solid #8abcc5;
+}
+
+.list-group-item {
+    border-color: #8abcc5;
 }
 
 .profile-picture {
@@ -85,16 +89,32 @@ footer {
     margin-top: 50px;
 }
 
-/* Create two equal columns that floats next to each other */
 .column {
     float: left;
     width: 50%;
 }
 
-/* Clear floats after the columns */
+.row {
+    margin: 0 0 30px 0;
+}
+
 .row:after {
     display: table;
     clear: both;
+}
+
+#submitButtonPrax {
+    width: 88%;
+    padding: 2px;
+    height: 46px;
+    background-color: #8abcc5;
+    border: none;
+    border-radius: 0;
+    margin-top: 30px;
+}
+
+#submitButtonPrax:hover {
+    background-color: #60a5b2;
 }
 
 input {

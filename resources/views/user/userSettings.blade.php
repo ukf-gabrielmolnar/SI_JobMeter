@@ -34,7 +34,7 @@
                         </select>
                     </li>
                 </ul>
-                <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+                <button id="submitButtonPrax" class="btn text-white" type="submit">Submit</button>
             </form>
         </div>
     </div>
