@@ -26,15 +26,16 @@ class DatabaseSeeder extends Seeder
 //            'password' => 'admin1234',
 //        ]);
         $this->call([
-            //CompanySeeder::class,
-            //ContactSeeder::class,
+            CompanySeeder::class,
+            ContactSeeder::class,
             ContractSeeder::class,
-            //FeedbackReportSeeder::class,
-            //JobSeeder::class,
+            FeedbackReportSeeder::class,
+            JobSeeder::class,
             RecordSeeder::class,
-            //StudentFeedbackSeeder::class,
-            //StudyProgramSeeder::class,
+            StudentFeedbackSeeder::class,
+            StudyProgramSeeder::class,
             UserSeeder::class,
+            YearSeeder::class,
         ]);
     }
 }

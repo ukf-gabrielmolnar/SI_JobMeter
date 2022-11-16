@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Study_program>
  */
-class StudyProgramFactory extends Factory
+class Study_programFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,10 +21,7 @@ class StudyProgramFactory extends Factory
     public function definition()
     {
         return [
-            /*
-            'study_program'=>$this->faker->words,
-            'year'=>$this->faker->year,
-            */
+            'study_program'=>$this->faker->name,
         ];
     }
 }

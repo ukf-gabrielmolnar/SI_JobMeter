@@ -25,7 +25,7 @@ class JobFactory extends Factory
         return [
             'job_type'=>$this->faker->jobTitle,
             'companies_id'=> Company::factory(),
-            //'study_programs_id'=> Study_program::factory(),
+            'study_programs_id'=> Study_program::factory(),
         ];
     }
 }

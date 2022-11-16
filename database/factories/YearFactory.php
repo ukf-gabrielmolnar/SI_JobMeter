@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Study_program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class YearFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'year'=>$this->faker->year,
+            'study_programs_id'=>Study_program::factory(),
         ];
     }
 }

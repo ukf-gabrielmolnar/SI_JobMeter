@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student_feedback>
  */
-class StudentFeedbackFactory extends Factory
+class Student_feedbackFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,9 @@ class StudentFeedbackFactory extends Factory
     public function definition()
     {
         return [
-            /*
-            'subject'=>$this->faker->words,
-            'text'=>$this->faker->text,
+            'subject'=>$this->faker->name,
+            'text'=>$this->faker->name,
             'contracts_id'=> Contract::factory(),
-            */
         ];
     }
 }
