@@ -32,7 +32,7 @@
                        <input type="email" value=" " id="email" name="email">
                    </li>
 
-                   <!--<h3>Job</h3>
+                   <h3>Job</h3>
                    <li class="list-group-item">
                        <p></p>
                        <label for="comapny_name"><h6> Name </h6></label>
@@ -40,7 +40,7 @@
                        <p></p>
                        <label for="comapny_address"><h6> Address </h6></label>
                        <input type="text" value=" " id="comapny_address" name="comapny_address">
-                   </li>-->
+                   </li>
                </ul>
                <button type="submit"> Save </button>
            </form>

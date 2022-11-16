@@ -40,7 +40,7 @@ class User extends Authenticatable implements RbacUserInterface
         'password',
         'tel',
         'companies_id',
-        'study_programs_id',
+        'years_id',
     ];
 
     /**
