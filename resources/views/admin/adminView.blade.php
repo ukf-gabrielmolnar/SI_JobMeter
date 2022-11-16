@@ -22,7 +22,7 @@
                     <form method="post" action="{{ route('admin.destroy', $user->id)}}">
                         @csrf
                         @method('delete')
-                        <button type="submit">
+                        <button type="submit" class="delete-button">
                             Delete
                         </button>
                     </form>

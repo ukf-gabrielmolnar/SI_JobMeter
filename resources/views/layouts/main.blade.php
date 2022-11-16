@@ -107,7 +107,7 @@
 
 
     <div class="container blue customSelectContainer">
-        <div >
+        <div style="overflow-x:auto;">
             @yield('content')
         </div>
     </div>

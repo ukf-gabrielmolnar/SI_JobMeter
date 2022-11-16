@@ -24,9 +24,9 @@
         .box{
             background: #212529;
             width: 400px;
-            height: 530px;
+            height: 470px;
             position: absolute;
-            top: 55%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;

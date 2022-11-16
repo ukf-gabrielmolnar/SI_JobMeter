@@ -91,7 +91,7 @@
 
             <div class="checkbox mb-3">
                 <label style="color: white">
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input style="width: 20px; height: auto" type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
