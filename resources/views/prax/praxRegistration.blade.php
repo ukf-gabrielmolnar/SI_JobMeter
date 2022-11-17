@@ -114,7 +114,6 @@
                     submitButtonPrax.fadeToggle(2500);
                     fades[2] = false;
                 }
-
             });
         }
 
