@@ -41,7 +41,7 @@
         </div>
 
         <br>
-        <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+        <button id="submitButtonPrax" style="width: 100%" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
     </form>
     @endauth
     <script>
