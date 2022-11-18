@@ -1,23 +1,26 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 15rem;">
-        <div class="card-body">
+    <div>
             <form action="{{ route('job.saveData') }}" method="post">
                @csrf
-               <ul class="list-group list-group-flush">
-                   <h3>Company</h3>
+
+                <div class="row3">
+                   <div class="column3">
+                   <h3 align="center">Company</h3>
                    <li class="list-group-item">
                        <p></p>
                        <label for="company_name"><h6> Name </h6></label>
                        <input type="text" id="company_name" name="company_name" required>
                        <p></p>
                        <label for="company_address"><h6> Address </h6></label>
-                       <input type="text" id="company_address" name="company_address" required>-->
+                       <input type="text" id="company_address" name="company_address" required>
                    </li>
+                   </div>
 
+                   <div class="column3">
                    <div id="contactform">
-                   <h3>Contact</h3>
+                   <h3 align="center">Contact</h3>
                    <li class="list-group-item">
                        <p></p>
                        <label for="firstname"><h6> Firstname </h6></label>
@@ -33,9 +36,11 @@
                        <input type="email" id="email" name="email" required>
                    </li>
                    </div>
+                   </div>
 
+                   <div class="column3">
                    <div id="jobform">
-                   <h3>Job</h3>
+                   <h3 align="center">Job</h3>
                    <li class="list-group-item">
                        <p></p>
                        <label for="company_name"><h6> Name </h6></label>
@@ -51,11 +56,12 @@
                        </select>
                    </li>
                    </div>
-               </ul>
-               <button id="buttonform" type="submit"> Save </button>
+                   </div>
+        </div>
+
+               <button id="buttonform" class="add-new-job-save" type="submit"> Save </button>
            </form>
 
-        </div>
     </div>
 
     <script>

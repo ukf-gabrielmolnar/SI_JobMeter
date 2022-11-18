@@ -58,6 +58,8 @@ footer {
 .custom-select {
     border-radius: 0;!important;
     background-color: #dcdcdc;
+    border-width: 2px;
+    border-color: #8abcc5;
 }
 
 .custom-select:hover{
@@ -89,16 +91,35 @@ footer {
     margin-top: 50px;
 }
 
+/* Two Column Layout (e.g. Profile, Profile Settings) */
 .column {
     float: left;
     width: 50%;
+}
+
+/* Three Column Layout (e.g. Add new job) */
+.column3 {
+    float: left;
+    width: 330px;
+    margin: 20px;
 }
 
 .row {
     margin: 0 0 30px 0;
 }
 
-.row:after {
+.row3 {
+    margin: 0;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row3:after{
+    content: "";
     display: table;
     clear: both;
 }
@@ -117,12 +138,28 @@ footer {
     background-color: #60a5b2;
 }
 
-input {
+.add-new-job-save {
     width: 100%;
     padding: 2px;
     height: 46px;
-    background-color: #dbdbdb;
+    background-color: #8abcc5;
     border: none;
+    border-radius: 0;
+    margin-top: 30px;
+}
+
+.add-new-job-save:hover {
+    background-color: #60a5b2;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding-left: 10px;
+    height: 46px;
+    background-color: #dbdbdb;
+    border-width: 2px;
+    border-color: #8abcc5;
 }
 
 .delete-button {
@@ -155,6 +192,9 @@ input {
         border-collapse: collapse;
         border-spacing: 0;
         width: 100%;
+    }
+    .column3 {
+        margin-bottom: 50px;
     }
 }
 
