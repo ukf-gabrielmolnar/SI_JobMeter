@@ -9,7 +9,6 @@
 }
 
 .bg {
-
     background-image: url("bg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -169,6 +168,11 @@ input {
     padding: 5px;
 }
 
+.modal {
+    left: 30%;
+    top: 15%;
+    width: 40%;
+}
 
 /* Responsivity */
 @media screen and (max-width: 800px) {
@@ -184,6 +188,8 @@ input {
         margin-right: auto;
         width: 50%;
         margin-bottom: 20px;
+        border-width: 4px;
+        border-color: #0a53be;
     }
     .profile-card {
         border: none;
