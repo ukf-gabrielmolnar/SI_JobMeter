@@ -63,9 +63,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2 id="modal_header"></h2>
             </div>
-            <div class="modal-body">
+            <h2 id="modal_header" style="margin-left: 20px"></h2>
+            <div class="modal-body" style="padding-bottom: 50px">
                 <table class="table table-white table-hover" id="modal_table">
                     <thead>
                     <tr>

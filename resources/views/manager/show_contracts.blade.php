@@ -59,27 +59,27 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Študent: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Študent: </label>
                     <label class="form-label" style="color:black" id="student_label"></label>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Pracovisko: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Pracovisko: </label>
                     <label class="form-label" style="color:black" id="company_label"></label>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Pracovná pozícia: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Pracovná pozícia: </label>
                     <label class="form-label" style="color:black" id="job_label"></label>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Začiatok praxe: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Začiatok praxe: </label>
                     <label class="form-label" style="color:black" id="od_label"></label>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Koniec praxe: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Koniec praxe: </label>
                     <label class="form-label" style="color:black" id="do_label"></label>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="color:black">Nadriadený: </label>
+                    <label class="form-label" style="color:black; font-weight: bold">Nadriadený: </label>
                     <label class="form-label" style="color:black" id="contact_label"></label>
                 </div>
             </div>
