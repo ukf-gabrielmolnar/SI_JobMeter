@@ -9,21 +9,21 @@
 
         <div class="h6" id="companyform">
             <label for="companies" class="form-label">Firma</label>
-            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies" name="companies">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies" name="companies" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>
 
         <div class="h6" id="jobform">
             <label for="jobs_id" class="form-label">Job</label>
-            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="jobs_id" name="jobs_id">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="jobs_id" name="jobs_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>
 
         <div class="h6" id="contactform">
             <label for="contacts_id" class="form-label">Contract</label>
-            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>
@@ -41,7 +41,7 @@
         </div>
 
         <br>
-        <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+        <button id="submitButtonPrax" style="width: 100%" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
     </form>
     @endauth
     <script>
@@ -69,10 +69,9 @@
             $('#companies').on('change', function () {
                 var jobForm = $('#jobform');
                 if (fades[0]) {
-
+                    jobForm.fadeToggle(1000);
                     fades[0] = false;
                 }
-                jobForm.fadeToggle(1000);
 
                 $("#jobs_id").empty();
                 $selectedCompanyId = $(this).children(":selected").attr("value");
@@ -115,7 +114,6 @@
                     submitButtonPrax.fadeToggle(2500);
                     fades[2] = false;
                 }
-
             });
         }
 

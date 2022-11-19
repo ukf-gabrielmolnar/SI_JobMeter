@@ -5,6 +5,7 @@
         <title>JobMeter</title>
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="/css/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
 
@@ -21,13 +22,14 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/praxReg">Prax</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/adminView">Table</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/adminView">Table</a>
+                        </li>
+
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
                         </li>
@@ -36,6 +38,10 @@
                         </li>
                         <li class="nav-item" >
                             <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jobAdd">Add new job</a>
                         </li>
 
                     @endauth
@@ -100,8 +106,8 @@
     </div>
 
 
-    <div class="container blue" style="padding: 100px; transition: height 2s;">
-        <div >
+    <div class="container blue customSelectContainer">
+        <div style="overflow-x:auto;">
             @yield('content')
         </div>
     </div>

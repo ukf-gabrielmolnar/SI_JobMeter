@@ -18,5 +18,7 @@ class CompanySeeder extends Seeder
         Company::factory()
             ->count(15)
             ->create();
+        //DB::table('companies')->insert([
+        //]);
     }
 }

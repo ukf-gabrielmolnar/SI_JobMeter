@@ -1,10 +1,13 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 20rem;">
-        <img src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+    <div class="row">
+        <div class="column">
+            <img class="profile-picture" src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
+        </div>
+    <div class="card text-center column profile-card" style="width: 20rem;">
         <div class="card-body">
-            <input hidden name="study_id_hidden" id = "study_id_hidden" value="<?=auth()->user()->study_programs_id?>">
+            <input hidden name="years_id_hidden" id = "years_id_hidden" value="<?=auth()->user()->years_id?>">
             <form method="post" action="{{ route('user.update') }}">
                 @csrf
                 <ul class="list-group list-group-flush">
@@ -21,25 +24,40 @@
                         <input type="email" value="<?= auth()->user()->email ?>" id="email" name="email">
                     </li>
                     <li class="list-group-item">
-                        <label for="study_programs_id" class="form-label"><h6>Study plan</h6></label>
-                        <select class="form-select form-select-lg mb-3 text-dark custom-select" id="study_programs_id" name="study_programs_id">
-                            @foreach($study_programs as $st)
-                                <option value={{$st->id}}>
-                                    {{$st->study_program}}{{"  "}}{{$st->year}}
-                                </option>
-                            @endforeach
+                        <label for="years_id" class="form-label"><h6>Study plan</h6></label>
+                        <select class="form-select form-select-lg mb-3 text-dark custom-select" id="years_id" name="years_id">
+
                         </select>
                     </li>
                 </ul>
-                <button id="submitButtonPrax" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+                <button id="submitButtonPrax" class="btn text-white" type="submit">Submit</button>
             </form>
         </div>
     </div>
+  </div>
 
     <script>
         window.onload = function (){
 
-            document.getElementById("study_programs_id").value = document.getElementById("study_id_hidden").value;
+            var select = $('#years_id');
+            var dataY = @json($year);
+            var dataSP = @json($study_programs);
+
+            $.each(dataY, function (index, year){
+                var SP_id = year.study_programs_id;
+                var Sp;
+                $.each(dataSP, function (index, sp){
+                    if (sp.id === SP_id){
+                        Sp = sp;
+                        return false;
+                    }
+                });
+
+                select.append('<option value="' + year.id + '">' + year.year + ' ' + Sp.study_program + '</option>');
+            });
+
+
+            document.getElementById("years_id").value = document.getElementById("years_id_hidden").value;
         }
     </script>
 
