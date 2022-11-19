@@ -25,10 +25,14 @@
                 <option value="0" selected="selected">
                     {{__('Vsetky studijne programy')}}
                 </option>
-                @foreach($study_programs as $st)
-                    <option value={{$st->id}}>
-                        {{$st->study_program}}{{"  "}}{{$st->year}}
-                    </option>
+                @foreach($years as $year)
+                    @foreach($study_programs as $st)
+                        @if($year->study_programs_id === $st->id)
+                            <option value={{$year->id}}>
+                            {{$st->study_program}}{{"  "}}{{$year->year}}
+                            </option>
+                        @endif
+                    @endforeach
                 @endforeach
             </select>
 
@@ -151,29 +155,35 @@
         }
 
         $('#study_id').on('change', function (){
-            var selectedStudyId = 0;
-            selectedStudyId = $(this).children(":selected").attr("value");
+            var selectedYearId = 0;
+            selectedYearId = $(this).children(":selected").attr("value");
             var data = @json($users);
             var stdpln = @json($study_programs);
+            var year = @json($years);
             var table = document.getElementById("myTable");
             clearTable(table);
             for(var i = 0; i < data.length; i++){
-                if (selectedStudyId == 0 || selectedStudyId == data[i].study_programs_id){
-                    for(var j = 0; j < stdpln.length; j++){
-                        if(data[i].study_programs_id == stdpln[j].id){
-                            var row =  `<tr>
+                if (selectedYearId == 0 || selectedYearId == data[i].years_id){
+                    for(var k = 0; k< year.length; k++){
+                        if(data[i].years_id == year[k].id){
+                            for(var j = 0; j < stdpln.length; j++){
+                                if(year[k].study_programs_id == stdpln[j].id){
+                                    var row =  `<tr>
                                         <td>${data[i].firstname}</td>
                                         <td>${data[i].lastname}</td>
                                         <td>${data[i].email}</td>
                                         <td>${stdpln[j].study_program}</td>
-                                        <td>${stdpln[j].year}</td>
+                                        <td>${year[k].year}</td>
                                         <td>
                                             <a class="btn btn-sm btn-outline-warning" onclick="showModal(${data[i].id})">Podrobnosti</a>
                                         </td>
                                     </tr>`
-                            table.innerHTML += row;
+                                    table.innerHTML += row;
+                                }
+                            }
                         }
                     }
+
 
                 }
             }
