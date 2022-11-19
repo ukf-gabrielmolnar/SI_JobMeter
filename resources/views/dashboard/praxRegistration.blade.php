@@ -8,21 +8,21 @@
 
         <div class="h6" id="companyform">
             <label for="companies" class="form-label">Firma</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="companies" name="companies">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies" name="companies">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>
 
         <div class="h6" id="jobform">
             <label for="jobs_id" class="form-label">Job</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="jobs_id" name="jobs_id">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="jobs_id" name="jobs_id">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>
 
         <div class="h6" id="contactform">
             <label for="contacts_id" class="form-label">Contract</label>
-            <select class="form-select form-select-lg mb-3 text-dark" id="contacts_id" name="contacts_id">
+            <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id">
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
         </div>

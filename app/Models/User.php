@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Itstructure\LaRbac\Interfaces\RbacUserInterface;
 use Itstructure\LaRbac\Traits\Administrable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Study_program;
 
 /**
  * Class App\Models\User
@@ -38,7 +40,7 @@ class User extends Authenticatable implements RbacUserInterface
         'password',
         'tel',
         'companies_id',
-        'study_programs_id',
+        'years_id',
     ];
 
     /**
@@ -64,15 +66,15 @@ class User extends Authenticatable implements RbacUserInterface
         return $this->belongsTo(Company::class);
     }
 
-    public function study_programuser(): BelongsTo{
-        return $this->belongsTo(Study_program::class);
+    public function yearuser(): BelongsTo{
+        return $this->belongsTo(Year::class);
     }
 
-    public function usercontract(): HasMany{
+    public function contract(): HasMany{
         return $this->hasMany(Contract::class);
     }
 
     public function userfeedback_report(): HasMany{
-        return $this->hasMany(Feedback_Report::class);
+        return $this->hasMany(FeedbackReport::class);
     }
 }

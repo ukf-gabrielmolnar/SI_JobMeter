@@ -24,7 +24,7 @@
         .box{
             background: #212529;
             width: 400px;
-            height: 550px;
+            height: 470px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -47,7 +47,7 @@
         }
         button {
             display: block;
-            margin: 20px auto;
+            margin: 20px auto 0px auto;
             text-align: center;
             padding-top: 14px;
             width: 120px;
@@ -64,6 +64,15 @@
             transition: 0.4s;
         }
 
+        /* Responsivity */
+        @media screen and (max-width: 600px) {
+            .box {
+                width: 100%;
+                position: relative;
+                margin-top: 300px;
+            }
+        }
+
 
     </style>
 
@@ -73,54 +82,26 @@
             @csrf
 
             <div class="form-group">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email">
-                <div class="help-block">
-                    @if($errors->has('email'))
-                        {{ $errors->first('email') }}
-                    @endif
-                </div>
+                <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="Email" @endif>
             </div>
 
             <div class="form-group">
-                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="First name">
-
-                <div class="help-block">
-                    @if($errors->has('firstname'))
-                        {{ $errors->first('firstname') }}
-                    @endif
-                </div>
+                <input name="firstname" type="text" class="form-control" id="firstname" @if($errors->has('firstname')) placeholder="{{ $errors->first('firstname') }}" @else placeholder="First name" @endif>
             </div>
 
             <div class="form-group">
-                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last name">
-
-                <div class="help-block">
-                    @if($errors->has('lastname'))
-                        {{ $errors->first('lastname') }}
-                    @endif
-                </div>
+                <input name="lastname" type="text" class="form-control" id="lastname" @if($errors->has('lastname')) placeholder="{{ $errors->first('lastname') }}" @else placeholder="Last name" @endif>
             </div>
 
             <div class="form-group">
-                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <div class="help-block">
-                    @if($errors->has('password'))
-                        {{ $errors->first('password') }}
-                    @endif
-                </div>
+                <input name="password" type="password" class="form-control" id="floatingPassword" @if($errors->has('password')) placeholder="{{ $errors->first('password') }}" @else placeholder="Password" @endif>
             </div>
 
             <div class="form-group">
-                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" placeholder="Password again">
-                <div class="help-block">
-                    @if($errors->has('repeatPassword'))
-                        {{ $errors->first('repeatPassword') }}
-                    @endif
-                </div>
+                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" @if($errors->has('repeatPassword')) placeholder="{{ $errors->first('repeatPassword') }}" @else placeholder="Password again" @endif>
             </div>
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Registrovať</button>
 
         </form>
     </main>
-
 @endsection

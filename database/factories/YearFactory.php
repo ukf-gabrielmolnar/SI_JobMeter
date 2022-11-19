@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Study_program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Study_program>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Year>
  */
-class StudyProgramFactory extends Factory
+class YearFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class StudyProgramFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'year'=>$this->faker->year,
+            'study_programs_id'=>Study_program::factory(),
         ];
     }
 }

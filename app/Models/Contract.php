@@ -21,11 +21,11 @@ class Contract extends Model
         'closed',
     ];
 
-    public function usercontract(): BelongsTo{
+    public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
 
-    public function jobcontract(): BelongsTo{
+    public function job(): BelongsTo{
         return $this->belongsTo(Job::class);
     }
 
@@ -42,6 +42,6 @@ class Contract extends Model
     }
 
     public function contractfeedback_report(): HasMany{
-        return $this->hasMany(Feedback_Report::class);
+        return $this->hasMany(FeedbackReport::class);
     }
 }

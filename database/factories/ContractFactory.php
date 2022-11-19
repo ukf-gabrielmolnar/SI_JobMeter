@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Contact;
+use App\Models\Contract;
+use App\Models\Job;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +18,18 @@ class ContractFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Contract::class;
+
     public function definition()
     {
         return [
-            //
+            'users_id'=> User::factory(),
+            'jobs_id'=> Job::factory(),
+            'contacts_id'=> Contact::factory(),
+            'od'=>$this->faker->date,
+            'do'=>$this->faker->date,
+            'approved'=>$this->faker->boolean,
+            'closed'=>$this->faker->boolean,
         ];
     }
 }
