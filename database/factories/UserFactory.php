@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Year;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,6 +23,7 @@ class UserFactory extends Factory
             'lastname'=>$this->faker->lastName,
             'email'=>$this->faker->email,
             'password'=>$this->faker->password,
+            'years_id'=>Year::factory()
         ];
     }
 

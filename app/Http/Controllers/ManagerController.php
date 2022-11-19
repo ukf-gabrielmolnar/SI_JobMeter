@@ -8,6 +8,7 @@ use App\Models\Contract;
 use App\Models\Job;
 use App\Models\Study_program;
 use App\Models\User;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
@@ -22,7 +23,8 @@ class ManagerController extends Controller
         $contracts = Contract::all();
         $jobs = Job::all();
         $companies = Company::all();
-        return view('manager.show_users', compact('users','study_programs','jobs','contracts','companies'));
+        $years = Year::all();
+        return view('manager.show_users', compact('users','study_programs','jobs','contracts','companies','years'));
     }
 
     public function showcompanies(){
