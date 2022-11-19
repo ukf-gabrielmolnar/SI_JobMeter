@@ -75,6 +75,6 @@ class User extends Authenticatable implements RbacUserInterface
     }
 
     public function userfeedback_report(): HasMany{
-        return $this->hasMany(Feedback_Report::class);
+        return $this->hasMany(FeedbackReport::class);
     }
 }

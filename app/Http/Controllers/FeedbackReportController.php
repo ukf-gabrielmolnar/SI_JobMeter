@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Feedback_Report;
-use App\Http\Requests\StoreFeedback_ReportRequest;
-use App\Http\Requests\UpdateFeedback_ReportRequest;
+use App\Models\FeedbackReport;
+use App\Http\Requests\StoreFeedbackReportRequest;
+use App\Http\Requests\UpdateFeedbackReportRequest;
 
 class FeedbackReportController extends Controller
 {
@@ -31,10 +31,10 @@ class FeedbackReportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFeedback_ReportRequest  $request
+     * @param  \App\Http\Requests\StoreFeedbackReportRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFeedback_ReportRequest $request)
+    public function store(StoreFeedbackReportRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class FeedbackReportController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Feedback_Report  $feedback_Report
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Http\Response
      */
-    public function show(Feedback_Report $feedback_Report)
+    public function show(FeedbackReport $feedbackReport)
     {
         //
     }
@@ -53,10 +53,10 @@ class FeedbackReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Feedback_Report  $feedback_Report
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Http\Response
      */
-    public function edit(Feedback_Report $feedback_Report)
+    public function edit(FeedbackReport $feedbackReport)
     {
         //
     }
@@ -64,11 +64,11 @@ class FeedbackReportController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFeedback_ReportRequest  $request
-     * @param  \App\Models\Feedback_Report  $feedback_Report
+     * @param  \App\Http\Requests\UpdateFeedbackReportRequest  $request
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFeedback_ReportRequest $request, Feedback_Report $feedback_Report)
+    public function update(UpdateFeedbackReportRequest $request, FeedbackReport $feedbackReport)
     {
         //
     }
@@ -76,10 +76,10 @@ class FeedbackReportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Feedback_Report  $feedback_Report
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feedback_Report $feedback_Report)
+    public function destroy(FeedbackReport $feedbackReport)
     {
         //
     }

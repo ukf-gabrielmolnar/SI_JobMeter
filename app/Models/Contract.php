@@ -42,6 +42,6 @@ class Contract extends Model
     }
 
     public function contractfeedback_report(): HasMany{
-        return $this->hasMany(Feedback_Report::class);
+        return $this->hasMany(FeedbackReport::class);
     }
 }

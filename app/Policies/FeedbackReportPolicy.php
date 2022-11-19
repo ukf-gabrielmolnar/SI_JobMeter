@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Feedback_Report;
+use App\Models\FeedbackReport;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class FeedbackReportPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Feedback_Report  $feedbackReport
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Feedback_Report $feedbackReport)
+    public function view(User $user, FeedbackReport $feedbackReport)
     {
         //
     }
@@ -48,10 +48,10 @@ class FeedbackReportPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Feedback_Report  $feedbackReport
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Feedback_Report $feedbackReport)
+    public function update(User $user, FeedbackReport $feedbackReport)
     {
         //
     }
@@ -60,10 +60,10 @@ class FeedbackReportPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Feedback_Report  $feedbackReport
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Feedback_Report $feedbackReport)
+    public function delete(User $user, FeedbackReport $feedbackReport)
     {
         //
     }
@@ -72,10 +72,10 @@ class FeedbackReportPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Feedback_Report  $feedbackReport
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Feedback_Report $feedbackReport)
+    public function restore(User $user, FeedbackReport $feedbackReport)
     {
         //
     }
@@ -84,10 +84,10 @@ class FeedbackReportPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Feedback_Report  $feedbackReport
+     * @param  \App\Models\FeedbackReport  $feedbackReport
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Feedback_Report $feedbackReport)
+    public function forceDelete(User $user, FeedbackReport $feedbackReport)
     {
         //
     }

@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback__reports');
+        Schema::dropIfExists('feedback_reports');
     }
 };
