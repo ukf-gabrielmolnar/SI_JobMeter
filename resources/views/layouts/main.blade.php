@@ -22,29 +22,62 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="/praxReg">Prax</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Student
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
+                                <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
+                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/adminView">Table</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Manager
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+                            </ul>
                         </li>
 
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{route('manager.show_users')}}" >Evidované študenti</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{route('manager.show_companies')}}" >Evidované pracoviská</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{route('manager.show_contracts')}}" >Evidované pracovné ponuky</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                PPPFpvAi
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
+                                <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/jobAdd">Add new job</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CEO
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Nyisti</a></li>
+
+                            </ul>
                         </li>
 
                     @endauth
+
+                    <?php if (auth()->user()?->inRole('admin')): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
+                            <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
 
                     <?php if (auth()->user()?->inRole('student')): ?>
                     <li class="nav-item">
@@ -62,12 +95,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Requesty</a>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('admin')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/rbac/users">RBAC</a>
                     </li>
                     <?php endif; ?>
 
