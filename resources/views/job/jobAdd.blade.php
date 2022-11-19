@@ -19,7 +19,6 @@
                    </div>
 
                    <div class="column3">
-                   <div id="contactform">
                    <h3 align="center">Contact</h3>
                    <li class="list-group-item">
                        <p></p>
@@ -36,10 +35,8 @@
                        <input type="email" id="email" name="email" required>
                    </li>
                    </div>
-                   </div>
 
                    <div class="column3">
-                   <div id="jobform">
                    <h3 align="center">Job</h3>
                    <li class="list-group-item">
                        <p></p>
@@ -55,7 +52,6 @@
                            @endforeach
                        </select>
                    </li>
-                   </div>
                    </div>
         </div>
 
