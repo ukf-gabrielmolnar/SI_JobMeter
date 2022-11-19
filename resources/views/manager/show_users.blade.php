@@ -3,23 +3,6 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-md-6">
-            <select class="form-select form-select-lg mb-3">
-
-                <option value="0" selected="selected">
-                    {{__('Vsetky studijne programy')}}
-                </option>
-                @foreach($study_programs as $st)
-                    <option value={{$st->id}}>
-                        {{$st->study_program}}{{"  "}}{{$st->year}}
-                    </option>
-                @endforeach
-            </select>
-
-
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-6">
             <select class="form-select form-select-lg mb-3" id="study_id" name="study_id">
 
                 <option value="0" selected="selected">
@@ -80,9 +63,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2 id="modal_header"></h2>
             </div>
-            <div class="modal-body">
+            <h2 id="modal_header" style="margin-left: 20px"></h2>
+            <div class="modal-body" style="padding-bottom: 50px">
                 <table class="table table-white table-hover" id="modal_table">
                     <thead>
                     <tr>
