@@ -6,21 +6,20 @@ use App\Models\Study_program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Study_program>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Year>
  */
-class StudyProgramFactory extends Factory
+class YearFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    protected $model = Study_program::class;
-
     public function definition()
     {
         return [
-            //
+            'year'=>$this->faker->year,
+            'study_programs_id'=>Study_program::factory(),
         ];
     }
 }

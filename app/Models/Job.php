@@ -13,7 +13,7 @@ class Job extends Model
     protected $fillable = [
         'job_type',
         'companies_id',
-        'study_programs_id',
+        //'study_programs_id',
     ];
 
     public function company(): BelongsTo{

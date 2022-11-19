@@ -40,7 +40,7 @@ class User extends Authenticatable implements RbacUserInterface
         'password',
         'tel',
         'companies_id',
-        'study_programs_id',
+        'years_id',
     ];
 
     /**
@@ -66,8 +66,8 @@ class User extends Authenticatable implements RbacUserInterface
         return $this->belongsTo(Company::class);
     }
 
-    public function study_program(): BelongsTo{
-        return $this->belongsTo(Study_program::class);
+    public function yearuser(): BelongsTo{
+        return $this->belongsTo(Year::class);
     }
 
     public function contract(): HasMany{
@@ -75,6 +75,6 @@ class User extends Authenticatable implements RbacUserInterface
     }
 
     public function userfeedback_report(): HasMany{
-        return $this->hasMany(Feedback_Report::class);
+        return $this->hasMany(FeedbackReport::class);
     }
 }

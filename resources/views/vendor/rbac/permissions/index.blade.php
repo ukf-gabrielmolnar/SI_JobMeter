@@ -3,6 +3,7 @@
 @section('content')
 
     <section class="content container-fluid">
+        <link rel="stylesheet" href="../../../../../public/css/rbac_style.css?v=1.1" />
 
         <p><a class="btn btn-success" href="{{ route('create_permission') }}">{!! __('rbac::permissions.create_permission') !!}</a></p>
 

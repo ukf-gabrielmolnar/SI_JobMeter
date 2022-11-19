@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('e-mail');
+            $table->string('email');
             $table->string('tel');
 
             $table->unsignedBigInteger('companies_id')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration
                 ->on('companies')
                 ->onDelete('set null');
 
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

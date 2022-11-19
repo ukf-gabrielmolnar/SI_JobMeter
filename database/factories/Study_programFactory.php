@@ -2,25 +2,26 @@
 
 namespace Database\Factories;
 
-use App\Models\Contract;
+use App\Models\Study_program;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Record>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Study_program>
  */
-class RecordFactory extends Factory
+class Study_programFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
+    protected $model = Study_program::class;
+
     public function definition()
     {
         return [
-            'subject'=>$this->faker->name,
-            'text'=>$this->faker->name,
-            'contracts_id'=> Contract::factory(),
+            'study_program'=>$this->faker->name,
         ];
     }
 }
