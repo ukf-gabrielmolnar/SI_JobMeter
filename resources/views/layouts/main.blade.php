@@ -41,6 +41,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradit povereneho pracovnika pracoviska</a></li>
                             </ul>
                         </li>
 
