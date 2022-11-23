@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
+use App\Models\Job;
+use App\Models\User;
 
 class ContractController extends Controller
 {
@@ -15,7 +17,11 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
     }
 
     /**
@@ -40,7 +46,7 @@ class ContractController extends Controller
 
         $contract->users_id = $request->users_id;
         $contract->jobs_id = $request->jobs_id;
-        $contract->contacts_id = $request->contacts_id;
+
         $contract->od = $request->od;
         $contract->do = $request->do;
 
@@ -80,7 +86,15 @@ class ContractController extends Controller
      */
     public function update(UpdateContractRequest $request, Contract $contract)
     {
-        //
+        $contract = Contract::find($request->id);
+        $contract->update($request->all());
+        $contract->save();
+
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
     }
 
     /**
