@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
+    <form action="{{ route('manager.saveSupervisor') }}" method="post">
+        @csrf
     <table class="table table-white table-hover">
         <thead>
         <tr>
@@ -28,11 +30,46 @@
                     @endforeach
                     <td>{{$contract->od}}</td>
                     <td>{{$contract->do}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <select class="form-select" id="contact_id" name="contact_id">
+                            <option value="0" selected="selected" hidden>
+                                {{__('Vyberte nadriadeneho')}}
+                            </option>
+                            @foreach($users as $user)
+                                <!-- ide jön az r(i)ba(n)c auth hogy csak azok legyenek ott akik tanarok -->
+                                <option value={{$user}}>
+                                    {{$user->firstname}}{{"  "}}{{$user->lastname}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <a class="show-modal btn btn-sm btn-outline-warning" onclick="saveSelected({{$contract}})">Priradit</a>
+                    </td>
                 </tr>
             @endif
         @endforeach
         </tbody>
     </table>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $
+        function saveSelected(contract){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var ele = document.getElementById("contact_id");
+            var selectedSup = ele.options[ele.selectedIndex].value;
+            if(ele.id != null){
+                $.ajax({
+                    url: 'savesupervisor',
+                    type: 'post',
+                    cache: false,
+                    data:{
+                        _token: CSRF_TOKEN,contact:ele.id,contract:contract
+                    }
+                })
+            }
+
+        }
+    </script>
 @endsection

@@ -37,8 +37,7 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        $contacts = Contact::all();
-        return view('manager.show_contracts', compact('jobs','users','contracts','contacts','companies'));
+        return view('manager.show_contracts', compact('jobs','users','contracts','companies'));
     }
 
     public function addsupervisor(){
@@ -46,7 +45,11 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        $contacts = Contact::all();
-        return view('manager.add_supervisor', compact('jobs','users','contracts','contacts','companies'));
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
+    }
+
+    public function saveSupervisor(Request $request){
+        $request->input('contract')->contacts_id = $request->input('contact');
+        exit;
     }
 }

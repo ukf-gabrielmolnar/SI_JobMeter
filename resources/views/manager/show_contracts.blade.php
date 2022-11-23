@@ -97,7 +97,6 @@
             var jobs = @json($jobs);
             var contracts = @json($contracts);
             var companies = @json($companies);
-            var contacts = @json($contacts);
             for(var g = 0; g < contracts.length; g++){
                 if(selectedContract == contracts[g].id){
                     $("#od_label").html(contracts[g].od);
@@ -114,9 +113,9 @@
                             for(var n = 0; n < companies.length; n++){
                                 if(jobs[k].companies_id == companies[n].id){
                                     $("#company_label").html(companies[n].name);
-                                    for(var p = 0; p < contacts.length; p++){
-                                        if(contracts[g].contacts_id == contacts[p].id){
-                                            $("#contact_label").html(contacts[p].firstname + " " + contacts[p].lastname);
+                                    for(var p = 0; p < users.length; p++){
+                                        if(contracts[g].ppp_id == users[p].id){
+                                            $("#contact_label").html(users[p].firstname + " " + users[p].lastname);
                                         }
                                     }
                                 }
