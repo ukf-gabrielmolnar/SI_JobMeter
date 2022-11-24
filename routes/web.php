@@ -46,3 +46,6 @@ Route::resource('manager', ManagerController::class);
 
 Route::get('/jobAdd', 'App\Http\Controllers\AddJobController@index')->name('job.jobAdd');
 Route::post('/jobSave','App\Http\Controllers\AddJobController@saveData')->name('job.saveData');
+
+Route::get('/unapprovedContracts', 'App\Http\Controllers\ContractController@index')->name('ppp.unapprovedContracts');
+Route::get('/approveContracts', 'App\Http\Controllers\ContractController@update')->name('ppp.approveContracts');

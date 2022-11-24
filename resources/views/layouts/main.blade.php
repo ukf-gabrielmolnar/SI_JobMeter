@@ -49,9 +49,8 @@
                                 PPPFpvAi
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
-                                <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
+
                             </ul>
                         </li>
 

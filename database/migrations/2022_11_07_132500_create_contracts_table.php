@@ -28,10 +28,10 @@ return new class extends Migration
                 ->on('jobs')
                 ->onDelete('set null');
 
-            $table->unsignedBigInteger('contacts_id')->nullable();
-            $table->foreign('contacts_id')
+            $table->unsignedBigInteger('ppp_id')->nullable();
+            $table->foreign('ppp_id')
                 ->references('id')
-                ->on('contacts')
+                ->on('users')
                 ->onDelete('set null');
 
             $table->date('od');
