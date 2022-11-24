@@ -25,11 +25,11 @@ class ContractFactory extends Factory
         return [
             'users_id'=> User::factory(),
             'jobs_id'=> Job::factory(),
-            'contacts_id'=> Contact::factory(),
+            //'ppp_id'=> User::factory(),
             'od'=>$this->faker->date,
             'do'=>$this->faker->date,
-            'approved'=>$this->faker->boolean,
-            'closed'=>$this->faker->boolean,
+            //'approved'=>$this->faker->boolean,
+            //'closed'=>$this->faker->boolean,
         ];
     }
 }
