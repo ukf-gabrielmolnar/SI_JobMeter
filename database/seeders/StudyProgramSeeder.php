@@ -15,10 +15,11 @@ class StudyProgramSeeder extends Seeder
      */
     public function run()
     {
-        /*
+
         Study_program::factory()
-            ->count(15)
+            ->count(1)
             ->create();
-        */
+
+
     }
 }
