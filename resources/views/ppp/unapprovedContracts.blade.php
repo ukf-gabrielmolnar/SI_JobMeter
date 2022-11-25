@@ -40,7 +40,7 @@
                             <input hidden id="approved" name="approved" value="1">
                     @else
                         <button class="btn btn-sm btn-outline-success" type="submit">Ano</button>
-                            <input hidden id="approved" name="approved" value="">
+                            <input hidden id="approved" name="approved" value="0">
                     @endif
                     </form>
                 </td>
@@ -53,7 +53,7 @@
                             <input hidden id="approved" name="closed" value="1">
                     @else
                         <button class="btn btn-sm btn-outline-success" type="submit">Ano</button>
-                            <input hidden id="approved" name="closed" value="">
+                            <input hidden id="approved" name="closed" value="0">
                     @endif
                     </form>
                 </td>
