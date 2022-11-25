@@ -29,18 +29,18 @@
                 <td>{{$contract->od}}</td>
                 <td>{{$contract->do}}</td>
                 @if($contract->approved === 1)
-                    <td><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
                 @elseif($contract->approved === 0)
-                    <td><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
                 @else
-                    <td><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
                 @endif
                 @if($contract->closed === 1)
-                    <td><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
                 @elseif($contract->closed === 0)
-                    <td><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
                 @else
-                    <td><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
                 @endif
                 <td>
                     <a class="show-modal btn btn-sm btn-outline-warning" onclick="showModal({{$contract->id}})">Podrobnosti</a>
