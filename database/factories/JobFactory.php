@@ -24,8 +24,8 @@ class JobFactory extends Factory
     {
         return [
             'job_type'=>$this->faker->jobTitle,
-            'companies_id'=> Company::factory(),
-            'study_programs_id'=> Study_program::factory(),
+            'companies_id'=> $this->faker->numberBetween(1,5),
+            'study_programs_id'=> $this->faker->numberBetween(1,5),
         ];
     }
 }

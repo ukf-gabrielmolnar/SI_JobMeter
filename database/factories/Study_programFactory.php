@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Study_program;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Study_program>
@@ -21,7 +22,7 @@ class Study_programFactory extends Factory
     public function definition()
     {
         return [
-            'study_program'=>$this->faker->name,
+
         ];
     }
 }
