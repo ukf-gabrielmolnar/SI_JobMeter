@@ -4,9 +4,12 @@ if ! [ -d ./vendor ];  then
     php artisan key:generate
 fi
 
-#php artisan db:wipe --force
+php artisan db:wipe --force
 php artisan migrate --force
 php artisan db:seed --force
+
+php artisan rbac:database
+php artisan rbac:admin
 php-fpm
 
 
