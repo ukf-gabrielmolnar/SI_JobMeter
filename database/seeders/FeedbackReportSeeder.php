@@ -15,8 +15,8 @@ class FeedbackReportSeeder extends Seeder
      */
     public function run()
     {
-        FeedbackReport::factory()
-            ->count(15)
-            ->create();
+       /* FeedbackReport::factory()
+            ->count(5)
+            ->create();*/
     }
 }

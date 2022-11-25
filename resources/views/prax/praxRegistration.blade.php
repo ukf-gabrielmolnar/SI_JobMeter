@@ -68,6 +68,7 @@
 
             $('#companies').on('change', function () {
                 var jobForm = $('#jobform');
+
                 if (fades[0]) {
                     jobForm.fadeToggle(1000);
                     fades[0] = false;
@@ -88,10 +89,12 @@
 
             $('#jobs_id').on('change', function () {
                 var contactForm = $('#contactform');
+
                 if (fades[1]) {
                     contactForm.fadeToggle(1000);
                     fades[1] = false;
                 }
+
                 $("#contacts_id").empty();
                 selectedJobId = $(this).children(":selected").attr("value");
 
