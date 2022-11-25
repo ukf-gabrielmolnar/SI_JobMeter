@@ -8,7 +8,7 @@ php artisan db:wipe --force
 php artisan migrate --force
 php artisan db:seed --force
 
-php artisan rbac:database
+php artisan rbac:database --force
 php artisan rbac:admin
 php-fpm
 
