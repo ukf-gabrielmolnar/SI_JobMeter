@@ -39,10 +39,8 @@
                         <button class="btn btn-sm btn-outline-danger" type="submit">Nie</button>
                             <input hidden id="approved" name="approved" value="1">
                     @else
-
-                        <button class="btn btn-sm btn-outline-warning" type="submit">Ano</button>
+                        <button class="btn btn-sm btn-outline-success" type="submit">Ano</button>
                             <input hidden id="approved" name="approved" value="0">
-
                     @endif
                     </form>
                 </td>
@@ -54,10 +52,8 @@
                         <button class="btn btn-sm btn-outline-danger" type="submit">Nie</button>
                             <input hidden id="approved" name="closed" value="1">
                     @else
-
-                        <button class="btn btn-sm btn-outline-warning" type="submit">Ano</button>
+                        <button class="btn btn-sm btn-outline-success" type="submit">Ano</button>
                             <input hidden id="approved" name="closed" value="0">
-
                     @endif
                     </form>
                 </td>
