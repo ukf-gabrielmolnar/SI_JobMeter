@@ -48,7 +48,5 @@ class ManagerController extends Controller
         return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
     }
 
-    public function saveSupervisor(Request $request){
 
-    }
 }

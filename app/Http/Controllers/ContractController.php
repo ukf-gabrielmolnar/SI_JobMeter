@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
+use Illuminate\Http\Request;
+use App\Models\Job;
+use App\Models\User;
 
 class ContractController extends Controller
 {
@@ -81,6 +85,19 @@ class ContractController extends Controller
     public function update(UpdateContractRequest $request, Contract $contract)
     {
         //
+    }
+
+    public function saveSupervisor(Request $request){
+        $contract = Contract::find($request->id);
+        $contract->update($request->all());
+        $contract->save();
+
+
+        $jobs = Job::all();
+        $users = User::all();
+        $contracts = Contract::all();
+        $companies = Company::all();
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
     }
 
     /**
