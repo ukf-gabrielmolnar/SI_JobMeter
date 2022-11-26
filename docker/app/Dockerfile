@@ -18,7 +18,4 @@ COPY . /var/www/html
 
 WORKDIR /var/www/html
 
-RUN php artisan db:wipe --force
-
-
 
