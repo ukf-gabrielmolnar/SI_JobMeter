@@ -86,6 +86,10 @@
             </div>
 
             <div class="form-group">
+                <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="Email" @endif>
+            </div>
+
+            <div class="form-group">
                 <input name="firstname" type="text" class="form-control" id="firstname" @if($errors->has('firstname')) placeholder="{{ $errors->first('firstname') }}" @else placeholder="First name" @endif>
             </div>
 
