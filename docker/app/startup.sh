@@ -11,6 +11,3 @@ php artisan db:seed --force
 php artisan rbac:database --force
 php artisan rbac:admin
 php-fpm
-
-
-
