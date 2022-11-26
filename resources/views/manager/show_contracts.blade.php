@@ -43,7 +43,7 @@
                     <td><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
                 @endif
                 <td>
-                    <a class="show-modal btn btn-sm btn-outline-warning" onclick="showModal({{$contract->id}})">Podrobnosti</a>
+                    <a class="show-modal btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal({{$contract->id}})">Podrobnosti</a>
                 </td>
             </tr>
         @endforeach

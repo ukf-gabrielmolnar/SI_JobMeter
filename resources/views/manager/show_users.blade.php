@@ -47,7 +47,7 @@
                                 <td>{{$stud->study_program}}</td>
                                 <td>{{$year->year}}</td>
                                 <td>
-                                    <a class="show-modal btn btn-sm btn-outline-warning" onclick="showModal({{$user->id}})">Podrobnosti</a>
+                                    <a class="show-modal btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal({{$user->id}})">Podrobnosti</a>
                                 </td>
                             </tr>
                         @endif
@@ -158,7 +158,7 @@
                                         <td>${stdpln[j].study_program}</td>
                                         <td>${year[k].year}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-outline-warning" onclick="showModal(${data[i].id})">Podrobnosti</a>
+                                            <a class="btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal(${data[i].id})">Podrobnosti</a>
                                         </td>
                                     </tr>`
                                     table.innerHTML += row;

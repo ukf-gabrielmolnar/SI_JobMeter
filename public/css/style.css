@@ -184,6 +184,11 @@ input {
     cursor: pointer;
 }
 
+/* Loader */
+.content {
+    display: none;
+}
+
 
 /* Responsivity */
 @media screen and (max-width: 800px) {
