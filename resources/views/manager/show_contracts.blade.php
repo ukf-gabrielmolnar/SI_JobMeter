@@ -29,18 +29,18 @@
                 <td>{{$contract->od}}</td>
                 <td>{{$contract->do}}</td>
                 @if($contract->approved === 1)
-                    <td><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
                 @elseif($contract->approved === 0)
-                    <td><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
                 @else
-                    <td><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
                 @endif
                 @if($contract->closed === 1)
-                    <td><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
                 @elseif($contract->closed === 0)
-                    <td><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
                 @else
-                    <td><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
                 @endif
                 <td>
                     <a class="show-modal btn btn-sm btn-outline-warning" onclick="showModal({{$contract->id}})">Podrobnosti</a>
@@ -97,7 +97,6 @@
             var jobs = @json($jobs);
             var contracts = @json($contracts);
             var companies = @json($companies);
-            var contacts = @json($contacts);
             for(var g = 0; g < contracts.length; g++){
                 if(selectedContract == contracts[g].id){
                     $("#od_label").html(contracts[g].od);
@@ -114,9 +113,9 @@
                             for(var n = 0; n < companies.length; n++){
                                 if(jobs[k].companies_id == companies[n].id){
                                     $("#company_label").html(companies[n].name);
-                                    for(var p = 0; p < contacts.length; p++){
-                                        if(contracts[g].contacts_id == contacts[p].id){
-                                            $("#contact_label").html(contacts[p].firstname + " " + contacts[p].lastname);
+                                    for(var p = 0; p < users.length; p++){
+                                        if(contracts[g].ppp_id == users[p].id){
+                                            $("#contact_label").html(users[p].firstname + " " + users[p].lastname);
                                         }
                                     }
                                 }

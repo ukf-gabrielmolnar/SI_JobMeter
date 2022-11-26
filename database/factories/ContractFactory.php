@@ -25,7 +25,6 @@ class ContractFactory extends Factory
         return [
             'users_id'=> User::factory(),
             'jobs_id'=> Job::factory(),
-
             'od'=>$this->faker->date,
             'do'=>$this->faker->date,
             'approved'=>$this->faker->boolean,

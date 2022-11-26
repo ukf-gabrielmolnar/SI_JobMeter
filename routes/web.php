@@ -42,6 +42,8 @@ Route::get('/manager', [App\Http\Controllers\ManagerController::class, 'index'])
 Route::get('/manager/users',[App\Http\Controllers\ManagerController::class,'showusers'])->name('manager.show_users');
 Route::get('/manager/companies',[App\Http\Controllers\ManagerController::class,'showcompanies'])->name('manager.show_companies');
 Route::get('/manager/contracts',[App\Http\Controllers\ManagerController::class,'showcontracts'])->name('manager.show_contracts');
+Route::get('/manager/addSupervisor',[App\Http\Controllers\ManagerController::class,'addsupervisor'])->name('manager.add_supervisor');
+Route::get('/manager/saveSupervisor', 'App\Http\Controllers\ManagerController@saveSupervisor')->name('manager.save_Supervisor');
 Route::resource('manager', ManagerController::class);
 
 Route::get('/jobAdd', 'App\Http\Controllers\AddJobController@index')->name('job.jobAdd');
