@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
 use App\Models\FeedbackReport;
 use App\Http\Requests\StoreFeedbackReportRequest;
 use App\Http\Requests\UpdateFeedbackReportRequest;
+use App\Models\Job;
 
 class FeedbackReportController extends Controller
 {
@@ -15,7 +17,10 @@ class FeedbackReportController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        $jobs = Job::all();
+
+        return view('feedback.feedback', compact('contracts', 'jobs'));
     }
 
     /**
@@ -36,7 +41,9 @@ class FeedbackReportController extends Controller
      */
     public function store(StoreFeedbackReportRequest $request)
     {
-        //
+        FeedbackReport::create($request->all());
+
+        return redirect()->route('home');
     }
 
     /**
