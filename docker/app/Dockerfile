@@ -31,8 +31,9 @@ USER www-data
 # install composer packages
 
 # run startup.sh
-#ENTRYPOINT ["sh", "./docker/app/startup.sh"]
+ENTRYPOINT ["sh", "./docker/app/startup.sh"]
 
-
-
+#ITT IS LFNEK KELL LENNIE
+#LF == JO
+#CRLF == OSZINTEN NEMTUDOM
 

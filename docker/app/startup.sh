@@ -12,5 +12,8 @@ php artisan rbac:database --force
 php artisan rbac:admin
 php-fpm
 
+#LF NEK KELL LENNIE BAL LENT!!!!!
+#LF == JO
+#CRLF == NEMJO
 
 
