@@ -31,7 +31,7 @@ USER www-data
 # install composer packages
 
 # run startup.sh
-#ENTRYPOINT ["sh", "./docker/app/startup.sh"]
+ENTRYPOINT ["sh", "./docker/app/startup.sh"]
 
 
 
