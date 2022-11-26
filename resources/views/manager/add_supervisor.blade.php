@@ -23,6 +23,12 @@
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function (){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             var row_num = 0;
             var users = @json($users);
             var contracts = @json($contracts);
@@ -74,6 +80,126 @@
                 }
             }
         }
+        $(document).on('click', '.edit', function(e){
+            var contractId = $(this).data('id');
+            var btn_id = $(this).attr('id').charAt(0);
+            var drp = document.getElementById(btn_id + "_drp");
+            console.log(contractId + " " + $(drp).val());
+            $.ajax({
+                url:'manager.save_Supervisor',
+                method:'post',
+                data: {id:contractId,ppp_id:$(drp).val()},
+                processData:false,
+                contentType:false,
+                beforeSend: function (){
+
+                },
+                success: function (data){
+
+                }
+
+            })
+        });
+
+
+
+        /*
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(document).on('click', '.edit', function(e){
+                e.preventDefault();
+
+                //var form = $(this).serialize();
+                //var url = $(this).attr('href');
+                var drpdwn = document.getElementsByName('contact_id');
+                var rows = document.querySelectorAll('tr');
+                //console.log(form + " " + url);
+                for(var i = 0; i < rows.length; i++) {
+                    rows[i].onclick = function (clickedRow) {
+                        clickedRow = this.rowIndex;
+                        for (var j = 0; j < drpdwn.length; j++) {
+                            if (j == this.rowIndex - 1) {
+                                $.post("", function (data) {
+                                    data.id = contractId;
+                                    data.ppp = $(drpdwn[j]).children(":selected").attr("value");
+                                    console.log(data.id + " " + data.ppp);
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+        $(document).on("click",".update", function (){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var contractId = $(this).data('id');
+            var rows = document.querySelectorAll('tr');
+            var clickedRow;
+            var drpdwn = document.getElementsByName('contact_id');
+            var ppp = null;
+            for(var i = 0; i < rows.length; i++){
+                rows[i].onclick = function(clickedRow){
+                    clickedRow = this.rowIndex;
+                    for(var j = 0; j < drpdwn.length; j++){
+                        if(j == this.rowIndex-1){
+                            console.log(clickedRow, $(drpdwn[j]).children(":selected").attr("value"));
+                            $.ajax({
+                                url:,
+                                type: 'post',
+                                cache: false,
+                                data: {
+                                    _token: CSRF_TOKEN, contact: $(drpdwn[j]).children(":selected").attr("value"), contract: contractId
+                                }
+                            })
+                        }
+                    }
+
+                };
+            }*/
+        /*
+                    for(var j = 0; j < drpdwn.length; j++){
+                        if(clickedRow === j){
+                           ppp = $(drpdwn[j]).children(":selected").attr("value");
+
+                        }
+                  }
+                    console.log(clickedRow + " " + ppp);
+                    /*
+                    var selectedContact = $(this).prevUntil("select.lofasz");
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
+    }) */
+
+
+        /* var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+         var ele = document.getElementById("contact_id");
+         var selectedSup = ele.options[ele.selectedIndex].value;
+         if(ele.id != null){
+             $.ajax({
+                 url: 'saveSupervisor',
+                 type: 'post',
+                 cache: false,
+                 data: {
+                     _token: CSRF_TOKEN, contact: ele.id, contract: contract
+                 }
+             })*/
+
+
 
     </script>
 @endsection

@@ -49,7 +49,6 @@ class ManagerController extends Controller
     }
 
     public function saveSupervisor(Request $request){
-        $request->input('contract')->contacts_id = $request->input('contact');
-        exit;
+
     }
 }
