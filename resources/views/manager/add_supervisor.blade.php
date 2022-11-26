@@ -30,28 +30,26 @@
                     @endforeach
                     <td>{{$contract->od}}</td>
                     <td>{{$contract->do}}</td>
-                    <td>
                         <form method="get" action="{{ route('contract.add_ppp') }}">
-                            <input hidden id="id" name="id" value="{{ $contract->id }}">
                             @csrf
+                            <td>
+                            <input hidden id="id" name="id" value="{{ $contract->id }}">
+
                             <select class="form-select" id="ppp_id" name="ppp_id">
                                 <option value="0" selected="selected" hidden>
                                     {{__('Vyberte nadriadeneho')}}
                                 </option>
                                 @foreach($users as $user)
                                     <!-- ide jön az r(i)ba(n)c auth hogy csak azok legyenek ott akik tanarok -->
-                                    <option value={{$user}}>
+                                    <option value="{{$user->id}}" id="ppp" name="ppp">
                                         {{$user->firstname}}{{"  "}}{{$user->lastname}}
                                     </option>
 
                                 @endforeach
                             </select>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="get" action="{{ route('contract.add_ppp') }}">
+                            </td>
+                            <td>
                             <input hidden id="id" name="id" value="{{ $contract->id }}">
-                            @csrf
                             <button class="btn btn-sm btn-outline-warning" type="submit">Ulozit</button>
                         </form>
                     </td>

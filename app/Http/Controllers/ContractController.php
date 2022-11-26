@@ -88,8 +88,9 @@ class ContractController extends Controller
     }
 
     public function saveSupervisor(Request $request){
+
         $contract = Contract::find($request->id);
-        $contract->update($request->all());
+        $contract->ppp_id = $request->ppp_id;
         $contract->save();
 
 
