@@ -49,3 +49,7 @@ Route::post('/jobSave','App\Http\Controllers\AddJobController@saveData')->name('
 
 Route::get('/unapprovedContracts', 'App\Http\Controllers\ContractController@index')->name('ppp.unapprovedContracts');
 Route::get('/approveContracts', 'App\Http\Controllers\ContractController@update')->name('ppp.approveContracts');
+//grafy
+Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');
+Route::get('/graf_2', [\App\Http\Controllers\GrafController::class, 'companies_graph'])->name('graf.graf_2');
+

@@ -19,8 +19,6 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 
-+ company contacts jobs study_programs yea
-rs
--
+
 
 
