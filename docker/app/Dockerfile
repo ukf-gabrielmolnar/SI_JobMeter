@@ -25,6 +25,7 @@ WORKDIR /var/www/html
 RUN chmod +x ./docker/app/startup.sh
 RUN chmod -R 777 ./docker/app/startup.sh
 
+
 # login before composer install
 USER www-data
 
