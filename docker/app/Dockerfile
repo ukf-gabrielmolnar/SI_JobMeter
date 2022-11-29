@@ -12,13 +12,25 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 RUN adduser test -D -u 1000
 
-USER test
+#chown www-data to var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
+#copy files
 COPY . /var/www/html
 
+#change workdir
 WORKDIR /var/www/html
 
+# add executable permission to startup sh and permissions
+RUN chmod +x ./docker/app/startup.sh
+RUN chmod -R 777 ./docker/app/startup.sh
 
+# login before composer install
+USER www-data
 
+# install composer packages
 
+# run startup.sh
+
+#ENTRYPOINT ["sh", "./docker/app/startup.sh"]
 

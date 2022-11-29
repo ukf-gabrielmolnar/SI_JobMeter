@@ -7,6 +7,9 @@ use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
 use App\Models\Job;
 use App\Models\User;
+use http\Env\Request;
+use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
+use Symfony\Component\Routing\RequestContext;
 
 class ContractController extends Controller
 {
@@ -20,8 +23,10 @@ class ContractController extends Controller
         $contracts = Contract::all();
         $jobs = Job::all();
         $users = User::all();
+        $filter1 = 1;
+        $filter2 = 1;
 
-        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 
     /**
@@ -90,11 +95,7 @@ class ContractController extends Controller
         $contract->update($request->all());
         $contract->save();
 
-        $contracts = Contract::all();
-        $jobs = Job::all();
-        $users = User::all();
-
-        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
+        return $this->applyFilters($request);
     }
 
     /**
@@ -106,5 +107,78 @@ class ContractController extends Controller
     public function destroy(Contract $contract)
     {
         //
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function applyFilters(\Illuminate\Http\Request $request){
+        $contracts = Contract::all();
+
+        switch ($request->filter1){
+            case 1:
+                break;
+            case 2:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->approved == 1){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+                break;
+            case 3:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->approved == 0){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+
+                break;
+        }
+
+        switch ($request->filter2){
+            case 1:
+                break;
+            case 2:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->closed == 1){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+                break;
+            case 3:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->closed == 0){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+
+                break;
+        }
+
+        $jobs = Job::all();
+        $users = User::all();
+
+        $filter1 = $request->filter1;
+        $filter2 = $request->filter2;
+
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 }
