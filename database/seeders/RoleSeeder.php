@@ -39,7 +39,7 @@ class RoleSeeder extends Seeder
 
         $this->createRecord(
             Role::MANAGER_ROLE,
-            'Content manager',
+            'Manager',
             [
                 $viewPermissionId,
                 $createPermissionId,
@@ -51,7 +51,7 @@ class RoleSeeder extends Seeder
 
         $this->createRecord(
             Role::EDITOR_ROLE,
-            'Record editor',
+            'Poverený pracovník pracoviska FpvAi',
             [
                 $viewPermissionId,
                 $createPermissionId,
@@ -63,9 +63,18 @@ class RoleSeeder extends Seeder
 
         $this->createRecord(
             Role::USER_ROLE,
-            'Simple user',
+            'Student',
             [
                 $viewPermissionId
+            ]
+        );
+
+        $this->createRecord(
+            Role::CEO_ROLE,
+            'Simple user',
+            [
+                $viewPermissionId,
+                $updatePermissionId
             ]
         );
     }

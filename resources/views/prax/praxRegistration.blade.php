@@ -22,7 +22,7 @@
         </div>
 
         <div class="h6" id="contactform">
-            <label for="contacts_id" class="form-label">Contract</label>
+            <label for="contacts_id" class="form-label">Contact</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
@@ -68,6 +68,7 @@
 
             $('#companies').on('change', function () {
                 var jobForm = $('#jobform');
+
                 if (fades[0]) {
                     jobForm.fadeToggle(1000);
                     fades[0] = false;
@@ -88,10 +89,12 @@
 
             $('#jobs_id').on('change', function () {
                 var contactForm = $('#contactform');
+
                 if (fades[1]) {
                     contactForm.fadeToggle(1000);
                     fades[1] = false;
                 }
+
                 $("#contacts_id").empty();
                 selectedJobId = $(this).children(":selected").attr("value");
 
