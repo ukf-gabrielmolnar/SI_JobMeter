@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Redirect;
@@ -10,7 +10,7 @@ use Validator;
 use Session;
 use Khill\Lavacharts\Lavacharts;
 
-class grafController extends Controller
+class GrafController extends Controller
 {
     public function years_graph()
     {
