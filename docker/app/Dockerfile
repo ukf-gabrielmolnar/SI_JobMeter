@@ -32,7 +32,3 @@ WORKDIR /var/www/html
 
 # run startup.sh
 #ENTRYPOINT ["sh", "./docker/app/startup.sh"]
-
-
-
-

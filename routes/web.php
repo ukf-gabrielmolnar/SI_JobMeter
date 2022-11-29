@@ -49,3 +49,6 @@ Route::post('/jobSave','App\Http\Controllers\AddJobController@saveData')->name('
 
 Route::get('/unapprovedContracts', 'App\Http\Controllers\ContractController@index')->name('ppp.unapprovedContracts');
 Route::get('/approveContracts', 'App\Http\Controllers\ContractController@update')->name('ppp.approveContracts');
+
+Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')->name('feedback.feedback');
+Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
