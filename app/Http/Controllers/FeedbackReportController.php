@@ -57,7 +57,6 @@ class FeedbackReportController extends Controller
         $users = User::all();
 
         return view('ppp.feedbackContracts', compact('contracts', 'jobs','users'));
-
     }
 
     /**

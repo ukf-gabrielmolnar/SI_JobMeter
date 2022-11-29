@@ -53,3 +53,6 @@ Route::get('/filterContracts', 'App\Http\Controllers\ContractController@applyFil
 
 Route::get('/feedbackContracts', 'App\Http\Controllers\FeedbackReportController@index')->name('ppp.feedbackContracts');
 Route::get('/addfeedback', 'App\Http\Controllers\FeedbackReportController@store')->name('ppp.saveFeedback');
+
+Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')->name('feedback.feedback');
+Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
