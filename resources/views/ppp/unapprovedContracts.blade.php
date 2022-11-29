@@ -104,7 +104,7 @@
                     </form>
                 </td>
                 <td>
-                    <form method="get" action="#">
+                    <form method="get" action="{{ route('ppp.contractsPDF') }}">
                         <input hidden id="id" name="id" value="{{ $contract->id }}">
                         @csrf
                             <button class="btn btn-sm btn-outline-warning" type="submit">Ukáž</button>

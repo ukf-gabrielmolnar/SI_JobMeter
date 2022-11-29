@@ -51,6 +51,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
                                 <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
+                                <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
 
                             </ul>
                         </li>
