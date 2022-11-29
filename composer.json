@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "bower-asset/bootstrap": "^5.2",
         "bower-asset/jquery": "^3.6",
         "doctrine/dbal": "2.*",
