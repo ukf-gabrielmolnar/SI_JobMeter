@@ -203,13 +203,14 @@ input {
 }
 
 .modal-content {
-    background-color: #bfe8ef;
+    background-color: #bfc6c7;
 }
 
 .close {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    margin-left: 95%;
 }
 
 /* Responsivity */
