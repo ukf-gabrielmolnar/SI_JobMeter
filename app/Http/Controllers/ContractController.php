@@ -29,15 +29,6 @@ class ContractController extends Controller
         return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 
-    public function feedbackView(){
-
-        $contracts = Contract::all();
-        $jobs = Job::all();
-        $users = User::all();
-
-        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
