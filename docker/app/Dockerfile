@@ -22,16 +22,16 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # add executable permission to startup sh and permissions
-#RUN chmod +x ./docker/app/startup.sh
-#RUN chmod -R 777 ./docker/app/startup.sh
+RUN chmod +x ./docker/app/startup.sh
+RUN chmod -R 777 ./docker/app/startup.sh
 
 # login before composer install
-#USER www-data
+USER www-data
 
 # install composer packages
 
 # run startup.sh
-#ENTRYPOINT ["sh", "./docker/app/startup.sh"]
+ENTRYPOINT ["sh", "./docker/app/startup.sh"]
 
 
 

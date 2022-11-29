@@ -29,6 +29,15 @@ class ContractController extends Controller
         return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 
+    public function feedbackView(){
+
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -95,13 +104,6 @@ class ContractController extends Controller
         $contract->update($request->all());
         $contract->save();
 
-        $contracts = Contract::all();
-        $jobs = Job::all();
-        $users = User::all();
-
-        $filter1 = $request->filter1;
-        $filter2 = $request->filter2;
-
         return $this->applyFilters($request);
     }
 
@@ -122,7 +124,6 @@ class ContractController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function applyFilters(\Illuminate\Http\Request $request){
-        //dd($request->all());
         $contracts = Contract::all();
 
         switch ($request->filter1){
