@@ -213,6 +213,19 @@ input {
     margin-left: 95%;
 }
 
+#feedbackForm {
+    top: 10px;!important;
+}
+
+textarea {
+    border-radius: 0;!important;
+    border-width: 2px;
+    border-color: #8abcc5;
+    width: 100%;
+    height: 100px;
+    background-color: #dcdcdc;
+}
+
 /* Responsivity */
 @media screen and (max-width: 800px) {
     .custom-select {
