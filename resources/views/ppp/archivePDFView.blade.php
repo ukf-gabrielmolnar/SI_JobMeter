@@ -3,6 +3,7 @@
     <h1> hi </h1>
 </header>
 <body>
+
 <a>Meno studenta: {{ $user->firstname." ".$user->lastname }}</a><br>
 <a>{{ $year->year." ".$sp->study_program }}</a><br>
 <br>
@@ -30,3 +31,4 @@
 </footer>
 
 </html>
+

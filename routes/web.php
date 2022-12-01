@@ -14,7 +14,7 @@ use App\Http\Controllers\ManagerController;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard.index');
 
 Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
 Route::post('/register/user', 'App\Http\Controllers\RegisterController@storeUser')->name('store.user');
