@@ -51,6 +51,6 @@ class AddJobController extends Controller
         $job->study_programs_id = $study_programs_id;
         $job->save();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard.index');
     }
 }

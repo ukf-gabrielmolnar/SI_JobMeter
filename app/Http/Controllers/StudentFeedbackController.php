@@ -43,7 +43,7 @@ class StudentFeedbackController extends Controller
     {
         Student_feedback::create($request->all());
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard.index');
     }
 
     /**

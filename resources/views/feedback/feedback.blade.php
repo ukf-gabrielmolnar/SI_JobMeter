@@ -1,7 +1,7 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 15rem;">
+    <div class="feedback_design" style="width: 15rem;">
         <div class="card-body">
             <form method="post" action="{{ route('feedback.store') }}" >
                 @csrf
@@ -24,15 +24,14 @@
 
                     <li class="list-group-item">
                         <p></p>
-                        <label for="text"><h6> Firstname </h6></label>
+                        <label for="text"><h6> Text </h6></label>
                         <!--rows="10" cols="50"  ha akartok fix sizet neki adni-->
                         <textarea type="text" id="text" name="text"  style="resize: none" required></textarea>
                     </li>
 
 
-
                 </ul>
-                <button id="buttonform" type="submit"> Save </button>
+                <button id="buttonform" type="submit"> Send </button>
             </form>
 
         </div>
