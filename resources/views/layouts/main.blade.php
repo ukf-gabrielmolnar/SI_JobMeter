@@ -30,6 +30,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
                                 <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
+                                <li><a class="dropdown-item" href="/jobList">JobList</a></li>
                             </ul>
                         </li>
 
