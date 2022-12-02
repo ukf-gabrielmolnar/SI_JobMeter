@@ -1,6 +1,41 @@
 @extends('layouts.main')
 @section('content')
 
-    <h1>dashboard</h1>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successPopup" name="successPopup">
+        <p id="popupText"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <h1>Dashboard</h1>
+
+    <script>
+        window.onload = function (){
+            var json = @json($popupMessage);
+            var popupText = $('#popupText');
+            var popup = $('#successPopup');
+            document.getElementById('successPopup').style.display = 'none';
+
+            if (json != ''){
+
+                popupText.empty();
+                switch (json){
+                    case "successPraxReg":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Registrácia na prax bol úspešný');
+                        break;
+                    case "successJobAdd":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Práca bola úspešne pridaná');
+                        break;
+                    case "successStudentFeedback":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Správa bola úspešne odoslaná');
+                        break;
+                }
+                popup.alert();
+            }
+
+        }
+    </script>
 
 @endsection

@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function logout(){
         auth()->logout();
-        return redirect()->route('home');
+        return redirect()->route('dashboard.index');
     }
 
     public function login(){
@@ -25,7 +25,7 @@ class UserController extends Controller
         $data = $request->validated();
 
         if (auth()->attempt($data)) {
-            return redirect()->route('home');
+            return redirect()->route('dashboard.index');
         }
 
         return redirect()->route('login.login');

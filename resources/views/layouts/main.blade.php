@@ -31,6 +31,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
                                 <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
+                                <li><a class="dropdown-item" href="/jobList">JobList</a></li>
+                                <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
                             </ul>
                         </li>
 
@@ -51,9 +53,9 @@
                                 PPPFpvAi
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
-                                <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
+                                <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
+                                <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
                             </ul>
                         </li>
 
@@ -66,45 +68,51 @@
 
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Graphs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
 
-                    @endauth
+                            </ul>
+                        </li>
 
-                    <?php if (auth()->user()?->inRole('admin')): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
+                                <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                            </ul>
+                        </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/roleRequest" role="button">
+                            Role request
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
-                            <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
-                        </ul>
                     </li>
-                    <?php endif; ?>
 
-                    <?php if (auth()->user()?->inRole('student')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
-                    <?php endif; ?>
+                    @if (auth()->user()->inRole('admin'))
+                    @endif
 
-                    <?php if (auth()->user()?->inRole('manager')): ?>
+                    @if (auth()->user()->inRole('student'))
+                    @endif
 
-                    <?php endif; ?>
+                    @if (auth()->user()->inRole('manager'))
+                    @endif
 
-                    <?php if (auth()->user()?->inRole('ppp')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Praxy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Requesty</a>
-                    </li>
-                    <?php endif; ?>
+                    @if (auth()->user()->inRole('ppp'))
+                    @endif
 
-                    <?php if (auth()->user()?->inRole('ceo')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/rbac/users">RBAC</a>
-                    </li>
-                    <?php endif; ?>
+                    @if (auth()->user()->inRole('ceo'))
+                    @endif
+
+                    @if (auth()->user()->inRole('dev'))
+                    @endif
+                    @endauth
 
                 </ul>
 
@@ -173,81 +181,8 @@
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        var fades = [true,true,true];
-        var selectedCompanyId = 1;
-        var selectedJobId = 1;
-        var selectedContractId = 1;
 
-        document.getElementById('jobform').style.display = 'none';
-        document.getElementById('contactform').style.display = 'none';
-        document.getElementById('timePickerForm').style.display = 'none';
-        document.getElementById('submitButtonPrax').style.display = 'none';
-
-        $.get('/companies', function(data) {
-            var companies = $('#companies');
-            $.each(data, function(index, company) {
-                companies.append('<option value="' + company.id + '">' + company.name + '</option>');
-            });
-        });
-
-        $('#companies').on('change', function() {
-            var jobForm = $('#jobform');
-            if (fades[0]){
-
-                fades[0] = false;
-            }
-            jobForm.fadeToggle(1000);
-
-            $("#jobs_id").empty();
-            $selectedCompanyId = $(this).children(":selected").attr("value");
-
-
-            $.get('/jobs', function(data) {
-                var jobs = $('#jobs_id');
-                jobs.append('<option value="" selected disabled hidden>Choose here</option>');
-                $.each(data, function(index, job) {
-                    if (job.companies_id == $selectedCompanyId){
-                        jobs.append('<option value="' + job.id + '">' + job.job_type + '</option>');
-                    }
-                });
-            });
-        });
-
-        $('#jobs_id').on('change', function() {
-            var contactForm = $('#contactform');
-            if (fades[1]){
-                contactForm.fadeToggle(1000);
-                fades[1] = false;
-            }
-            $("#contacts_id").empty();
-            selectedJobId = $(this).children(":selected").attr("value");
-
-            $.get('/contacts', function(data) {
-                var contacts = $('#contacts_id');
-                contacts.append('<option value="" selected disabled hidden>Choose here</option>');
-                $.each(data, function(index, contact) {
-                    if (contact.companies_id == $selectedCompanyId){
-                    contacts.append('<option value="' + contact.id + '">' + contact.firstname +'</option>');
-                    }
-                });
-            });
-        });
-
-        $('#contacts_id').on('change', function (){
-            var timePickerForm = $('#timePickerForm');
-            var submitButtonPrax = $('#submitButtonPrax');
-
-            if (fades[2]){
-                timePickerForm.fadeToggle(1000);
-                submitButtonPrax.fadeToggle(2500);
-                fades[2] = false;
-            }
-
-        });
-
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
 </html>

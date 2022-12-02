@@ -36,7 +36,7 @@
                     [
                         'label' => __('rbac::users.name'),
                         'value' => function ($user) {
-                            return '<a href="' . route('show_user', ['id' => $user->memberKey]) . '">' . $user->memberName .'</a>';
+                            return '<a href="' . route('show_user', ['id' => $user->id]) . '">' . $user->email .'</a>';
                         },
                         'filter' => [
                             'class' => Itstructure\GridView\Filters\TextFilter::class,
@@ -67,10 +67,10 @@
                         'class' => Itstructure\GridView\Columns\ActionColumn::class,
                         'actionTypes' => [
                             'view' => function ($user) {
-                                return route('show_user', ['id' => $user->memberKey]);
+                                return route('show_user', ['id' => $user->id]);
                             },
                             'edit' => function ($user) {
-                                return route('edit_user', ['id' => $user->memberKey]);
+                                return route('edit_user', ['id' => $user->id]);
                             }
                         ],
                         'htmlAttributes' => [
@@ -82,7 +82,7 @@
                         'field' => 'items',
                         'attribute' => 'memberKey',
                         'display' => function ($user) {
-                            return Gate::allows(Itstructure\LaRbac\Models\Permission::DELETE_MEMBER_FLAG, $user->memberKey);
+                            return Gate::allows(Itstructure\LaRbac\Models\Permission::DELETE_MEMBER_FLAG, $user->id);
                         }
                     ],
                 ],

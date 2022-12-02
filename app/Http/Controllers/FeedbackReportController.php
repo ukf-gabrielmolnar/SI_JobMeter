@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
 use App\Models\FeedbackReport;
 use App\Http\Requests\StoreFeedbackReportRequest;
 use App\Http\Requests\UpdateFeedbackReportRequest;
+use App\Models\Job;
+use App\Models\User;
 
 class FeedbackReportController extends Controller
 {
@@ -15,7 +18,13 @@ class FeedbackReportController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        $popupMessage = "";
+
+        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users','popupMessage'));
     }
 
     /**
@@ -36,7 +45,22 @@ class FeedbackReportController extends Controller
      */
     public function store(StoreFeedbackReportRequest $request)
     {
-        //
+        $feedbackReport = new FeedbackReport();
+
+        $feedbackReport->subject = $request->subject;
+        $feedbackReport->text = $request->text;
+        $feedbackReport->contracts_id = $request->contracts_id;
+        $feedbackReport->users_id = $request->users_id;
+
+        $feedbackReport->save();
+
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        $popupMessage = "successPPPFeedback";
+
+        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users','popupMessage'));
     }
 
     /**

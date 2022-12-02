@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use App\Models\Contract;
+use App\Models\Job;
+use App\Models\User;
 
 class ContactController extends Controller
 {
@@ -58,7 +61,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+
     }
 
     /**

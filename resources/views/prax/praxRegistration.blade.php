@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('content')
     @auth
+    @if(auth()->user()->years_id == null)
+        <h1> ide mar dizajnoltok vlm szepet :)</h1>
+        <a class="btn-danger" href="/userSettings"> GOMB Settingsre</a>
+    @else
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
@@ -22,7 +26,7 @@
         </div>
 
         <div class="h6" id="contactform">
-            <label for="contacts_id" class="form-label">Contract</label>
+            <label for="contacts_id" class="form-label">Contact</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
@@ -41,8 +45,9 @@
         </div>
 
         <br>
-        <button id="submitButtonPrax" style="width: 100%" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+        <button id="submitButtonPrax" style="width: 100%" class="btn" type="submit">Submit</button>
     </form>
+    @endif
     @endauth
     <script>
 
@@ -59,6 +64,7 @@
 
 
         window.onload = function () {
+
             var companies = $('#companies');
             var data = @json($companies);
             $.each(data, function (index, company) {
@@ -68,6 +74,7 @@
 
             $('#companies').on('change', function () {
                 var jobForm = $('#jobform');
+
                 if (fades[0]) {
                     jobForm.fadeToggle(1000);
                     fades[0] = false;
@@ -88,10 +95,12 @@
 
             $('#jobs_id').on('change', function () {
                 var contactForm = $('#contactform');
+
                 if (fades[1]) {
                     contactForm.fadeToggle(1000);
                     fades[1] = false;
                 }
+
                 $("#contacts_id").empty();
                 selectedJobId = $(this).children(":selected").attr("value");
 
@@ -116,7 +125,6 @@
                 }
             });
         }
-
     </script>
 
 @endsection

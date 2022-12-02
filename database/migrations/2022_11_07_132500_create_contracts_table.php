@@ -34,11 +34,18 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('set null');
 
+            $table->unsignedBigInteger('contacts_id')->nullable();
+            $table->foreign('contacts_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+
             $table->date('od');
             $table->date('do');
 
             $table->boolean('approved')->nullable();
             $table->boolean('closed')->nullable();
+            $table->boolean('certificate')->nullable();
 
             $table->timestamps();
         });

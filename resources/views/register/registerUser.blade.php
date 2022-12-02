@@ -24,7 +24,7 @@
         .box{
             background: #212529;
             width: 400px;
-            height: 470px;
+            height: 520px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -33,7 +33,7 @@
             border-radius: 0px;
             padding-top: 22px;
         }
-        .box input[type="email"],.box input[type="password"],.box input[type="text"]{
+        .box input[type="email"],.box input[type="password"],.box input[type="text"] {
             border: 0px;
             background: none;
             display: block;
@@ -45,6 +45,24 @@
             border-radius: 0px;
             color: white;
         }
+
+        .list-group-item {
+            display: block;
+            margin: 20px auto;
+            padding: 14px 10px 0px 10px;
+            width: 300px;
+            border-radius: 0px;
+            color: white;
+        }
+
+        .form-select {
+            background-color: #212529;!important;
+            border: 2px solid #3a3a3a;
+            color: #6c757d;
+            text-align: center;
+            font-size: 17px;
+        }
+
         button {
             display: block;
             margin: 20px auto 0px auto;
@@ -82,23 +100,36 @@
             @csrf
 
             <div class="form-group">
+                <li class="list-group-item">
+                    <select style="border-radius: 0px" class="form-select form-select-lg mb-3" id="role_id" name="role_id" required>
+                        <option value="" disabled selected hidden>Rola</option>
+                        <option value="1">Admin</option>
+                        <option value="4">Student</option>
+                        <option value="3">PPP</option>
+                        <option value="5">Ceo</option>
+                        <option value="2">Manager</option>
+                    </select>
+                </li>
+            </div>
+
+            <div class="form-group">
                 <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="Email" @endif>
             </div>
 
             <div class="form-group">
-                <input name="firstname" type="text" class="form-control" id="firstname" @if($errors->has('firstname')) placeholder="{{ $errors->first('firstname') }}" @else placeholder="First name" @endif>
+                <input name="firstname" type="text" class="form-control" id="firstname" @if($errors->has('firstname')) placeholder="{{ $errors->first('firstname') }}" @else placeholder="Meno" @endif>
             </div>
 
             <div class="form-group">
-                <input name="lastname" type="text" class="form-control" id="lastname" @if($errors->has('lastname')) placeholder="{{ $errors->first('lastname') }}" @else placeholder="Last name" @endif>
+                <input name="lastname" type="text" class="form-control" id="lastname" @if($errors->has('lastname')) placeholder="{{ $errors->first('lastname') }}" @else placeholder="Priezvisko" @endif>
             </div>
 
             <div class="form-group">
-                <input name="password" type="password" class="form-control" id="floatingPassword" @if($errors->has('password')) placeholder="{{ $errors->first('password') }}" @else placeholder="Password" @endif>
+                <input name="password" type="password" class="form-control" id="floatingPassword" @if($errors->has('password')) placeholder="{{ $errors->first('password') }}" @else placeholder="Heslo" @endif>
             </div>
 
             <div class="form-group">
-                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" @if($errors->has('repeatPassword')) placeholder="{{ $errors->first('repeatPassword') }}" @else placeholder="Password again" @endif>
+                <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" @if($errors->has('repeatPassword')) placeholder="{{ $errors->first('repeatPassword') }}" @else placeholder="Heslo ešte raz" @endif>
             </div>
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Registrovať</button>
 

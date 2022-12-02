@@ -3,15 +3,15 @@
 @section('content')
 
     <section class="content container-fluid">
-        <h2>{!! __('rbac::users.user_details') !!}: {{ $user->memberName }}</h2>
+        <h2>{!! __('rbac::users.user_details') !!}: {{ $user->email }}</h2>
 
         <div class="row mb-3">
             <div class="col-12">
                 <form action="{{ route('delete_user') }}" method="post">
-                    <a class="btn btn-success" href="{{ route('edit_user', ['id' => $user->memberKey]) }}" title="{!! __('rbac::main.edit') !!}">{!! __('rbac::users.assign_roles') !!}</a>
-                    @can(Itstructure\LaRbac\Models\Permission::DELETE_MEMBER_FLAG, $user->memberKey)
+                    <a class="btn btn-success" href="{{ route('edit_user', ['id' => $user->id]) }}" title="{!! __('rbac::main.edit') !!}">{!! __('rbac::users.assign_roles') !!}</a>
+                    @can(Itstructure\LaRbac\Models\Permission::DELETE_MEMBER_FLAG, $user->id)
                         <input type="submit" class="btn btn-danger" value="{!! __('rbac::users.delete_user') !!}" title="{!! __('rbac::main.delete') !!}" onclick="return confirm('{!! __('rbac::main.delete_confirm') !!}')">
-                        <input type="hidden" value="{{ $user->memberKey }}" name="items[]">
+                        <input type="hidden" value="{{ $user->id }}" name="items[]">
                         <input type="hidden" value="{!! csrf_token() !!}" name="_token">
                     @endcan
                 </form>
@@ -29,8 +29,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{!! __('rbac::users.name') !!}</td>
-                            <td>{{ $user->memberName }}</td>
+                            <td>{!! __('First name') !!}</td>
+                            <td>{{ $user->firstname}}</td>
+                        </tr>
+                        <tr>
+                            <td>{!! __('Last name') !!}</td>
+                            <td>{{ $user->lastname}}</td>
+                        </tr>
+                        <tr>
+                            <td>{!! __('E-mail') !!}</td>
+                            <td>{{ $user->email }}</td>
                         </tr>
                         <tr>
                             <td>{!! __('rbac::roles.roles') !!}</td>

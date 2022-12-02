@@ -18,8 +18,7 @@ class YearFactory extends Factory
     public function definition()
     {
         return [
-            'year'=>$this->faker->year,
-            'study_programs_id'=>Study_program::factory(),
+
         ];
     }
 }

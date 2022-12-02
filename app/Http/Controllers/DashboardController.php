@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Models\Company;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('prax.index');
+        $popupMessage = '';
+        return view('dashboard.index', compact('popupMessage'));
     }
 
     public function praxRegistration(){

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Contact;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Models\Study_program;
 
 class JobController extends Controller
 {
@@ -15,7 +18,11 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::all();
+        $companies = Company::all();
+        $study_programs = Study_program::all();
+
+        return view('job.jobList', compact('jobs','companies','study_programs'));
     }
 
     /**
