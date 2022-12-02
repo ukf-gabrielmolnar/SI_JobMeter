@@ -1,6 +1,8 @@
 @extends ('layouts.main')
 @section('content')
 
+    @auth
+
     <div class="row">
         <div class="column">
             <img class="profile-picture" src="/css/user.png" class="card-img-top" alt="<?= auth()->user()->firstname. ' '. auth()->user()->lastname?>">
@@ -18,10 +20,20 @@
                 <li class="list-group-item">
                     <p><h6>E-mail: </h6> <?= auth()->user()->email ?></p>
                 </li>
+                @if (auth()->user()->inRole('student'))
                 <li class="list-group-item">
                     <input hidden name="year_id_hidden" id = "year_id_hidden" value="<?= auth()->user()->years_id?>">
                     <p id="years_id_print" name="years_id_print"></p>
                 </li>
+                @elseif (auth()->user()->inRole('ceo'))
+                    @foreach($company as $c)
+                        @if ($c->id == auth()->user()->companies_id)
+                            <li class="list-group-item">
+                                <p><h6>Organizácia</h6>{{$c->name}}</p>
+                            </li>
+                        @endif
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>
@@ -60,5 +72,7 @@
             }
         }
     </script>
+
+    @endauth
 
 @endsection

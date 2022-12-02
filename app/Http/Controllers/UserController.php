@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Company;
 use App\Models\Info;
 use App\Models\Study_program;
 use App\Models\User;
@@ -35,13 +36,15 @@ class UserController extends Controller
     public function profileInfo(){
         $study_programs = Study_program::all();
         $year = Year::all();
-        return view('user.userInfo', compact('study_programs','year'));
+        $company = Company::all();
+        return view('user.userInfo', compact('study_programs','year', 'company'));
     }
 
     public function profileSettings(){
         $study_programs = Study_program::all();
         $year = Year::all();
-        return view('user.userSettings', compact('study_programs','year'));
+        $company = Company::all();
+        return view('user.userSettings', compact('study_programs','year', 'company'));
     }
 
     public function update(Request $request)

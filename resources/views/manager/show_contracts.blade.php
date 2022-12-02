@@ -148,7 +148,7 @@
 
     @if (!(auth()->user()->inRole('admin')) || !(auth()->user()->inRole('manager')) || !(auth()->user()->inRole('dev')))
 
-        <h1 style="text-align: center">You are not allowed to see this!</h1>
+        @include('nopermission')
 
     @endif
 

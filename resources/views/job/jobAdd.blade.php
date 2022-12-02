@@ -66,7 +66,7 @@
 
     @if (auth()->user()->inRole('ceo'))
 
-        <h1 style="text-align: center">You are not allowed to see this!</h1>
+        @include('nopermission')
 
     @endif
 
