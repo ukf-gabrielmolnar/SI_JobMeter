@@ -52,7 +52,8 @@
                         <td>
                             <input hidden value="{{ $contract->id }}"  id="contract_id" name="contract_id">
                             <input hidden value="{{ auth()->user()->id }}" id="ppp_id" name="ppp_id">
-                            <button class="btn btn-sm btn-outline-warning" type="submit" >Create archive</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Create archive</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Preview archive</button>
                         </td>
                     </tr>
                 </form>

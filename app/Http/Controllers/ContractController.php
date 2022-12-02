@@ -137,7 +137,12 @@ class ContractController extends Controller
         $feedbackR = FeedbackReport::all();
         //$pdf = PDF::loadView('ppp.archivePDFView');
         //return $pdf->download('archive.pdf');
-        return view('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+        if($request->show_form == "pdf"){
+            $pdf = PDF::loadView('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+            return $pdf->download($user->firstname."_". $user->lastname."_archive.pdf");
+        }else{
+            return view('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+        }
     }
 
     public function applyFilters(\Illuminate\Http\Request $request){

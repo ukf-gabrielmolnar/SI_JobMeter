@@ -109,6 +109,8 @@
             var job_type = $('#job_type')
             var contract_id = $('#contract_id')
 
+            $('#fill_name').empty()
+            $('#fill_job').empty()
             $('#fill_name').append(user_name.val())
             $('#fill_job').append(job_type.val())
 
