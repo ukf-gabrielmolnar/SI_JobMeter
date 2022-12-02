@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <table class="table table-white table-hover">
         <thead>
         <tr>
