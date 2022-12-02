@@ -13,17 +13,17 @@
             var json = @json($popupMessage);
             var popupText = $('#popupText');
             var popup = $('#successPopup');
-            //document.getElementById('successPopup').style.display = 'none';
+            document.getElementById('successPopup').style.display = 'none';
 
             if (json != ''){
 
                 popupText.empty();
                 switch (json){
                     case "successPraxReg":
-                        popupText.append('Registrácia na prax bol<strong>úspešný</strong>');
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Registrácia na prax bol <strong>úspešný</strong>');
                         break;
                 }
-
 
                 popup.alert();
             }
