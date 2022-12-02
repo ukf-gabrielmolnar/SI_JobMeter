@@ -10,6 +10,7 @@
 </head>
 
 <body class="bg" style="min-height: 100vh">
+
 <div style="margin-top: -20px">
 @include('navbar')
 </div>

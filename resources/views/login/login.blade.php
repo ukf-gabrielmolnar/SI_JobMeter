@@ -101,7 +101,7 @@
 
     @else
 
-        <h1 style="text-align: center;">You are already logged in!</h1>
+        <h1 style="text-align: center; padding-top: 120px">You are already logged in!</h1>
 
     @endif
 

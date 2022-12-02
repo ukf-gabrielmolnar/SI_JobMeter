@@ -1,8 +1,9 @@
-<nav class="navbar roundcorner navbar-expand-lg navbar-dark bg-dark container mb-4 static-top">
-    <div class="container-fluid" style="padding-top: 20px">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
+    <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand navbarpadding title" href="/">JobMeter</a>
 
