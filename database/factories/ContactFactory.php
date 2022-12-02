@@ -23,6 +23,7 @@ class ContactFactory extends Factory
             'email'=>$this->faker->email,
             'tel'=>$this->faker->phoneNumber,
             'companies_id'=> Company::factory(),
+            'approved'=>'1'
         ];
     }
 }

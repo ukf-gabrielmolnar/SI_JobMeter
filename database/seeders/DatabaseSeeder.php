@@ -107,6 +107,15 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+
+        DB::table('companies')->insert([
+            'name' => 'Samsung',
+            'address' => '1332, Galatna',
+            'approved' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+
         DB::table('users')->insert([
           'firstname' => 'admin',
            'lastname' => 'admin',
@@ -136,14 +145,16 @@ class DatabaseSeeder extends Seeder
             'lastname' => 'student',
             'email' => 'student@student.com',
             'password' => bcrypt('123456789'),
+            'years_id' => '1',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
         DB::table('users')->insert([
-            'firstname' => 'ceo',
+            'firstname' => 'samsung',
             'lastname' => 'ceo',
-            'email' => 'ceo@ceo.com',
+            'email' => 'samsungceo@ceo.com',
             'password' => bcrypt('123456789'),
+            'companies_id' => '1',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
@@ -172,6 +183,35 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
             'created_at' => now(),
         ]);
+
+        DB::table('jobs')->insert([
+            'job_type' => 'Wholesale Buyer',
+            'companies_id' => '1',
+            'study_programs_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('contacts')->insert([
+            'firstname' => 'Test',
+            'lastname' => 'Contact',
+            'email' => 'testcontact@gmail.com',
+            'tel' => '+421 923 456 798',
+            'companies_id' => '1',
+            'approved' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('contracts')->insert([
+            'users_id' => '4',
+            'jobs_id' => '1',
+            'ppp_id' => '3',
+            'contacts_id' => '1',
+            'od' => '2022-12-01',
+            'do' => '2023-12-01',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+
 
         $this->call([
             CompanySeeder::class,
