@@ -49,6 +49,7 @@ Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')-
 Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
 
 Route::get('/roleRequest', 'App\Http\Controllers\RoleRequestController@index')->name('role.index');
+Route::get('/roleApprove', 'App\Http\Controllers\RoleRequestController@update')->name('role.update');
 // ----------
 
 // ----------
