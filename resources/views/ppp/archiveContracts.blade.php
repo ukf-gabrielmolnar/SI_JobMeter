@@ -19,7 +19,7 @@
         <tbody>
         @foreach($contracts as $contract)
             @if(auth()->user()->id == $contract->ppp_id && $contract->closed != null)
-                <form method="get" action="{{ route('ppp.contractsPDF') }}">
+                <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
                     <tr>
                         @foreach($users as $user)
                             @if($contract->users_id === $user->id)
