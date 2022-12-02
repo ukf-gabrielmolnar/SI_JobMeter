@@ -12,6 +12,7 @@ class Record extends Model
     protected $fillable = [
         'date',
         'hours',
+        'approved',
         'contracts_id',
     ];
 
