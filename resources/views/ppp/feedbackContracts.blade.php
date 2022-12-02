@@ -2,7 +2,10 @@
 
 @section('content')
 
-
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successPopup" name="successPopup">
+        <p id="popupText"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
     <table class="table table-white table-hover">
         <thead>
@@ -109,11 +112,33 @@
             var job_type = $('#job_type')
             var contract_id = $('#contract_id')
 
+            $('#fill_name').empty()
+            $('#fill_job').empty()
             $('#fill_name').append(user_name.val())
             $('#fill_job').append(job_type.val())
 
             $('#users_id').val(user_id.val())
             $('#contracts_id').val(contract_id.val())
+        }
+
+        window.onload = function (){
+            var json = @json($popupMessage);
+            var popupText = $('#popupText');
+            var popup = $('#successPopup');
+            document.getElementById('successPopup').style.display = 'none';
+
+            if (json != ''){
+
+                popupText.empty();
+                switch (json){
+                    case "successPPPFeedback":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Správa bola úspešne odoslaná');
+                        break;
+                }
+                popup.alert();
+            }
+
         }
 
     </script>

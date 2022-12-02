@@ -84,7 +84,7 @@ footer {
 
 .custom-select {
     border-radius: 0;!important;
-    background-color: #dcdcdc;
+    background-color: white;
     border-width: 2px;
     border-color: #8abcc5;
 }
@@ -107,7 +107,7 @@ footer {
 }
 
 .list-group-item {
-    border-color: #8abcc5;
+    border: none;
 }
 
 .profile-picture {
@@ -159,6 +159,7 @@ footer {
     border: none;
     border-radius: 0;
     margin-top: 30px;
+    color: white;
 }
 
 #submitButtonPrax:hover {
@@ -173,6 +174,7 @@ footer {
     border: none;
     border-radius: 0;
     margin-top: 30px;
+    color: white;
 }
 
 .add-new-job-save:hover {
@@ -182,11 +184,10 @@ footer {
 
 input {
     width: 100%;
-    padding-left: 10px;
+    padding: 5px;
     height: 46px;
-    background-color: #dbdbdb;
-    border-width: 2px;
-    border-color: #8abcc5;
+    background-color: white;
+    border-color: #8abcc5;!important;
 }
 
 .delete-button {
@@ -203,13 +204,51 @@ input {
 }
 
 .modal-content {
-    background-color: #bfe8ef;
+    background-color: #bfc6c7;
 }
 
 .close {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    margin-left: 95%;
+}
+
+#feedbackForm {
+    top: 10px;!important;
+}
+
+textarea {
+    border-radius: 0;!important;
+    border-width: 2px;
+    border-color: #8abcc5;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    padding: 5px;
+}
+
+.feedback_design {
+    margin: auto;
+    width: 450px;
+    border: none;
+    padding: 10px;
+}
+
+.feedback_send_button {
+    width: 400px;
+    padding: 2px;
+    height: 46px;
+    background-color: #8abcc5;
+    border: none;
+    border-radius: 0;
+    margin-top: 30px;
+    margin-left: 15px;
+    color: white;
+}
+
+.feedback_send_button:hover {
+    background-color: #60a5b2;
 }
 
 /* Responsivity */
@@ -244,6 +283,12 @@ input {
         left: 0%;
         top: 25%;
         width: 100%;
+    }
+    .feedback_design {
+        width: 100%;
+    }
+    .feedback_send_button {
+        width: 93%;
     }
 }
 

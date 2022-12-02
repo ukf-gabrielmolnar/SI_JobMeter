@@ -1,8 +1,8 @@
 @extends ('layouts.main')
 @section('content')
 
-    <div class="card text-center" style="width: 15rem;">
-        <div class="card-body">
+    <div class="feedback_design">
+        <div style="width: 100%">
             <form method="post" action="{{ route('feedback.store') }}" >
                 @csrf
                 <input hidden id="users_id" name="users_id" value="{{auth()->user()->id}}">
@@ -19,20 +19,18 @@
                     <li class="list-group-item">
                         <p></p>
                         <label for="subject"><h6> Subject </h6></label>
-                        <input type="text" id="subject" name="subject" required>
+                        <input type="text" id="subject" name="subject" required placeholder="Write subject here...">
 
 
                     <li class="list-group-item">
                         <p></p>
-                        <label for="text"><h6> Firstname </h6></label>
-                        <!--rows="10" cols="50"  ha akartok fix sizet neki adni-->
-                        <textarea type="text" id="text" name="text"  style="resize: none" required></textarea>
+                        <label for="text"><h6> Text </h6></label>
+                        <textarea type="text" id="text" name="text"  style="resize: none" required placeholder="Write message here..."></textarea>
                     </li>
 
 
-
                 </ul>
-                <button id="buttonform" type="submit"> Save </button>
+                <button id="buttonform" class="feedback_send_button"  type="submit"> Send </button>
             </form>
 
         </div>
@@ -59,8 +57,6 @@
             });
 
         }
-
     </script>
 
 @endsection
-

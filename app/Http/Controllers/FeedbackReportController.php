@@ -22,7 +22,9 @@ class FeedbackReportController extends Controller
         $jobs = Job::all();
         $users = User::all();
 
-        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users'));
+        $popupMessage = "";
+
+        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users','popupMessage'));
     }
 
     /**
@@ -56,7 +58,9 @@ class FeedbackReportController extends Controller
         $jobs = Job::all();
         $users = User::all();
 
-        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users'));
+        $popupMessage = "successPPPFeedback";
+
+        return view('ppp.feedbackContracts', compact('contracts', 'jobs','users','popupMessage'));
     }
 
     /**
