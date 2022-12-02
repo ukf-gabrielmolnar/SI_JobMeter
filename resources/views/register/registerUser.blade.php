@@ -102,7 +102,12 @@
             <div class="form-group">
                 <li class="list-group-item">
                     <select style="border-radius: 0px" class="form-select form-select-lg mb-3" id="role_id" name="role_id" required>
-                        <option value="" disabled selected hidden>	&nbsp;	&nbsp; Rola</option>
+                        <option value="" disabled selected hidden>Rola</option>
+                        <option value="1">Admin</option>
+                        <option value="4">Student</option>
+                        <option value="3">PPP</option>
+                        <option value="5">Ceo</option>
+                        <option value="2">Manager</option>
                     </select>
                 </li>
             </div>
@@ -130,30 +135,4 @@
 
         </form>
     </main>
-
-{{--    <script>--}}
-{{--        window.onload = function (){--}}
-
-{{--            var select = $('#users_id');--}}
-{{--            var dataY = @json($year);--}}
-{{--            var dataSP = @json($study_programs);--}}
-
-{{--            $.each(dataY, function (index, year){--}}
-{{--                var SP_id = year.study_programs_id;--}}
-{{--                var Sp;--}}
-{{--                $.each(dataSP, function (index, sp){--}}
-{{--                    if (sp.id === SP_id){--}}
-{{--                        Sp = sp;--}}
-{{--                        return false;--}}
-{{--                    }--}}
-{{--                });--}}
-
-{{--                select.append('<option value="' + year.id + '">' + year.year + ' ' + Sp.study_program + '</option>');--}}
-{{--            });--}}
-
-
-{{--            document.getElementById("years_id").value = document.getElementById("years_id_hidden").value;--}}
-{{--        }--}}
-{{--    </script>--}}
-
 @endsection
