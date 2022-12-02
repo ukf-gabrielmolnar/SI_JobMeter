@@ -11,6 +11,8 @@
         <div class="card-body">
             @if (auth()->user()->inRole('student'))
             <input hidden name="years_id_hidden" id = "years_id_hidden" value="<?=auth()->user()->years_id?>">
+            @elseif (auth()->user()->inRole('ceo'))
+            <input hidden name="companies_id_hidden" id = "companies_id_hidden" value="<?=auth()->user()->companies_id?>">
             @endif
             <form method="post" action="{{ route('user.update') }}">
                 @csrf

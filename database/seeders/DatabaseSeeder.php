@@ -107,24 +107,81 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-       DB::table('users')->insert([
+        DB::table('users')->insert([
           'firstname' => 'admin',
            'lastname' => 'admin',
            'email' => 'admin@admin.com',
            'password' => bcrypt('admin1234'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'mng',
+            'lastname' => 'mng',
+            'email' => 'mng@mng.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'ppp',
+            'lastname' => 'ppp',
+            'email' => 'ppp@ppp.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'student',
+            'lastname' => 'student',
+            'email' => 'student@student.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'ceo',
+            'lastname' => 'ceo',
+            'email' => 'ceo@ceo.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
         ]);
 
-
+        DB::table('user_role')->insert([
+            'user_id' => '2',
+            'role_id' => '2',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '3',
+            'role_id' => '3',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '4',
+            'role_id' => '4',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '5',
+            'role_id' => '5',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
 
         $this->call([
             CompanySeeder::class,
             ContactSeeder::class,
+            JobSeeder::class,
             //ContractSeeder::class,
             //FeedbackReportSeeder::class,
             //RecordSeeder::class,
             //StudentFeedbackSeeder::class,
             //StudyProgramSeeder::class,
-            JobSeeder::class,
             //UserSeeder::class,
             //YearSeeder::class,
         ]);
