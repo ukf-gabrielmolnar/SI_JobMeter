@@ -131,29 +131,29 @@
         </form>
     </main>
 
-    <script>
-        window.onload = function (){
+{{--    <script>--}}
+{{--        window.onload = function (){--}}
 
-            var select = $('#users_id');
-            var dataY = @json($year);
-            var dataSP = @json($study_programs);
+{{--            var select = $('#users_id');--}}
+{{--            var dataY = @json($year);--}}
+{{--            var dataSP = @json($study_programs);--}}
 
-            $.each(dataY, function (index, year){
-                var SP_id = year.study_programs_id;
-                var Sp;
-                $.each(dataSP, function (index, sp){
-                    if (sp.id === SP_id){
-                        Sp = sp;
-                        return false;
-                    }
-                });
+{{--            $.each(dataY, function (index, year){--}}
+{{--                var SP_id = year.study_programs_id;--}}
+{{--                var Sp;--}}
+{{--                $.each(dataSP, function (index, sp){--}}
+{{--                    if (sp.id === SP_id){--}}
+{{--                        Sp = sp;--}}
+{{--                        return false;--}}
+{{--                    }--}}
+{{--                });--}}
 
-                select.append('<option value="' + year.id + '">' + year.year + ' ' + Sp.study_program + '</option>');
-            });
+{{--                select.append('<option value="' + year.id + '">' + year.year + ' ' + Sp.study_program + '</option>');--}}
+{{--            });--}}
 
 
-            document.getElementById("years_id").value = document.getElementById("years_id_hidden").value;
-        }
-    </script>
+{{--            document.getElementById("years_id").value = document.getElementById("years_id_hidden").value;--}}
+{{--        }--}}
+{{--    </script>--}}
 
 @endsection
