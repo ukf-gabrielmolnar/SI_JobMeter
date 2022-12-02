@@ -37,7 +37,16 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        $contacts = Contact::all();
-        return view('manager.show_contracts', compact('jobs','users','contracts','contacts','companies'));
+        return view('manager.show_contracts', compact('jobs','users','contracts','companies'));
     }
+
+    public function addsupervisor(){
+        $jobs = Job::all();
+        $users = User::all();
+        $contracts = Contract::all();
+        $companies = Company::all();
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
+    }
+
+
 }

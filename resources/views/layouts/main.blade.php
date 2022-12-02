@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="/css/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="/css/style.css?v=1.1" />
     </head>
 
@@ -43,6 +44,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradit povereneho pracovnika pracoviska</a></li>
                             </ul>
                         </li>
 

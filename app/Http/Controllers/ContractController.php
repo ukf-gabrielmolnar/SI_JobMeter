@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+
 use App\Models\Contact;
 use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
@@ -16,6 +17,7 @@ use http\Env\Request;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
 use Symfony\Component\Routing\RequestContext;
 use PDF;
+
 
 class ContractController extends Controller
 {
@@ -106,6 +108,20 @@ class ContractController extends Controller
         $contract->save();
 
         return $this->applyFilters($request);
+    }
+
+    public function saveSupervisor(Request $request){
+
+        $contract = Contract::find($request->id);
+        $contract->ppp_id = $request->ppp_id;
+        $contract->save();
+
+
+        $jobs = Job::all();
+        $users = User::all();
+        $contracts = Contract::all();
+        $companies = Company::all();
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
     }
 
     /**
