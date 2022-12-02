@@ -43,7 +43,10 @@ class StudentFeedbackController extends Controller
     {
         Student_feedback::create($request->all());
 
-        return redirect()->route('dashboard.index');
+        $popupMessage = "successStudentFeedback";
+
+        //return redirect()->route('dashboard.index');
+        return view('dashboard.index', compact('popupMessage'));
     }
 
     /**

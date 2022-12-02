@@ -51,6 +51,9 @@ class AddJobController extends Controller
         $job->study_programs_id = $study_programs_id;
         $job->save();
 
-        return redirect()->route('dashboard.index');
+        $popupMessage = "successJobAdd";
+
+        //return redirect()->route('dashboard.index');
+        return view('dashboard.index', compact('popupMessage'));
     }
 }

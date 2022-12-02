@@ -21,10 +21,17 @@
                 switch (json){
                     case "successPraxReg":
                         document.getElementById('successPopup').style.display = 'block';
-                        popupText.append('Registrácia na prax bol <strong>úspešný</strong>');
+                        popupText.append('Registrácia na prax bol úspešný');
+                        break;
+                    case "successJobAdd":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Práca bola úspešne pridaná');
+                        break;
+                    case "successStudentFeedback":
+                        document.getElementById('successPopup').style.display = 'block';
+                        popupText.append('Správa bola úspešne odoslaná');
                         break;
                 }
-
                 popup.alert();
             }
 
