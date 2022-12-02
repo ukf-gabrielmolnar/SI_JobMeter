@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
+use App\Models\Job;
 use App\Models\Student_feedback;
 use App\Http\Requests\StoreStudent_feedbackRequest;
 use App\Http\Requests\UpdateStudent_feedbackRequest;
@@ -15,7 +17,10 @@ class StudentFeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        $jobs = Job::all();
+
+        return view('feedback.feedback', compact('contracts', 'jobs'));
     }
 
     /**
@@ -36,7 +41,9 @@ class StudentFeedbackController extends Controller
      */
     public function store(StoreStudent_feedbackRequest $request)
     {
-        //
+        Student_feedback::create($request->all());
+
+        return redirect()->route('home');
     }
 
     /**

@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Contact;
 use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
+use App\Models\FeedbackReport;
 use App\Models\Job;
+use App\Models\Study_program;
 use App\Models\User;
+use App\Models\Year;
+use http\Env\Request;
+use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
+use Symfony\Component\Routing\RequestContext;
+use PDF;
 
 class ContractController extends Controller
 {
@@ -20,8 +29,10 @@ class ContractController extends Controller
         $contracts = Contract::all();
         $jobs = Job::all();
         $users = User::all();
+        $filter1 = 1;
+        $filter2 = 1;
 
-        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 
     /**
@@ -46,6 +57,7 @@ class ContractController extends Controller
 
         $contract->users_id = $request->users_id;
         $contract->jobs_id = $request->jobs_id;
+        $contract->contacts_id = $request->contacts_id;
 
         $contract->od = $request->od;
         $contract->do = $request->do;
@@ -90,11 +102,7 @@ class ContractController extends Controller
         $contract->update($request->all());
         $contract->save();
 
-        $contracts = Contract::all();
-        $jobs = Job::all();
-        $users = User::all();
-
-        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users'));
+        return $this->applyFilters($request);
     }
 
     /**
@@ -106,5 +114,97 @@ class ContractController extends Controller
     public function destroy(Contract $contract)
     {
         //
+    }
+
+    public function showArchive(\Illuminate\Http\Request $request){
+        $contracts = Contract::all();
+        $jobs = Job::all();
+        $users = User::all();
+
+        return view('ppp.archiveContracts', compact('contracts', 'jobs','users'));
+    }
+
+    public function savePDF(\Illuminate\Http\Request $request){
+
+        $contract = Contract::find($request->contract_id);
+        $user = User::find($request->user_id);
+        $ppp = User::find($request->ppp_id);
+        $year = Year::find($user->years_id);
+        $sp = Study_program::find($year->study_programs_id);
+        $job = Job::find($contract->jobs_id);
+        $company = Company::find($job->companies_id);
+        $contact = Contact::find($contract->contacts_id);
+        $feedbackR = FeedbackReport::all();
+        //$pdf = PDF::loadView('ppp.archivePDFView');
+        //return $pdf->download('archive.pdf');
+        return view('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+    }
+
+    public function applyFilters(\Illuminate\Http\Request $request){
+        $contracts = Contract::all();
+
+        switch ($request->filter1){
+            case 1:
+                break;
+            case 2:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->approved == 1){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+                break;
+            case 3:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->approved == 0){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+
+                break;
+        }
+
+        switch ($request->filter2){
+            case 1:
+                break;
+            case 2:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->closed == 1){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+                break;
+            case 3:
+                $help = [];
+
+                foreach ($contracts as $contract){
+                    if ($contract->closed == 0){
+                        array_push($help, $contract);
+                    }
+                }
+
+                $contracts = $help;
+
+                break;
+        }
+
+        $jobs = Job::all();
+        $users = User::all();
+
+        $filter1 = $request->filter1;
+        $filter2 = $request->filter2;
+
+        return view('ppp.unapprovedContracts', compact('contracts', 'jobs','users','filter1', 'filter2'));
     }
 }

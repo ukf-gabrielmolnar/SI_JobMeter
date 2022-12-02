@@ -30,6 +30,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
                                 <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
+                                <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
                             </ul>
                         </li>
 
@@ -50,6 +51,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
+                                <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
+                                <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
 
                             </ul>
                         </li>
@@ -60,6 +63,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Nyisti</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Graphs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
 
                             </ul>
                         </li>
