@@ -20,18 +20,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $sp = ['fyzika','kecske','imre', 'ember','kellek'];
-        $y = ['1. Bc.', '2. Bc.', '3. Bc.', '1. Mgr.', '2. Mrg.'];
-        for ($i = 0; $i < sizeof($sp); $i++){
+        $spb = [
+            'Aplikovaná ekológia a environmentalistika',
+            'Aplikovaná informatika',
+            'Biológia',
+            'Fyzika',
+            'Geografia v regionálnom rozvoji',
+            'Matematicko-štatistické a informačné metódy v ekonómii a finančníctve',
+            'Učiteľstvo biológie v kombinácii',
+            'Učiteľstvo chémie v kombinácii',
+            'Učiteľstvo ekológie v kombinácii',
+            'Učiteľstvo fyziky v kombinácii',
+            'Učiteľstvo geografie v kombinácii',
+            'Učiteľstvo informatiky v kombinácii',
+            'Učiteľstvo matematiky v kombinácii',
+            'Učiteľstvo odborných ekonomických predmetov v kombinácii'];
+        $yb = ['1. Bc.', '2. Bc.', '3. Bc.'];
+        for ($i = 0; $i < sizeof($spb); $i++){
             DB::table('study_programs')->insert([
-                'study_program' => $sp[$i],
+                'study_program' => $spb[$i],
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
-
-            for ($k = 0; $k < sizeof($y); $k++){
+            for ($k = 0; $k < sizeof($yb); $k++){
                 DB::table('years')->insert([
-                    'year' => $y[$k],
+                    'year' => $yb[$k],
                     'study_programs_id' => Study_program::find($i+1)->id,
                     'updated_at' => now(),
                     'created_at' => now(),
@@ -39,6 +52,60 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        $spm = [
+            'Aplikovaná informatika',
+            'Biológia',
+            'Environmentalistika v krajinnom plánovaní a praxi',
+            'Fyzika materiálov',
+            'Geografia v regionálnom rozvoji',
+            'Učiteľstvo biológie v kombinácii',
+            'Učiteľstvo chémie v kombinácii',
+            'Učiteľstvo ekológie v kombinácii',
+            'Učiteľstvo fyziky v kombinácii',
+            'Učiteľstvo geografie v kombinácii',
+            'Učiteľstvo informatiky v kombinácii',
+            'Učiteľstvo matematiky v kombinácii',
+            'Učiteľstvo odborných ekonomických predmetov v kombinácii'];
+        $ym = ['1. Mgr.', '2. Mgr.'];
+        for ($i = 0; $i < sizeof($spm); $i++){
+            DB::table('study_programs')->insert([
+                'study_program' => $spm[$i],
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]);
+            for ($k = 0; $k < sizeof($ym); $k++){
+                DB::table('years')->insert([
+                    'year' => $ym[$k],
+                    'study_programs_id' => Study_program::find($i+1)->id,
+                    'updated_at' => now(),
+                    'created_at' => now(),
+                ]);
+            }
+        }
+
+        $spd = [
+            'Aplikovaná informatika',
+            'Environmentalistika',
+            'Fyzika materiálov',
+            'Molekulárna biológia',
+            'Teória vyučovania chémie',
+            'Teória vyučovania matematiky',];
+        $yd = ['1. Dr.', '2. Dr.'];
+        for ($i = 0; $i < sizeof($spd); $i++){
+            DB::table('study_programs')->insert([
+                'study_program' => $spd[$i],
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]);
+            for ($k = 0; $k < sizeof($yd); $k++){
+                DB::table('years')->insert([
+                    'year' => $yd[$k],
+                    'study_programs_id' => Study_program::find($i+1)->id,
+                    'updated_at' => now(),
+                    'created_at' => now(),
+                ]);
+            }
+        }
 
        DB::table('users')->insert([
           'firstname' => 'admin',

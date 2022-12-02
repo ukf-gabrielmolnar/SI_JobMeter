@@ -64,7 +64,10 @@ class ContractController extends Controller
 
         $contract->save();
 
-        return redirect()->route('home');
+        $popupMessage = "successPraxReg";
+
+        //return redirect()->route('home');
+        return view('dashboard.index', compact('popupMessage'));
     }
 
     /**

@@ -14,7 +14,7 @@ use App\Http\Controllers\ManagerController;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard.index');
 
 Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
 Route::post('/register/user', 'App\Http\Controllers\RegisterController@storeUser')->name('store.user');
@@ -50,9 +50,19 @@ Route::get('/jobList','App\Http\Controllers\JobController@index')->name('job.job
 
 Route::get('/unapprovedContracts', 'App\Http\Controllers\ContractController@index')->name('ppp.unapprovedContracts');
 Route::get('/approveContracts', 'App\Http\Controllers\ContractController@update')->name('ppp.approveContracts');
+
+//grafy
+Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');
+Route::get('/graf_2', [\App\Http\Controllers\GrafController::class, 'companies_graph'])->name('graf.graf_2');
+
 Route::get('/filterContracts', 'App\Http\Controllers\ContractController@applyFilters')->name('ppp.filterContracts');
 Route::get('/archiveContracts', 'App\Http\Controllers\ContractController@showArchive')->name('ppp.archiveContracts');
 Route::get('/downloadPDF', [\App\Http\Controllers\ContractController::class, 'savePDF'])->name('ppp.contractsPDF');
 
 Route::get('/feedbackContracts', 'App\Http\Controllers\FeedbackReportController@index')->name('ppp.feedbackContracts');
 Route::get('/addFeedback', 'App\Http\Controllers\FeedbackReportController@store')->name('ppp.saveFeedback');
+
+Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')->name('feedback.feedback');
+Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
+
+

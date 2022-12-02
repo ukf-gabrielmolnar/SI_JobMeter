@@ -45,7 +45,7 @@
         </div>
 
         <br>
-        <button id="submitButtonPrax" style="width: 100%" class="btn bg-secondary text-bg-danger" type="submit">Submit</button>
+        <button id="submitButtonPrax" style="width: 100%" class="btn" type="submit">Submit</button>
     </form>
     @endif
     @endauth
@@ -125,7 +125,6 @@
                 }
             });
         }
-
     </script>
 
 @endsection

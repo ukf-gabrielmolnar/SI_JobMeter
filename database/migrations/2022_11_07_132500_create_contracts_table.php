@@ -45,6 +45,7 @@ return new class extends Migration
 
             $table->boolean('approved')->nullable();
             $table->boolean('closed')->nullable();
+            $table->boolean('certificate')->nullable();
 
             $table->timestamps();
         });
