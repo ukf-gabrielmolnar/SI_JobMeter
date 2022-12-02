@@ -23,6 +23,8 @@
 
                     @auth
 
+                        @if (auth()->user()->inRole('dev'))
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Student
@@ -67,6 +69,7 @@
 
                             </ul>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Graphs
@@ -78,44 +81,69 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/rbac/users">Používatelia</a></li>
+                                <li><a class="dropdown-item" href="/rbac/roles">Role</a></li>
+                                <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                            </ul>
+                        </li>
+
+                    @endif
+
+
+                    @if (auth()->user()->inRole('admin'))
+
+                        <li class="nav-item"><a class="nav-link" href="/rbac/users">Používatelia</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/rbac/roles">Roly</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/adminView">Show Users</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Grafy
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
+                            </ul>
+                        </li>
+
+                    @endif
+
+                    @if (auth()->user()->inRole('manager'))
+
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Grafy
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
+                            </ul>
+                        </li>
+
+                    @endif
+
+                    @if (auth()->user()->inRole('ppp'))
+
+                    @endif
+
+                    @if (auth()->user()->inRole('student'))
+
+                    @endif
+
+                    @if (auth()->user()->inRole('ceo'))
+
+                    @endif
+
                     @endauth
-
-                    <?php if (auth()->user()?->inRole('admin')): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
-                            <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
-                        </ul>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('student')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('manager')): ?>
-
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('ppp')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Praxy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Requesty</a>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('ceo')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/rbac/users">RBAC</a>
-                    </li>
-                    <?php endif; ?>
 
                 </ul>
 
