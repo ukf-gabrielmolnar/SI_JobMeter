@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\RoleRequest;
 use App\Http\Requests\StoreRoleRequestRequest;
 use App\Http\Requests\UpdateRoleRequestRequest;
+use App\Models\User;
+use App\Models\User_role;
 
 class RoleRequestController extends Controller
 {
@@ -15,7 +18,11 @@ class RoleRequestController extends Controller
      */
     public function index()
     {
-        //
+        $role_requests = RoleRequest::all();
+        $users = User::all();
+        $roles = Role::all();
+
+        return view('roleRequest.index', compact('role_requests','roles','users'));
     }
 
     /**
@@ -70,7 +77,22 @@ class RoleRequestController extends Controller
      */
     public function update(UpdateRoleRequestRequest $request, RoleRequest $roleRequest)
     {
-        //
+
+        if ($request->action == 'approve'){
+            $user_roles = new User_role();
+
+            $user_roles->user_id = $request->userID;
+            $user_roles->role_id = $request->roleID;
+            $user_roles->save();
+        }
+
+        $roleRequest::find($request->ID)->delete();
+
+        $role_requests = RoleRequest::all();
+        $users = User::all();
+        $roles = Role::all();
+
+        return view('roleRequest.index', compact('role_requests','roles','users'));
     }
 
     /**
