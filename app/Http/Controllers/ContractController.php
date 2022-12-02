@@ -101,11 +101,10 @@ class ContractController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateContractRequest  $request
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContractRequest $request, Contract $contract)
+    public function update(\Illuminate\Http\Request $request, Contract $contract)
     {
         $contract = Contract::find($request->id);
         $contract->update($request->all());
