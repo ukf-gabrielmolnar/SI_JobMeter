@@ -15,7 +15,7 @@ class RoleRequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('roleRequest.index');
     }
 
     /**

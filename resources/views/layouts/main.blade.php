@@ -54,7 +54,6 @@
                                 <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
                                 <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
                                 <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
-
                             </ul>
                         </li>
 
@@ -87,6 +86,12 @@
                                 <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
                             </ul>
                         </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/roleRequest" role="button">
+                            Role request
+                        </a>
+                    </li>
 
                     @if (auth()->user()->inRole('admin'))
                     @endif
