@@ -1,6 +1,9 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('ppp') || auth()->user()->inRole('dev'))
 
     <table class="table table-white table-hover">
         <thead>
@@ -59,4 +62,17 @@
         @endforeach
         </tbody>
     </table>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
+
 @endsection

@@ -1,6 +1,10 @@
 @extends ('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
+    @if (!(auth()->user()->inRole('ceo')))
+
     <div>
             <form action="{{ route('job.saveData') }}" method="post">
                @csrf
@@ -68,5 +72,17 @@
 
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection

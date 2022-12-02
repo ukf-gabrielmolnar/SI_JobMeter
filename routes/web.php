@@ -25,7 +25,7 @@ Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.a
 
 // ----------
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
-Route::get('userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
+Route::get('/userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
 Route::get('/userSettings' ,'App\Http\Controllers\UserController@profileSettings')->name('user.userSettings');
 Route::post('/userUpdate','App\Http\Controllers\UserController@update')->name('user.update');
 

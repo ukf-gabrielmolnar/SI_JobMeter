@@ -1,6 +1,10 @@
 @extends ('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('student'))
+
     <div class="feedback_design">
         <div style="width: 100%">
             <form method="post" action="{{ route('feedback.store') }}" >
@@ -58,5 +62,17 @@
 
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection
