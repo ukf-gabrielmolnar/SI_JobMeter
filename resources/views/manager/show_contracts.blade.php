@@ -57,31 +57,38 @@
                 <span class="close">&times;</span>
                 <h2 id="modal_header"></h2>
             </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Študent: </label>
-                    <label class="form-label" style="color:black" id="student_label"></label>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Pracovisko: </label>
-                    <label class="form-label" style="color:black" id="company_label"></label>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Pracovná pozícia: </label>
-                    <label class="form-label" style="color:black" id="job_label"></label>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Začiatok praxe: </label>
-                    <label class="form-label" style="color:black" id="od_label"></label>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Koniec praxe: </label>
-                    <label class="form-label" style="color:black" id="do_label"></label>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" style="color:black; font-weight: bold">Nadriadený: </label>
-                    <label class="form-label" style="color:black" id="contact_label"></label>
-                </div>
+            <div class="modal-body" style="padding-left: 12%;">
+                <table style="width:100%">
+                    <tr>
+                    <td><label class="form-label" style="color:black; font-weight: bold">Študent: </label></td>
+                    <td><label class="form-label" style="color:black" id="student_label"></label></td>
+                    </tr>
+
+                    <tr>
+                        <td><label class="form-label" style="color:black; font-weight: bold">Pracovisko: </label></td>
+                        <td><label class="form-label" style="color:black" id="company_label"></label></td>
+                    </tr>
+
+                    <tr>
+                        <td><label class="form-label" style="color:black; font-weight: bold">Pracovná pozícia: </label></td>
+                        <td><label class="form-label" style="color:black" id="job_label"></label></td>
+                    </tr>
+
+                    <tr>
+                        <td><label class="form-label" style="color:black; font-weight: bold">Začiatok praxe: </label></td>
+                        <td><label class="form-label" style="color:black" id="od_label"></label></td>
+                    </tr>
+
+                    <tr>
+                        <td><label class="form-label" style="color:black; font-weight: bold">Koniec praxe: </label></td>
+                        <td><label class="form-label" style="color:black" id="do_label"></label></td>
+                    </tr>
+
+                    <tr>
+                        <td><label class="form-label" style="color:black; font-weight: bold">Nadriadený: </label></td>
+                        <td><label class="form-label" style="color:black" id="contact_label"></label></td>
+                    </tr>
+                </table>
             </div>
         </div>
 

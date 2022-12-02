@@ -16,7 +16,7 @@ class LoginController extends Controller
         $data = $request->validated();
 
         if (auth()->attempt($data)) {
-            return redirect()->route('home');
+            return redirect()->route('dashboard.index');
         }
 
         return redirect()->route('login.login');
