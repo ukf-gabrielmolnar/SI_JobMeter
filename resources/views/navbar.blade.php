@@ -107,16 +107,6 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Grafy
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
-                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
-                            </ul>
-                        </li>
-
                     @endif
 
                     @if (auth()->user()->inRole('ppp'))
