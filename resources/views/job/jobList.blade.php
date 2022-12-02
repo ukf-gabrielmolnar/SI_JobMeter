@@ -1,6 +1,8 @@
 @extends ('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
     @if (!(auth()->user()->inRole('ceo')))
 
     <table>
@@ -30,12 +32,16 @@
         </tbody>
     </table>
 
-    @endif
-
-    @if (auth()->user()->inRole('ceo'))
+    @else
 
         @include('nopermission')
 
     @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection

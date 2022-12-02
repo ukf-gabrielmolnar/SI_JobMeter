@@ -14,10 +14,16 @@ class AddJobController extends Controller
 {
     public function index(){
         $study_programs = Study_program::all();
-        $year_id = Year::find(auth()->user()->years_id);
-        $SP_id = Study_program::find($year_id);
 
-        return view('job.jobAdd', compact('study_programs','SP_id'));
+        if (auth()->user()) {
+
+            $year_id = Year::find(auth()->user()->years_id);
+            $SP_id = Study_program::find($year_id);
+
+            return view('job.jobAdd', compact('study_programs', 'SP_id'));
+        }
+
+        return view('job.jobAdd');
     }
 
     public function saveData(StoreContractRequest $request){

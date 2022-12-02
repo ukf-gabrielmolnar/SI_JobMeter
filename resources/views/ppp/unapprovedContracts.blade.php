@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('ppp') || auth()->user()->inRole('dev'))
 
     <form method="get" action="{{ route('ppp.filterContracts') }}">
@@ -116,12 +118,16 @@
         </tbody>
     </table>
 
-    @endif
+    @else
 
-    @if (!(auth()->user()->inRole('admin')) || !(auth()->user()->inRole('ppp')) || !(auth()->user()->inRole('dev')))
-
-        <h1 style="text-align: center">You are not allowed to see this!</h1>
+        @include('nopermission')
 
     @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection

@@ -1,5 +1,4 @@
 @extends('layouts.mainLoginRegister')
-
 @section('content')
 
     <style>
@@ -94,6 +93,8 @@
 
     </style>
 
+    @if (!auth()->user())
+
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1">
         <form method="post" action="/register/user" class="box">
             <h1 class="h3 mb-3 fw-normal" style="padding: 5px">Registrácia</h1>
@@ -135,4 +136,11 @@
 
         </form>
     </main>
+
+    @else
+
+        <h1 style="text-align: center;">You are already logged in!</h1>
+
+    @endif
+
 @endsection

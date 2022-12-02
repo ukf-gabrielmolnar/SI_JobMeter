@@ -1,6 +1,6 @@
 @extends('layouts.mainLoginRegister')
-
 @section('content')
+
     <style>
         *{
             margin: 0px;
@@ -73,8 +73,9 @@
             }
         }
 
-
     </style>
+
+    @if (!auth()->user())
 
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1 main">
         <form method="post" action="/login" class="box">
@@ -98,4 +99,12 @@
         </form>
     </main>
 
+    @else
+
+        <h1 style="text-align: center;">You are already logged in!</h1>
+
+    @endif
+
 @endsection
+
+

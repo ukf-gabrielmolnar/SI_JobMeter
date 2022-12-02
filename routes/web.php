@@ -31,7 +31,7 @@ Route::get('/praxReg', 'App\Http\Controllers\DashboardController@praxRegistratio
 
 Route::resource('contract', \App\Http\Controllers\ContractController::class);
 
-Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
+//Route::get('/members', 'App\Http\Controllers\DashboardController@members')->name('members');
 
 Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adminView');
 //Route::get('/adminView', 'App\Http\Controllers\AdminController@destroy');

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
 
     <table class="table table-white table-hover">
@@ -144,12 +146,16 @@
         }
     </script>
 
-    @endif
-
-    @if (!(auth()->user()->inRole('admin')) || !(auth()->user()->inRole('manager')) || !(auth()->user()->inRole('dev')))
+    @else
 
         @include('nopermission')
 
     @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection
