@@ -78,44 +78,34 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
+                                <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                            </ul>
+                        </li>
+
+                    @if (auth()->user()->inRole('admin'))
+                    @endif
+
+                    @if (auth()->user()->inRole('student'))
+                    @endif
+
+                    @if (auth()->user()->inRole('manager'))
+                    @endif
+
+                    @if (auth()->user()->inRole('ppp'))
+                    @endif
+
+                    @if (auth()->user()->inRole('ceo'))
+                    @endif
+
+                    @if (auth()->user()->inRole('dev'))
+                    @endif
                     @endauth
-
-                    <?php if (auth()->user()?->inRole('admin')): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
-                            <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
-                        </ul>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('student')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/praxReg">Prax</a>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('manager')): ?>
-
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('ppp')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Praxy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Requesty</a>
-                    </li>
-                    <?php endif; ?>
-
-                    <?php if (auth()->user()?->inRole('ceo')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/rbac/users">RBAC</a>
-                    </li>
-                    <?php endif; ?>
 
                 </ul>
 
