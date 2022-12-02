@@ -1,6 +1,8 @@
 @extends ('layouts.main')
 @section('content')
 
+    @if (!(auth()->user()->inRole('ceo')))
+
     <table>
         <thead>
             <tr>
@@ -27,4 +29,13 @@
             @endforeach
         </tbody>
     </table>
+
+    @endif
+
+    @if (auth()->user()->inRole('ceo'))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
+
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.main')
-
 @section('content')
 
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('ppp') || auth()->user()->inRole('dev'))
 
     <form method="get" action="{{ route('ppp.filterContracts') }}">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -115,5 +115,13 @@
         @endforeach
         </tbody>
     </table>
+
+    @endif
+
+    @if (!(auth()->user()->inRole('admin')) || !(auth()->user()->inRole('ppp')) || !(auth()->user()->inRole('dev')))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
 
 @endsection

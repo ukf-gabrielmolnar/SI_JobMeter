@@ -1,6 +1,8 @@
 @extends ('layouts.main')
 @section('content')
 
+    @if (!(auth()->user()->inRole('ceo')))
+
     <div>
             <form action="{{ route('job.saveData') }}" method="post">
                @csrf
@@ -59,6 +61,15 @@
            </form>
 
     </div>
+
+    @endif
+
+    @if (auth()->user()->inRole('ceo'))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
+
 
     <script>
         window.onload = function (){

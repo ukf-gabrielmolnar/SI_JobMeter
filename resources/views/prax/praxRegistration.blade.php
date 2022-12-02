@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+
+    @if (auth()->user()->inRole('student'))
+
     @auth
     @if(auth()->user()->years_id == null)
         <h1> ide mar dizajnoltok vlm szepet :)</h1>
@@ -126,5 +129,13 @@
             });
         }
     </script>
+
+    @endif
+
+    @if (!auth()->user()->inRole('student'))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
 
 @endsection

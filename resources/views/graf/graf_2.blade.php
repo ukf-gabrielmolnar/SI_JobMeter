@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
+    @if (auth()->user()->inRole('admin'))
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -27,4 +28,13 @@
     <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
     </body>
+
+    @endif
+
+    @if (!(auth()->user()->inRole('admin')))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
+
 @endsection

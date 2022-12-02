@@ -1,6 +1,7 @@
 @extends('layouts.main')
-
 @section('content')
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('ppp') || auth()->user()->inRole('dev'))
 
     <table class="table table-white table-hover">
         <thead>
@@ -59,4 +60,13 @@
         @endforeach
         </tbody>
     </table>
+
+    @endif
+
+    @if (!(auth()->user()->inRole('admin')) || !(auth()->user()->inRole('ppp')) || !(auth()->user()->inRole('dev')))
+
+        <h1 style="text-align: center">You are not allowed to see this!</h1>
+
+    @endif
+
 @endsection
