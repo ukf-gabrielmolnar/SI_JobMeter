@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('content')
     @auth
+    @if(auth()->user()->years_id == null)
+        <h1> ide mar dizajnoltok vlm szepet :)</h1>
+        <a class="btn-danger" href="/userSettings"> GOMB Settingsre</a>
+    @else
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
@@ -43,6 +47,7 @@
         <br>
         <button id="submitButtonPrax" style="width: 100%" class="btn" type="submit">Submit</button>
     </form>
+    @endif
     @endauth
     <script>
 
@@ -59,6 +64,7 @@
 
 
         window.onload = function () {
+
             var companies = $('#companies');
             var data = @json($companies);
             $.each(data, function (index, company) {
