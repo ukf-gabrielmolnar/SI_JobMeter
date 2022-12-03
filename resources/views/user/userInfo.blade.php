@@ -11,6 +11,37 @@
 
         <div class="card-body">
             <ul class="list-group list-group-flush">
+
+                @if (auth()->user()->inRole('admin'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Admin</p>
+                    </li>
+                @elseif (auth()->user()->inRole('manager'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Manažér</p>
+                    </li>
+                @elseif (auth()->user()->inRole('ppp'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Poverený pracovník pracoviska FPVaI</p>
+                    </li>
+                @elseif (auth()->user()->inRole('student'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Student</p>
+                    </li>
+                @elseif (auth()->user()->inRole('ceo'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Ceo</p>
+                    </li>
+                @elseif (auth()->user()->inRole('dev'))
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Developer</p>
+                    </li>
+                @else
+                    <li class="list-group-item">
+                        <p><h6>Rola: </h6>Ešte nepriradená</p>
+                    </li>
+                @endif
+
                 <li class="list-group-item">
                     <p><h6>Firstname: </h6> <?= auth()->user()->firstname ?></p>
                 </li>
@@ -21,10 +52,10 @@
                     <p><h6>E-mail: </h6> <?= auth()->user()->email ?></p>
                 </li>
                 @if (auth()->user()->inRole('student'))
-                <li class="list-group-item">
-                    <input hidden name="year_id_hidden" id = "year_id_hidden" value="<?= auth()->user()->years_id?>">
-                    <p id="years_id_print" name="years_id_print"></p>
-                </li>
+                    <li class="list-group-item">
+                        <input hidden name="year_id_hidden" id = "year_id_hidden" value="<?= auth()->user()->years_id?>">
+                        <p id="years_id_print" name="years_id_print"></p>
+                    </li>
                 @elseif (auth()->user()->inRole('ceo'))
                     @foreach($company as $c)
                         @if ($c->id == auth()->user()->companies_id)
@@ -33,6 +64,24 @@
                             </li>
                         @endif
                     @endforeach
+                @elseif (auth()->user()->inRole('dev'))
+                    <li class="list-group-item">
+                        <input hidden name="year_id_hidden" id = "year_id_hidden" value="<?= auth()->user()->years_id?>">
+                        <p id="years_id_print" name="years_id_print"></p>
+                    </li>
+                    @if ((auth()->user()->companies_id === Null))
+                        <li class="list-group-item">
+                            <p><h6>Organizácia</h6>Not added yet</p>
+                        </li>
+                    @else
+                        @foreach($company as $c)
+                            @if ($c->id == auth()->user()->companies_id)
+                                <li class="list-group-item">
+                                    <p><h6>Organizácia</h6>{{$c->name}}</p>
+                                </li>
+                            @endif
+                        @endforeach
+                    @endif
                 @endif
             </ul>
         </div>
