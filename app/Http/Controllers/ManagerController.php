@@ -8,6 +8,7 @@ use App\Models\Contract;
 use App\Models\Job;
 use App\Models\Study_program;
 use App\Models\User;
+use App\Models\User_role;
 use App\Models\Year;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,8 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
+        $roles = User_role::all();
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies','roles'));
     }
 
 

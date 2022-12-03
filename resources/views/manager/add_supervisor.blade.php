@@ -39,12 +39,16 @@
                                 <option value="0" selected="selected" hidden>
                                     {{__('Vyberte nadriadeneho')}}
                                 </option>
-                                @foreach($users as $user)
-                                    <!-- ide jön az r(i)ba(n)c auth hogy csak azok legyenek ott akik tanarok -->
-                                    <option value="{{$user->id}}" id="ppp" name="ppp">
-                                        {{$user->firstname}}{{"  "}}{{$user->lastname}}
-                                    </option>
-
+                                @foreach($roles as $role)
+                                    @if($role->role_id === 3)
+                                        @foreach($users as $user)
+                                            @if($role->user_id === $user->id)
+                                                <option value="{{$user->id}}" id="ppp" name="ppp">
+                                                    {{$user->firstname}}{{"  "}}{{$user->lastname}}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 @endforeach
                             </select>
                             </td>
