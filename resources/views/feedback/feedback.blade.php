@@ -3,7 +3,7 @@
 
 @if (auth()->user())
 
-    @if (auth()->user()->inRole('student'))
+    @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
     <div class="feedback_design">
         <div style="width: 100%">

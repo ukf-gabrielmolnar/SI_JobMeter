@@ -158,6 +158,14 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
             'created_at' => now(),
         ]);
+        DB::table('users')->insert([
+            'firstname' => 'dev',
+            'lastname' => 'dev',
+            'email' => 'dev@dev.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
 
         DB::table('user_role')->insert([
             'user_id' => '2',
@@ -180,6 +188,12 @@ class DatabaseSeeder extends Seeder
         DB::table('user_role')->insert([
             'user_id' => '5',
             'role_id' => '5',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '6',
+            'role_id' => '6',
             'updated_at' => now(),
             'created_at' => now(),
         ]);

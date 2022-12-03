@@ -3,7 +3,7 @@
 
 @if (auth()->user())
 
-    @if (auth()->user()->inRole('student'))
+    @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
         @if(auth()->user()->years_id == null)
             <h1> ide mar dizajnoltok vlm szepet :)</h1>
