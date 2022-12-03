@@ -9,9 +9,9 @@
         </div>
     <div class="card text-center column profile-card" style="width: 20rem;">
         <div class="card-body">
-            @if (auth()->user()->inRole('student'))
+            @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
             <input hidden name="years_id_hidden" id = "years_id_hidden" value="<?=auth()->user()->years_id?>">
-            @elseif (auth()->user()->inRole('ceo'))
+            @elseif (auth()->user()->inRole('ceo') || auth()->user()->inRole('dev'))
             <input hidden name="companies_id_hidden" id = "companies_id_hidden" value="<?=auth()->user()->companies_id?>">
             @endif
             <form method="post" action="{{ route('user.update') }}">
@@ -30,13 +30,13 @@
                         <input type="email" value="<?= auth()->user()->email ?>" id="email" name="email">
                     </li>
 
-                    @if (auth()->user()->inRole('student'))
+                    @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
                         <li class="list-group-item">
                             <label for="years_id" class="form-label"><h6>Študijný program</h6></label>
                             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="years_id" name="years_id">
                             </select>
                         </li>
-                    @elseif (auth()->user()->inRole('ceo'))
+                    @elseif (auth()->user()->inRole('ceo') || auth()->user()->inRole('dev'))
                         <li class="list-group-item">
                             <label for="companies_id" class="form-label"><h6>Organizácia</h6></label>
                             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies_id" name="companies_id">
