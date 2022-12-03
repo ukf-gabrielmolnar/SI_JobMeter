@@ -5,7 +5,7 @@
 
     @if (!(auth()->user()->inRole('ceo')))
 
-    <table>
+    <table class="jobList">
         <thead>
             <tr>
                 <th scope="col">Company</th>
