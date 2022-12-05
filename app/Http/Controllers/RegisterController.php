@@ -22,9 +22,9 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
+
         $request_role = new RoleRequest();
         $request_role->users_id = $user->id;
-        $request_role->current_role = 4;
         $request_role->requested_role = $request->role_id;
         $request_role->approved = 0;
         $request_role->save();

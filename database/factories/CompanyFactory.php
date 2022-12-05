@@ -18,7 +18,8 @@ class CompanyFactory extends Factory
     {
         return [
             'name'=>$this->faker->company,
-            'address'=>$this->faker->address
+            'address'=>$this->faker->address,
+            'approved'=>'1'
         ];
     }
 }

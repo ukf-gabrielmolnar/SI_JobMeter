@@ -7,6 +7,7 @@ use App\Models\Contract;
 use App\Models\FeedbackReport;
 use App\Models\Job;
 use App\Models\Record;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Models\Company;
 use Illuminate\Http\Request;

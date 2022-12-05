@@ -22,7 +22,6 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('set null');
 
-            $table->bigInteger('current_role')->default(4);
             $table->bigInteger('requested_role');
             $table->boolean('approved')->nullable();
 

@@ -25,7 +25,7 @@ Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.a
 
 // ----------
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
-Route::get('userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
+Route::get('/userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
 Route::get('/userSettings' ,'App\Http\Controllers\UserController@profileSettings')->name('user.userSettings');
 Route::post('/userUpdate','App\Http\Controllers\UserController@update')->name('user.update');
 
@@ -49,6 +49,8 @@ Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')-
 Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
 
 Route::get('/addRecord', 'App\Http\Controllers\DashboardController@saveRecord')->name('dashboard.saveRecord');
+Route::get('/roleRequest', 'App\Http\Controllers\RoleRequestController@index')->name('role.index');
+Route::get('/roleApprove', 'App\Http\Controllers\RoleRequestController@update')->name('role.update');
 // ----------
 
 // ----------

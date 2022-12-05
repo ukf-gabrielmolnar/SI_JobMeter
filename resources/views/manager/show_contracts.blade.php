@@ -1,6 +1,10 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
+
     <table class="table table-white table-hover">
         <thead>
         <tr>
@@ -93,6 +97,7 @@
         </div>
 
     </div>
+
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
@@ -140,4 +145,17 @@
             modal.style.display = "none";
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
+
 @endsection

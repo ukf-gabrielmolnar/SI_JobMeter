@@ -251,6 +251,10 @@ textarea {
     background-color: #60a5b2;
 }
 
+.jobList {
+    width: 100%;
+}
+
 /* Responsivity */
 @media screen and (max-width: 800px) {
     .custom-select {

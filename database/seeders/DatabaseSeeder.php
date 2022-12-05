@@ -107,24 +107,135 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-       DB::table('users')->insert([
+
+        DB::table('companies')->insert([
+            'name' => 'Samsung',
+            'address' => '1332, Galatna',
+            'approved' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+
+        DB::table('users')->insert([
           'firstname' => 'admin',
            'lastname' => 'admin',
            'email' => 'admin@admin.com',
            'password' => bcrypt('admin1234'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'mng',
+            'lastname' => 'mng',
+            'email' => 'mng@mng.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'ppp',
+            'lastname' => 'ppp',
+            'email' => 'ppp@ppp.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'student',
+            'lastname' => 'student',
+            'email' => 'student@student.com',
+            'password' => bcrypt('123456789'),
+            'years_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'samsung',
+            'lastname' => 'ceo',
+            'email' => 'samsungceo@ceo.com',
+            'password' => bcrypt('123456789'),
+            'companies_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'firstname' => 'dev',
+            'lastname' => 'dev',
+            'email' => 'dev@dev.com',
+            'password' => bcrypt('123456789'),
+            'updated_at' => now(),
+            'created_at' => now(),
         ]);
 
+        DB::table('user_role')->insert([
+            'user_id' => '2',
+            'role_id' => '2',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '3',
+            'role_id' => '3',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '4',
+            'role_id' => '4',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '5',
+            'role_id' => '5',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => '6',
+            'role_id' => '6',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+
+        DB::table('jobs')->insert([
+            'job_type' => 'Wholesale Buyer',
+            'companies_id' => '1',
+            'study_programs_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('contacts')->insert([
+            'firstname' => 'Test',
+            'lastname' => 'Contact',
+            'email' => 'testcontact@gmail.com',
+            'tel' => '+421 923 456 798',
+            'companies_id' => '1',
+            'approved' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('contracts')->insert([
+            'users_id' => '4',
+            'jobs_id' => '1',
+            'ppp_id' => '3',
+            'contacts_id' => '1',
+            'od' => '2022-12-01',
+            'do' => '2023-12-01',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
 
 
         $this->call([
             CompanySeeder::class,
             ContactSeeder::class,
+            JobSeeder::class,
             //ContractSeeder::class,
             //FeedbackReportSeeder::class,
             //RecordSeeder::class,
             //StudentFeedbackSeeder::class,
             //StudyProgramSeeder::class,
-            JobSeeder::class,
             //UserSeeder::class,
             //YearSeeder::class,
         ]);
