@@ -45,7 +45,7 @@
                     @endif
                 </select>
             </div>
-            <button type="submit"> Použiť filtre </button>
+            <button type="submit" style="border-radius: 6px"> Použiť filtre </button>
         </div>
     </form>
 

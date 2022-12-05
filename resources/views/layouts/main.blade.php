@@ -13,7 +13,7 @@
 
     @include('navbar')
 
-    <div class="container blue customSelectContainer">
+    <div class="container blue customSelectContainer" style="padding-bottom: 250px">
         <div style="overflow-x:auto;">
             @yield('content')
         </div>
