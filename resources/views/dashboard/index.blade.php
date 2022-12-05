@@ -53,7 +53,7 @@
                                                             <input hidden value="<?php echo date('Y-m-d');?>" id="date" name="date">
 
                                                             <h5>Hodiny</h5>
-                                                            <select id="hours" name="hours">
+                                                            <select id="hours" name="hours" style="border-radius: 3px; border-color: #41565b; width: 60px; height: 25px">
                                                                     <?php
                                                                 for ($i=1; $i<=12; $i ++)
                                                                 {
