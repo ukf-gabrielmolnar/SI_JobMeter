@@ -9,6 +9,7 @@ use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
 use App\Models\FeedbackReport;
 use App\Models\Job;
+use App\Models\Record;
 use App\Models\Study_program;
 use App\Models\User;
 use App\Models\Year;
@@ -66,8 +67,13 @@ class ContractController extends Controller
 
         $popupMessage = "successPraxReg";
 
-        //return redirect()->route('home');
-        return view('dashboard.index', compact('popupMessage'));
+        $jobs = Job::all();
+        $companies = Company::all();
+        $contracts = Contract::all();
+        $feedbackReports = FeedbackReport::all();
+        $records = Record::all();
+
+        return view('dashboard.index', compact('popupMessage', 'jobs', 'companies', 'contracts','feedbackReports','records'));
     }
 
     /**
@@ -95,11 +101,10 @@ class ContractController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateContractRequest  $request
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContractRequest $request, Contract $contract)
+    public function update(\Illuminate\Http\Request $request, Contract $contract)
     {
         $contract = Contract::find($request->id);
         $contract->update($request->all());

@@ -95,6 +95,8 @@
                 <td>
                     <form method="get" action="{{ route('ppp.approveContracts') }}">
                         <input hidden id="id" name="id" value="{{ $contract->id }}">
+                        <input hidden id="filter1" name="filter1" value="{{ $filter1}}">
+                        <input hidden id="filter2" name="filter2" value="{{ $filter2 }}">
                     @csrf
                     @if($contract->closed == null)
                         <button class="btn btn-sm btn-outline-danger" type="submit">Nie</button>

@@ -10,8 +10,9 @@ class Record extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'subject',
-        'text',
+        'date',
+        'hours',
+        'approved',
         'contracts_id',
     ];
 
