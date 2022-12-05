@@ -9,10 +9,10 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">email</th>
-            <th scope="col">tel</th>
+            <th scope="col">Meno</th>
+            <th scope="col">Priezvisko</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Telefónne číslo</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
                         @csrf
                         @method('delete')
                         <button type="submit" class="delete-button">
-                            Delete
+                            Zmazať
                         </button>
                     </form>
                 </td>
@@ -45,7 +45,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 

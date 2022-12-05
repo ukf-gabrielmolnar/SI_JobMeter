@@ -6,14 +6,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <h1> Aktivna prava </h1>
+    <div style="background-color: #e0eaec; padding: 20px">
+    <h1> Aktívna práca </h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Nazov pracoviska</th>
-            <th scope="col">Nazov prace</th>
-            <th scope="col">Pridat zaznam</th>
+            <th scope="col">Názov pracoviska</th>
+            <th scope="col">Názov práce</th>
+            <th scope="col">Pridať záznam</th>
         </tr>
         </thead>
         <tbody>
@@ -85,18 +86,21 @@
             <!---------------------------->
         </tbody>
     </table>
+    </div>
 
+<br><br>
 
-    <h1> Archivovane prace </h1>
+    <div style="background-color: #e0eaec; padding: 20px">
+    <h1> Archivované práce </h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Nazov pracoviska</th>
-            <th scope="col">Nazov prace</th>
-            <th scope="col">Datum</th>
+            <th scope="col">Názov pracoviska</th>
+            <th scope="col">Názov práce</th>
+            <th scope="col">Dátum</th>
             <th scope="col">Hodnotenie</th>
-            <th scope="col">Pracovne hodiny</th>
+            <th scope="col">Pracovné hodiny</th>
             <th scope="col">Certifikát</th>
         </tr>
         </thead>
@@ -161,6 +165,7 @@
             <!---------------------------->
         </tbody>
     </table>
+        </div>
     @endauth
 
 

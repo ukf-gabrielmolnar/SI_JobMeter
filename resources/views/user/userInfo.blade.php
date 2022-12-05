@@ -26,7 +26,7 @@
                     </li>
                 @elseif (auth()->user()->inRole('student'))
                     <li class="list-group-item">
-                        <p><h6>Rola: </h6>Student</p>
+                        <p><h6>Rola: </h6>Študent</p>
                     </li>
                 @elseif (auth()->user()->inRole('ceo'))
                     <li class="list-group-item">
@@ -34,7 +34,7 @@
                     </li>
                 @elseif (auth()->user()->inRole('dev'))
                     <li class="list-group-item">
-                        <p><h6>Rola: </h6>Developer</p>
+                        <p><h6>Rola: </h6>Vývojár</p>
                     </li>
                 @else
                     <li class="list-group-item">
@@ -43,10 +43,10 @@
                 @endif
 
                 <li class="list-group-item">
-                    <p><h6>Firstname: </h6> <?= auth()->user()->firstname ?></p>
+                    <p><h6>Meno: </h6> <?= auth()->user()->firstname ?></p>
                 </li>
                 <li class="list-group-item">
-                    <p><h6>Lastname: </h6> <?= auth()->user()->lastname ?></p>
+                    <p><h6>Priezvisko: </h6> <?= auth()->user()->lastname ?></p>
                 </li>
                 <li class="list-group-item">
                     <p><h6>E-mail: </h6> <?= auth()->user()->email ?></p>
@@ -71,7 +71,7 @@
                     </li>
                     @if ((auth()->user()->companies_id === Null))
                         <li class="list-group-item">
-                            <p><h6>Organizácia</h6>Not added yet</p>
+                            <p><h6>Organizácia</h6>Zatiaľ nepridaná</p>
                         </li>
                     @else
                         @foreach($company as $c)
@@ -114,17 +114,17 @@
                 });
 
                 var text = year_SP.year + " " + SP.study_program;
-                SP_print.innerHTML =  '<p><h6>Study plan</h6>' + text + '</p>';
+                SP_print.innerHTML =  '<p><h6>Študijný program</h6>' + text + '</p>';
             }
             else {
-                SP_print.innerHTML =  '<p><h6>Study plan</h6> Not added yet </p>';
+                SP_print.innerHTML =  '<p><h6>Študijný program</h6> Zatiaľ nepridaný </p>';
             }
         }
     </script>
 
     @else
 
-        <h1 style="text-align: center;">You are not logged in!</h1>
+        <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
     @endif
 

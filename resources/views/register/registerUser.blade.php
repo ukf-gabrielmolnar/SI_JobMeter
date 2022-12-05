@@ -139,7 +139,7 @@
 
     @else
 
-        <h1 style="text-align: center; padding-top: 120px">You are already logged in!</h1>
+        <h1 style="text-align: center; padding-top: 120px">Nie ste prihlásený!</h1>
 
     @endif
 

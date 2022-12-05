@@ -7,7 +7,7 @@
 
         @if(auth()->user()->years_id == null)
             <div class="alert alert-warning" role="alert">
-                Zadaj študijný program v nastaveniách!
+                Zadajte študijný program v nastaveniách!
             </div>
             <a class="btn btn-secondary  btn-lg active" style="border-radius: 4px" href="/userSettings">Nastavenie profilu</a>
         @else
@@ -20,19 +20,19 @@
         <div class="h6" id="companyform">
             <label for="companies" class="form-label">Firma</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies" name="companies" required>
-                <option value="" selected disabled hidden>Choose here</option>
+                <option value="" selected disabled hidden>Vyberte možnosť</option>
             </select>
         </div>
 
         <div class="h6" id="jobform">
             <label for="jobs_id" class="form-label">Job</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="jobs_id" name="jobs_id" required>
-                <option value="" selected disabled hidden>Choose here</option>
+                <option value="" selected disabled hidden>Vyberte možnosť</option>
             </select>
         </div>
 
         <div class="h6" id="contactform">
-            <label for="contacts_id" class="form-label">Contact</label>
+            <label for="contacts_id" class="form-label">Kontakt</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
@@ -141,7 +141,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 

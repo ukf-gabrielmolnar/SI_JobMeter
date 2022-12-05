@@ -8,9 +8,9 @@
     <table class="jobList">
         <thead>
             <tr>
-                <th scope="col">Company</th>
-                <th scope="col">Job</th>
-                <th scope="col">Study program</th>
+                <th scope="col">Firma</th>
+                <th scope="col">Práca</th>
+                <th scope="col">Študijný program</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 
