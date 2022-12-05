@@ -8,6 +8,8 @@ use App\Http\Requests\StoreFeedbackReportRequest;
 use App\Http\Requests\UpdateFeedbackReportRequest;
 use App\Models\Job;
 use App\Models\User;
+use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class FeedbackReportController extends Controller
 {
@@ -40,10 +42,10 @@ class FeedbackReportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFeedbackReportRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFeedbackReportRequest $request)
+    public function store(Request $request)
     {
         $feedbackReport = new FeedbackReport();
 

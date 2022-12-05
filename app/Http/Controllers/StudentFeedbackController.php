@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contract;
+use App\Models\FeedbackReport;
 use App\Models\Job;
+use App\Models\Record;
 use App\Models\Student_feedback;
 use App\Http\Requests\StoreStudent_feedbackRequest;
 use App\Http\Requests\UpdateStudent_feedbackRequest;
@@ -45,8 +48,13 @@ class StudentFeedbackController extends Controller
 
         $popupMessage = "successStudentFeedback";
 
-        //return redirect()->route('dashboard.index');
-        return view('dashboard.index', compact('popupMessage'));
+        $jobs = Job::all();
+        $companies = Company::all();
+        $contracts = Contract::all();
+        $feedbackReports = FeedbackReport::all();
+        $records = Record::all();
+
+        return view('dashboard.index', compact('popupMessage', 'jobs', 'companies', 'contracts','feedbackReports','records'));
     }
 
     /**

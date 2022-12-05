@@ -1,10 +1,16 @@
 @extends('layouts.main')
 @section('content')
-    @auth
-    @if(auth()->user()->years_id == null)
-        <h1> ide mar dizajnoltok vlm szepet :)</h1>
-        <a class="btn-danger" href="/userSettings"> GOMB Settingsre</a>
-    @else
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
+
+        @if(auth()->user()->years_id == null)
+            <div class="alert alert-warning" role="alert">
+                Zadaj študijný program v nastaveniách!
+            </div>
+            <a class="btn btn-secondary  btn-lg active" style="border-radius: 4px" href="/userSettings">Nastavenie profilu</a>
+        @else
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
@@ -48,7 +54,7 @@
         <button id="submitButtonPrax" style="width: 100%" class="btn" type="submit">Submit</button>
     </form>
     @endif
-    @endauth
+
     <script>
 
         var fades = [true,true,true];
@@ -126,5 +132,17 @@
             });
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection
