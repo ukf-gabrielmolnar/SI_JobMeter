@@ -81,7 +81,7 @@
                                                         <label for="companies" class="form-label">Predmet</label>
                                                         <select class="form-select form-select-lg mb-3 text-dark custom-select" id="subject" name="subject" required>
                                                             <option value="" selected disabled hidden>Vyber možnosť</option>
-                                                            <option value="Kommentar"> Kommentár </option>
+                                                            <option value="Kommentar"> Komentár </option>
                                                             <option value="Hodnotenie"> Hodnotenie </option>
                                                         </select>
 

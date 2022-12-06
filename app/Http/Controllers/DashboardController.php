@@ -8,7 +8,6 @@ use App\Models\FeedbackReport;
 use App\Models\Job;
 use App\Models\Record;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -22,8 +21,10 @@ class DashboardController extends Controller
         $contracts = Contract::all();
         $feedbackReports = FeedbackReport::all();
         $records = Record::all();
+        $users = User::all();
 
-        return view('dashboard.index', compact('popupMessage', 'jobs', 'companies', 'contracts','feedbackReports','records'));
+        return view('dashboard.index', compact('popupMessage', 'jobs', 'companies',
+            'contracts','feedbackReports','records','users'));
     }
 
     public function praxRegistration(){
