@@ -32,5 +32,5 @@ USER www-data
 
 # run startup.sh
 
-#ENTRYPOINT ["sh", "./docker/app/startup.sh"]
+ENTRYPOINT ["sh", "./docker/app/startup.sh"]
 
