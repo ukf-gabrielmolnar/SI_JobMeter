@@ -24,7 +24,7 @@
 
         {{ route('majd ha marknak kesz') }}
 
-    @elseif (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
+    @elseif (auth()->user()->inRole('user') || auth()->user()->inRole('dev'))
 
         <div style="background-color: #e0eaec; padding: 20px">
         <h1> Aktívna práca </h1>
@@ -190,6 +190,8 @@
             <!---------------------------->
         </tbody>
     </table>
+        </div>
+        @endif
     @endauth
 
 
