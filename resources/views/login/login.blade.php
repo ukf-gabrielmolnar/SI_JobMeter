@@ -92,7 +92,7 @@
 
             <div class="checkbox mb-3">
                 <label style="color: white">
-                    <input style="width: 20px; height: auto" type="checkbox" value="remember-me"> Remember me
+                    <input style="width: 20px; height: auto" type="checkbox" value="remember-me">Zapamätať si ma
                 </label>
             </div>
             <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Prihlásiť</button>
@@ -101,7 +101,7 @@
 
     @else
 
-        <h1 style="text-align: center; padding-top: 120px">You are already logged in!</h1>
+        <h1 style="text-align: center; padding-top: 120px">Už ste prihlásený!</h1>
 
     @endif
 

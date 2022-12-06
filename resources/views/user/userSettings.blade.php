@@ -19,11 +19,11 @@
                 @csrf
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <h6>Firstname: </h6>
+                        <h6>Meno: </h6>
                         <input type="text" value="<?= auth()->user()->firstname ?>" id="firstname" name="firstname">
                     </li>
                     <li class="list-group-item">
-                        <h6>Lastname: </h6>
+                        <h6>Priezvisko: </h6>
                         <input type="text" value="<?= auth()->user()->lastname ?>" id="lastname" name="lastname">
                     </li>
                     <li class="list-group-item">
@@ -47,7 +47,7 @@
                     @endif
 
                 </ul>
-                <button id="submitButtonPrax" class="btn text-white" type="submit">Submit</button>
+                <button id="submitButtonPrax" class="btn text-white" type="submit">Uložiť</button>
             </form>
         </div>
     </div>
@@ -89,7 +89,7 @@
 
     @else
 
-        <h1 style="text-align: center;">You are not logged in!</h1>
+        <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
     @endif
 

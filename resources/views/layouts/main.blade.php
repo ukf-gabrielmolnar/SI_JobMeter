@@ -14,7 +14,7 @@
     
     @include('navbar')
 
-    <div class="container blue customSelectContainer">
+    <div class="container blue customSelectContainer" style="padding-bottom: 250px">
         <div style="overflow-x:auto;">
             @yield('content')
         </div>
@@ -44,7 +44,7 @@
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -24px; margin-right: -24px;">
-                © 2022 Copyright: <a style="color: #000000">Traditional Hungarian Devteam</a>
+                © 2022 Copyright: <a style="color: #86f4ff">Traditional Hungarian Devteam</a>
             </div>
             <!-- Copyright -->
         </footer>

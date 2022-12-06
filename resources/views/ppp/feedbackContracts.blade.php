@@ -13,13 +13,13 @@
     <table class="table table-white table-hover">
         <thead>
         <tr>
-            <th scope="col">Student</th>
-            <th scope="col">Prace</th>
+            <th scope="col">Študent</th>
+            <th scope="col">Práce</th>
             <th scope="col">od</th>
             <th scope="col">do</th>
-            <th scope="col">Potvrdene</th>
-            <th scope="col">Ukoncene</th>
-            <th scope="col">Add feedback</th>
+            <th scope="col">Potvrdené</th>
+            <th scope="col">Ukončené</th>
+            <th scope="col">Pridať spätnú väzbu</th>
         </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@
                                     </td>
                                     <td>
                                         <input hidden value="{{ $contract->id }}"  id="contracts_id_modal" name="contracts_id_modal">
-                                        <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackForm{{$contract->id}}" onclick="fillData()">Add feedback</button>
+                                        <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackForm{{$contract->id}}" onclick="fillData()">Pridať spätnú väzbu</button>
                                     </td>
 
                                     <div class="modal fade" id="feedbackForm{{$contract->id}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,10 +78,10 @@
                                                         <p>{{ $job->job_type }}</p>
 
                                                         <br>
-                                                        <label for="companies" class="form-label">Subject</label>
+                                                        <label for="companies" class="form-label">Predmet</label>
                                                         <select class="form-select form-select-lg mb-3 text-dark custom-select" id="subject" name="subject" required>
-                                                            <option value="" selected disabled hidden>Choose here</option>
-                                                            <option value="Kommentar"> Kommentar </option>
+                                                            <option value="" selected disabled hidden>Vyber možnosť</option>
+                                                            <option value="Kommentar"> Kommentár </option>
                                                             <option value="Hodnotenie"> Hodnotenie </option>
                                                         </select>
 
@@ -90,7 +90,7 @@
 
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        <button type="submit" class="btn btn-primary">Uložiť zmeny</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -144,7 +144,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 
