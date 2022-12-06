@@ -113,81 +113,84 @@
         <div style="background-color: #e0eaec; padding: 20px">
         <h1> Archivované práce </h1>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Názov pracoviska</th>
-                <th scope="col">Názov práce</th>
-                <th scope="col">Dátum</th>
-                <th scope="col">Hodnotenie</th>
-                <th scope="col">Pracovné hodiny</th>
-                <th scope="col">Certifikát</th>
-            </tr>
-            </thead>
-            <tbody>
-                <!----------Contract---------->
-                @foreach($contracts as $contract)
-                    <tr>
-                    @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
-                        <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
-                        <!----------Job---------->
-                        @foreach($jobs as $job)
-                            @if($job->id == $contract->jobs_id)
-                                <!----------Company---------->
-                                @foreach($companies as $company)
-                                    @if($company->id == $job->companies_id)
-                                        <td>
-                                            {{$company->name}}
-                                        </td>
-                                    @endif
-                                @endforeach
-                                <!--------------------------->
-                                <td>
-                                    {{$job->job_type}}
-                                </td>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nazov pracoviska</th>
+            <th scope="col">Nazov prace</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Hodnotenie</th>
+            <th scope="col">Pracovne hodiny</th>
+            <th scope="col">Certifikát</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!----------Contract---------->
+            @foreach($contracts as $contract)
+                <tr>
+                @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                    <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
+                    <!----------Job---------->
+                    @foreach($jobs as $job)
+                        @if($job->id == $contract->jobs_id)
+                            <!----------Company---------->
+                            @foreach($companies as $company)
+                                @if($company->id == $job->companies_id)
+                                    <td>
+                                        {{$company->name}}
+                                    </td>
+                                @endif
+                            @endforeach
+                            <!--------------------------->
+                            <td>
+                                {{$job->job_type}}
+                            </td>
+                        @endif
+                    @endforeach
+                    <!----------------------->
+                    <td>
+                        {{ $contract->do }}
+                    </td>
+                    <td>
+                        @foreach($feedbackReports as $feedback)
+                            @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
+                                @if($feedback->subject == "Hodnotenie")
+                                    {{ $feedback->text }}
+                                @endif
                             @endif
                         @endforeach
-                        <!----------------------->
-                        <td>
-                            {{ $contract->do }}
-                        </td>
-                        <td>
-                            @foreach($feedbackReports as $feedback)
-                                @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
-                                    @if($feedback->subject == "Hodnotenie")
-                                        {{ $feedback->text }}
-                                    @endif
-                                @endif
-                            @endforeach
-                        </td>
-                        <td>
-                            @php
-                                $h = 0  ;
-                            @endphp
-                            @foreach($records as $record)
-                                @if($record->contracts_id == $contract->id)
-                                    @php
-                                        $h += $record->hours;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @php
-                                echo $h;
-                            @endphp
-                        </td>
+                    </td>
+                    <td>
+                        @php
+                            $h = 0  ;
+                        @endphp
+                        @foreach($records as $record)
+                            @if($record->contracts_id == $contract->id)
+                                @php
+                                    $h += $record->hours;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @php
+                            echo $h;
+                        @endphp
+                    </td>
 
-                        <td>
-                            <button class="btn btn-sm btn-outline-warning" type="button">Stiahnut certifikat</button>
-                        </td>
-                    @endif
-                    </tr>
-                @endforeach
-                <!---------------------------->
-            </tbody>
-        </table>
-            </div>
-            @endif
-        @endauth
+                    <td>
+                        <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
+                            <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
+                            <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
+                            <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                        </form>
+                    </td>
+                @endif
+                </tr>
+            @endforeach
+            <!---------------------------->
+        </tbody>
+    </table>
+    @endauth
 
 
 
