@@ -28,7 +28,6 @@
                         @foreach($jobs as $job)
                             @if($contract->jobs_id === $job->id)
                                 <td>{{$job->job_type}}</td>
-                                <input hidden value="{{ $job->job_type }}" id="job_type" name="job_type">
                             @endif
                         @endforeach
                         <td>{{$contract->od}}</td>

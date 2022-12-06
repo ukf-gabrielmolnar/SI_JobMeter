@@ -143,13 +143,16 @@ class ContractController extends Controller
         $company = Company::find($job->companies_id);
         $contact = Contact::find($contract->contacts_id);
         $feedbackR = FeedbackReport::all();
-        //$pdf = PDF::loadView('ppp.archivePDFView');
-        //return $pdf->download('archive.pdf');
+        $records = Record::all();
+
         if($request->show_form == "pdf"){
-            $pdf = PDF::loadView('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+            $pdf = PDF::loadView('ppp.archivePDFView', compact('contract',
+                'user','ppp','year','sp','job','company','contact','feedbackR','records'));
+
             return $pdf->download($user->firstname."_". $user->lastname."_archive.pdf");
         }else{
-            return view('ppp.archivePDFView', compact('contract','user','ppp','year','sp','job','company','contact','feedbackR'));
+            return view('ppp.archivePDFView', compact('contract',
+                'user','ppp','year','sp','job','company','contact','feedbackR','records'));
         }
     }
 

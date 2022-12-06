@@ -138,7 +138,7 @@
                     </td>
                     <td>
                         @php
-                            $h = 0  ;
+                            $h = 0;
                         @endphp
                         @foreach($records as $record)
                             @if($record->contracts_id == $contract->id)
@@ -153,7 +153,12 @@
                     </td>
 
                     <td>
-                        <button class="btn btn-sm btn-outline-warning" type="button">Stiahnut certifikat</button>
+                        <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
+                            <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
+                            <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
+                            <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                        </form>
                     </td>
                 @endif
                 </tr>
