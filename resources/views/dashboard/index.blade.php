@@ -70,7 +70,7 @@
 
                                                                 <h5>Datum</h5>
                                                                 <p><?php echo date('Y-m-d');?></p>
-                                                                <input hidden value="<?php echo date('Y-m-d');?>" id="date" name="date">
+                                                                <input type="date" id="date" name="date" value='<?php echo date('Y-m-d');?>'>
 
                                                                 <h5>Hodiny</h5>
                                                                 <select id="hours" name="hours" style="border-radius: 3px; border-color: #41565b; width: 60px; height: 25px">
