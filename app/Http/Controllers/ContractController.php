@@ -117,12 +117,12 @@ class ContractController extends Controller
         $contract->ppp_id = $request->ppp_id;
         $contract->save();
 
-
+        $roles = User_role::all();
         $jobs = Job::all();
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        return view('manager.add_supervisor', compact('jobs','users','contracts','companies'));
+        return view('manager.add_supervisor', compact('jobs','users','contracts','companies','roles'));
     }
 
     /**
