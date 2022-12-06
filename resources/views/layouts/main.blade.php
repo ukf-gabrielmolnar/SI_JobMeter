@@ -11,7 +11,7 @@
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    
+
     @include('navbar')
 
     <div class="container blue customSelectContainer" style="padding-bottom: 250px">
@@ -29,12 +29,33 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-lg-6 col-md-12 ">
-                        <h5 class="text-uppercase">Footer text</h5>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                            molestias.
+                        <h5 class="text-uppercase">JobMeter</h5>
+                        <p>Naša webová aplikácia bola vytvorená pre evidovanie študentskej praxi.
                         </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12 ">
+                        <h5 class="text-uppercase">Univerzita Konštantína Filozofa v Nitre</h5>
+                        <table>
+                            <tr>
+                        <td style="width:40%"><a href="https://www.ukf.sk/" target="_blank"> <img src="/css/UKF-logo.png" alt="UKF Logo" width="100px"></a></td>
+                                <td>
+                                    <table style="color: white; width: 110%">
+                                        <tr>
+                                            <td>Adresa:</td>
+                                            <td><a class="nav-link" style="font-size: 16px" href="https://goo.gl/maps/e35SDKre1rwnZmrj7" target="_blank"> Tr. A. Hlinku 1, 949 01 Nitra</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tel. číslo:</td>
+                                            <td><a class="nav-link" style="font-size: 16px" href="tel:+421 37 6408 111">+421 37 6408 111</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>E-mail:</td>
+                                            <td><a class="nav-link" style="font-size: 16px" href="mailto:ukf@ukf.sk">ukf@ukf.sk</a></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <!--Grid column-->
                 </div>
