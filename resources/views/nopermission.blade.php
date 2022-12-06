@@ -1,2 +1,4 @@
-<h1 style="text-align: center">You are not allowed to see this!</h1>
+<div class="alert alert-danger" role="alert">
+    Nemáte na to oprávnenie!
+</div>
 
