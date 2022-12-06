@@ -29,6 +29,7 @@ return new class extends Migration
                 ->on('study_programs')
                 ->onDelete('set null');
 
+            $table->boolean('approved')->default(true);
             $table->timestamps();
         });
     }
