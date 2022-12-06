@@ -1,7 +1,11 @@
 @extends ('layouts.main')
 @section('content')
 
-    <table>
+@if (auth()->user())
+
+    @if (!(auth()->user()->inRole('ceo')))
+
+    <table class="jobList">
         <thead>
             <tr>
                 <th scope="col">Company</th>
@@ -27,4 +31,17 @@
             @endforeach
         </tbody>
     </table>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
+
 @endsection

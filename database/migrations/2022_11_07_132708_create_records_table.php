@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->string('subject');
-            $table->longText('text');
 
             $table->unsignedBigInteger('contracts_id')->nullable();
             $table->foreign('contracts_id')
                 ->references('id')
                 ->on('contracts')
                 ->onDelete('set null');
+
+            $table->date('date');
+            $table->integer('hours');
+
+            $table->boolean('approved')->nullable();
 
             $table->timestamps();
         });

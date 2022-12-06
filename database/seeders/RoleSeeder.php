@@ -71,10 +71,23 @@ class RoleSeeder extends Seeder
 
         $this->createRecord(
             Role::CEO_ROLE,
-            'Simple user',
+            'Ceo',
             [
                 $viewPermissionId,
                 $updatePermissionId
+            ]
+        );
+
+        $this->createRecord(
+            Role::DEV_ROLE,
+            'Developer',
+            [
+                $totalPermissionId,
+                $viewPermissionId,
+                $createPermissionId,
+                $updatePermissionId,
+                $deletePermissionId,
+                $publishPermissionId
             ]
         );
     }

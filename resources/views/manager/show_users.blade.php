@@ -1,6 +1,10 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
+
     <div class="row mb-3">
         <div class="col-md-6">
             <select class="form-select form-select-lg mb-3" id="study_id" name="study_id">
@@ -173,8 +177,18 @@
 
         })
 
-
-
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">You are not logged in!</h1>
+
+@endif
 
 @endsection
