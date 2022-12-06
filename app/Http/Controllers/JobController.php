@@ -8,6 +8,8 @@ use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Study_program;
+use Illuminate\Http\Request;
+
 
 class JobController extends Controller
 {
@@ -23,6 +25,13 @@ class JobController extends Controller
         $study_programs = Study_program::all();
 
         return view('job.jobList', compact('jobs','companies','study_programs'));
+    }
+
+    public function adminView(){
+        $companies = Company::all();
+        $jobs = Job::all();
+        $sps = Study_program::all();
+        return view('admin.adminViewJobs',compact('companies','jobs','sps'));
     }
 
     /**
@@ -63,9 +72,25 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Request $request)
     {
-        //
+        $job = Job::find($request->job_id);
+        if($request->action == 1){
+
+            $job->approved = $request->approved;
+        }else{
+            $job->job_type = $request->job_type;
+            $job->companies_id = $request->companies_id;
+            $job->study_programs_id = $request->study_programs_id;
+
+
+
+        }
+        $job->save();
+        $companies = Company::all();
+        $jobs = Job::all();
+        $sps = Study_program::all();
+        return view('admin.adminViewJobs',compact('companies','jobs','sps'));
     }
 
     /**
@@ -86,8 +111,10 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Request $request)
     {
-        //
+        $job = Job::find($request->id);
+        $job->delete();
+        return redirect()->route('adminViewJobs');
     }
 }
