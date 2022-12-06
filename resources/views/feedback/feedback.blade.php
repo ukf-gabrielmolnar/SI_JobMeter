@@ -34,7 +34,7 @@
 
 
                 </ul>
-                <button id="buttonform" class="feedback_send_button"  type="submit"> Send </button>
+                <button id="buttonform" class="feedback_send_button"  type="submit"> Odoslať </button>
             </form>
 
         </div>
