@@ -11,7 +11,7 @@
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    
+
     @include('navbar')
 
     <div class="container blue customSelectContainer" style="padding-bottom: 250px">
@@ -20,35 +20,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="container-fluid container bg-dark">
-        <footer class="bg-dark text-center text-lg-start text-white container">
-            <!-- Grid container -->
-            <div class="container p-4">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-6 col-md-12 ">
-                        <h5 class="text-uppercase">Footer text</h5>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                            molestias.
-                        </p>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-            </div>
-            <!-- Grid container -->
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -24px; margin-right: -24px;">
-                © 2022 Copyright: <a style="color: #86f4ff">Traditional Hungarian Devteam</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-    </div>
+@include('footer')
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>

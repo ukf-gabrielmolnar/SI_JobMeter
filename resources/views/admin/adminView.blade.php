@@ -3,7 +3,7 @@
 
 @if (auth()->user())
 
-    @if (auth()->user()->inRole('admin'))
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
 
     <table class="table">
         <thead>
