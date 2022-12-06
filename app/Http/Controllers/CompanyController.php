@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use App\Models\Job;
+use App\Models\Study_program;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -15,7 +19,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-
+        $companies = Company::all();
+        $jobs = Job::all();
+        $sps = Study_program::all();
+        return view('admin.adminViewCompanies',compact('companies','jobs','sps'));
     }
 
     /**
@@ -56,9 +63,25 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Request $request)
     {
-        //
+        $company = Company::find($request->company_id);
+        if($request->action == 1){
+
+            $company->approved = $request->approved;
+        }else{
+            $company->name = $request->name;
+            $company->address = $request->address;
+
+
+
+        }
+        $company->save();
+        $companies = Company::all();
+        $jobs = Job::all();
+        $sps = Study_program::all();
+        return view('admin.adminViewCompanies',compact('companies','jobs','sps'));
+
     }
 
     /**
@@ -79,8 +102,12 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Request $request)
     {
-        //
+        DB::table('jobs')->where('companies_id', $request->id)->delete();
+        $company = Company::find($request->id);
+        $company->delete();
+
+        return redirect()->route('adminViewCompanies');
     }
 }

@@ -77,6 +77,9 @@
                                 <li><a class="dropdown-item" href="/rbac/users">Používatelia</a></li>
                                 <li><a class="dropdown-item" href="/rbac/roles">Role</a></li>
                                 <li><a class="dropdown-item" href="/adminView">Zobraziť používateľov</a></li>
+                                <li><a class="dropdown-item" href="/adminViewCompanies">Show Companies</a></li>
+                                <li><a class="dropdown-item" href="/jobIndex">Show Jobs</a></li>
+                                <li><a class="dropdown-item" href="/contactView">Show ContactPersons</a></li>
                             </ul>
                         </li>
 
