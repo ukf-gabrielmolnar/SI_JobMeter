@@ -39,7 +39,8 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        return view('manager.show_contracts', compact('jobs','users','contracts','companies'));
+        $roles = User_role::all();
+        return view('manager.show_contracts', compact('jobs','users','contracts','companies','roles'));
     }
 
     public function showcertificates(){

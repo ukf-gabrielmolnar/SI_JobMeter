@@ -77,7 +77,8 @@
             @endif
         @endforeach
         </tbody>
-    </table><script src="/vendor/jquery/jquery.min.js"></script>
+    </table>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
 
