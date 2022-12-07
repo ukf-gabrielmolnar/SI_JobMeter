@@ -57,7 +57,7 @@
 <td>Odbor: </td><td>{{ $year->year." ".$sp->study_program }}</td>
     </tr>
     <tr>
-<td>Nadriadená osoba:</td><td> {{ $ppp->firstname." ".$ppp->lastname }}, email: {{ $ppp->email }}</td>
+<td>Nadriadená osoba:</td><td> Meno a priezvisko: 	&nbsp;	&nbsp;{{ $ppp->firstname." ".$ppp->lastname }}<br> E-mail: 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $ppp->email }}</td>
     </tr>
     <tr>
 <td>Pracovisko: </td><td>{{ $company->name }}</td>
@@ -66,8 +66,8 @@
         <td>Adresa pracovisku:</td><td> {{ $company->address }}</td>
     </tr>
     <tr>
-        <td>Kontaktná osoba:</td><td> {{ $contact->firstname." ".$contact->lastname }} {{ $contact->email }} {{ $contact->tel }}</td>
-    </tr>
+        <td>Kontaktná osoba:</td><td> Meno a priezvisko: &nbsp;	&nbsp;{{ $contact->firstname." ".$contact->lastname }}<br>E-mail:	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $contact->email }}<br>Tel. číslo:	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $contact->tel }}</td>
+    </tr
     <tr>
         <td>Pozícia v pracovisku:</td><td> {{ $job->job_type }}</td>
     </tr>

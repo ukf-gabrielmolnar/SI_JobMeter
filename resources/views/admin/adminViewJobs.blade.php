@@ -9,10 +9,10 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Job type</th>
-                    <th scope="col">Study program</th>
-                    <th scope="col">Company name</th>
-                    <th scope="col">Approved</th>
+                    <th scope="col">Typ práce</th>
+                    <th scope="col">Študijný program</th>
+                    <th scope="col">Organizácia</th>
+                    <th scope="col">Schválená</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,18 +37,18 @@
                                                     <button id="action" name="action" value="1" class="btn btn-sm btn-outline-danger" type="submit">Nie</button>
                                                     <input hidden id="approved" name="approved" value="1">
                                                 @else
-                                                    <button id="action" name="action" value="1" class="btn btn-sm btn-outline-success" type="submit">Ano</button>
+                                                    <button id="action" name="action" value="1" class="btn btn-sm btn-outline-success" type="submit">Áno</button>
                                                     <input hidden id="approved" name="approved" value="0">
                                                 @endif
                                             </form>
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#jobEdit{{$job->id}}" onclick="fillData({{$job->id}})">Edit</button>
+                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#jobEdit{{$job->id}}" onclick="fillData({{$job->id}})">Upraviť</button>
                                             <div class="modal fade" id="jobEdit{{$job->id}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Upraviť</h1>
                                                             <!-- x kilepes -->
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -80,7 +80,7 @@
 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button id="action" name="action" value="0" type="submit" class="btn btn-primary">Save changes</button>
+                                                                <button id="action" name="action" value="0" type="submit" class="btn btn-primary">Uložiť zmeny</button>
                                                             </div>
                                                         </form>
 
@@ -92,8 +92,8 @@
                                             <form method="get" action="{{ route('job.destroy')}}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" name="id" id="id" value="{{$job->id}}" class="delete-button">
-                                                    Delete
+                                                <button type="submit" name="id" id="id" value="{{$job->id}}" class="btn btn-sm btn-outline-danger">
+                                                    Zmazať
                                                 </button>
                                             </form>
                                         </td>

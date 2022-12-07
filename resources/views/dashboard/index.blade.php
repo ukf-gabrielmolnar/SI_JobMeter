@@ -49,11 +49,11 @@
 
         @if ($help > 0)
 
-        <div style="background-color: #363d44; padding: 20px">
-        <h1> Aktívna práca </h1>
+        <div style="background-color: #79838d; padding: 20px; width: 100%; overflow-x:auto;">
+        <h1 style="color: white"> Aktívna práca </h1>
             <br>
 
-        <table class="table" style="vertical-align: middle">
+        <table class="table" style="vertical-align: middle; color: white;">
             <thead>
             <tr>
                 <th scope="col">Názov pracoviska</th>
@@ -61,6 +61,7 @@
                 <th scope="col">Komentáre</th>
                 <th scope="col">Končí</th>
                 <th scope="col">Pridať záznam</th>
+                <th scope="col">Priebeh</th>
             </tr>
             </thead>
             <tbody>
@@ -178,7 +179,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="progress-column">
                                             @php
                                                 $start = new DateTime($contract->od);
                                                 $end = new DateTime($contract->do);
@@ -187,7 +188,11 @@
                                                 $intervalFromToday = $start->diff($today);
                                                 $currentInPercent = round(($intervalFromToday->days / $fullInterval->days ) * 100, 2);
                                             @endphp
-                                            {{ $currentInPercent."%" }}
+                                            <a style="font-size: 12px">{{ $currentInPercent."%" }}</a>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $currentInPercent."%" }};" aria-valuenow="{{ $currentInPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+
                                         </td>
                                     @endif
                                 @endforeach
@@ -220,16 +225,16 @@
 
             <br>
 
-            <div style="background-color: #f0f9fc; padding: 20px">
+            <div style="background-color: #cfe9f1; padding: 20px">
                 <h1>Ešte neschválené práce</h1>
                 <br>
 
                 <table class="table" style="vertical-align: middle">
                     <thead>
                     <tr>
-                        <th scope="col">Nazov pracoviska</th>
-                        <th scope="col">Nazov prace</th>
-                        <th scope="col">Datum</th>
+                        <th scope="col">Názov pracoviska</th>
+                        <th scope="col">Názov práce</th>
+                        <th scope="col">Dátum</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -288,11 +293,11 @@
     <table class="table" style="vertical-align: middle">
         <thead>
         <tr>
-            <th scope="col">Nazov pracoviska</th>
-            <th scope="col">Nazov prace</th>
-            <th scope="col">Datum</th>
+            <th scope="col">Názov pracoviska</th>
+            <th scope="col">Názov práce</th>
+            <th scope="col">Dátum</th>
             <th scope="col">Hodnotenie</th>
-            <th scope="col">Pracovne hodiny</th>
+            <th scope="col">Pracovné hodiny</th>
             <th scope="col">Certifikát</th>
         </tr>
         </thead>
@@ -353,9 +358,9 @@
                             <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
                             <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
                             @if ($contract->certificate != 1)
-                                <button class="btn btn-sm btn-outline-warning" disabled type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                                <button class="btn btn-sm btn-outline-secondary" disabled type="submit" name="show_form" value="pdf">Stiahnuť</button>
                             @else
-                                <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                                <button class="btn btn-sm btn-outline-secondary" type="submit" name="show_form" value="pdf">Stiahnuť</button>
                             @endif
                         </form>
                     </td>
