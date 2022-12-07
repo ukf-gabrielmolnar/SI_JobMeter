@@ -34,6 +34,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
                             </ul>
                         </li>
 
@@ -117,6 +118,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
 
                     @endif
 
