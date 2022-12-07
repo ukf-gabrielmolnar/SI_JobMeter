@@ -55,67 +55,67 @@
                                         <td>
                                             {{$job->job_type}}
                                         </td>
-                                            <td>
-                                                @php
-                                                    $num = 0;
-                                                    foreach ($feedbackReports as $feedback){
-                                                        if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
-                                                            if($feedback->subject == "Komentár"){
-                                                                $num++;
-                                                            }
+                                        <td>
+                                            @php
+                                                $num = 0;
+                                                foreach ($feedbackReports as $feedback){
+                                                    if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
+                                                        if($feedback->subject == "Komentár"){
+                                                            $num++;
                                                         }
                                                     }
-                                                @endphp
+                                                }
+                                            @endphp
 
-                                                <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
-                                                <div class="modal" id="recordForm"  aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
-                                                                <!-- x kilepes -->
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <form method="get" action="{{ route('dashboard.saveRecord') }}">
-                                                                <div class="modal-body">
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th scope="col">Meno</th>
-                                                                            <th scope="col">Email</th>
-                                                                            <th scope="col">Datum</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        @foreach($feedbackReports as $feedback)
-                                                                            @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
-                                                                                @if($feedback->subject == "Komentár")
-                                                                                    @foreach($users as $user)
-                                                                                        @if($user->id == $contract->ppp_id)
-                                                                                            <tr>
-                                                                                                <td>{{$user->fistname." ".$user->lastname}}</td>
-                                                                                                <td>{{$user->email}}</td>
-                                                                                                <td>{{$feedback->created_at}}</td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td colspan="3">{{$feedback->text}}</td>
-                                                                                            </tr>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                @endif
-                                                                            @endif
-                                                                        @endforeach
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-primary">Ulozit</button>
-                                                                </div>
-                                                            </form>
+                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
+                                            <div class="modal" id="recordForm"  aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
+                                                            <!-- x kilepes -->
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
+                                                        <form method="get" action="{{ route('dashboard.saveRecord') }}">
+                                                            <div class="modal-body">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Meno</th>
+                                                                        <th scope="col">Email</th>
+                                                                        <th scope="col">Datum</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($feedbackReports as $feedback)
+                                                                        @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
+                                                                            @if($feedback->subject == "Komentár")
+                                                                                @foreach($users as $user)
+                                                                                    @if($user->id == $contract->ppp_id)
+                                                                                        <tr>
+                                                                                            <td>{{$user->fistname." ".$user->lastname}}</td>
+                                                                                            <td>{{$user->email}}</td>
+                                                                                            <td>{{$feedback->created_at}}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="3">{{$feedback->text}}</td>
+                                                                                        </tr>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endif
+                                                                        @endif
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-primary">Ulozit</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
-                                            </td>
+                                            </div>
+                                        </td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Pridat zaznam</button>
                                             <div class="modal" id="recordForm"  aria-hidden="true">
@@ -154,6 +154,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            @php
+                                                $start = new DateTime($contract->od);
+                                                $end = new DateTime($contract->do);
+                                                $today = new DateTime(date('Y-m-d'));
+                                                $fullInterval = $start->diff($end);
+                                                $intervalFromToday = $start->diff($today);
+                                                $currentInPercent = round(($intervalFromToday->days / $fullInterval->days ) * 100, 2);
+                                            @endphp
+                                            {{ $currentInPercent."%" }}
                                         </td>
                                     @endif
                                 @endforeach
@@ -236,15 +247,16 @@
                         @php
                             echo $h;
                         @endphp
-                    </td>
-
-                    <td>
                         <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
                             <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
                             <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
                             <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
                             <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
                         </form>
+                    </td>
+
+                    <td>
+
                     </td>
                 @endif
                 </tr>
