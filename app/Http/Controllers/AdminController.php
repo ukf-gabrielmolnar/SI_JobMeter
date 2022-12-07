@@ -22,8 +22,8 @@ class AdminController extends Controller
         $companies = Company::all();
         $years = Year::all();
         $study_programs = Study_program::all();
-
-        return view('admin.adminView', compact('users', 'companies','years','study_programs'));
+        $filter = 1;
+        return view('admin.adminView', compact('users', 'companies','years','study_programs','filter'));
     }
 
     public function contractsindex(){

@@ -62,7 +62,6 @@ Route::get('/adminViewContracts','App\Http\Controllers\AdminController@contracts
 Route::get('/contractViewDestroy','App\Http\Controllers\AdminController@delete')->name('admin.delete');
 Route::get('/adminYearFilter','App\Http\Controllers\AdminController@yearFilter')->name('admin.yearFilter');
 
-
 Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
 Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');
 Route::get('/contactViewDestroy','App\Http\Controllers\ContactController@destroy')->name('contact.destroy');
