@@ -53,7 +53,7 @@
                                 CEO
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Nyisti</a></li>
+                                <li><a class="dropdown-item" href="/ceoView">Ceo view</a></li>
 
                             </ul>
                         </li>

@@ -73,8 +73,9 @@ Route::get('/jobIndex','App\Http\Controllers\JobController@adminView')->name('jo
 Route::get('/jobEdit','App\Http\Controllers\JobController@edit')->name('job.edit');
 Route::get('/jobDestroy','App\Http\Controllers\JobController@destroy')->name('job.destroy');
 
-
-
+Route::get('/ceoView', 'App\Http\Controllers\CeoController@index')->name('ceo.index');
+Route::get('/ceoApprove', 'App\Http\Controllers\CeoController@edit')->name('ceo.edit');
+Route::get('/ceoShowHours', '\App\Http\Controllers\CeoController@show')->name('ceo.show');
 
 //grafy
 Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');

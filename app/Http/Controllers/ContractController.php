@@ -159,9 +159,24 @@ class ContractController extends Controller
         $feedbackR = FeedbackReport::all();
         $records = Record::all();
 
+        $ceo = User::all();
+
+        foreach (User::all() as $userF){
+            foreach (User_role::all() as $role){
+                if ($userF->id == $role->user_id && $role->role_id == 5){
+                    if($userF->companies_id == $company->id){
+                        $ceo = $userF;
+                    }
+                }
+            }
+        }
+
         if($request->show_form == "pdf"){
+            $contract->certificate = 1;
+            $contract->save();
+
             $pdf = PDF::loadView('ppp.archivePDFView', compact('contract',
-                'user','ppp','year','sp','job','company','contact','feedbackR','records'));
+                'user','ppp','year','sp','job','company','contact','feedbackR','records','ceo'));
 
             return $pdf->download($user->firstname."_". $user->lastname."_archive.pdf");
         }else{
