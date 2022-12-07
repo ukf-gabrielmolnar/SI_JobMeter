@@ -6,6 +6,9 @@
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
 
 
+        <h1>
+            Tento graf percentovo zobrazuje ročníky študenta
+        </h1>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
