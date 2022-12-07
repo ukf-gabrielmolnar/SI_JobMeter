@@ -1,6 +1,21 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
+
+    @php
+        $help = 0;
+            foreach ($contracts as $contract) {
+                $help++;
+            }
+    @endphp
+
+    @if ($help == 0)
+        <h1 style="text-align: center">Tabuľka je prázdna</h1>
+    @else
+
     <div class="row mb-3">
         <div class="col-md-6">
             <select class="form-select form-select-lg mb-3" id="povereny_pracovnik" name="povereny_pracovnik">
@@ -10,11 +25,6 @@
             </select>
         </div>
     </div>
-
-@if (auth()->user())
-
-    @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
-
 
     <table class="table table-white table-hover" id="myTable">
         <thead>
@@ -123,6 +133,8 @@
 
 
     </script>
+
+    @endif
 
     @else
 
