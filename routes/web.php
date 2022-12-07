@@ -13,7 +13,7 @@ use App\Http\Controllers\ManagerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//-----     alap        -----
+//----------
 Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard.index');
 
 Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
