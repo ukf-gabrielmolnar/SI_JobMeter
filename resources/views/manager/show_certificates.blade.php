@@ -39,16 +39,18 @@
             <th scope="col">Ukončené dňa</th>
             <th scope="col">Prax dozoroval</th>
             <th scope="col">Firemný kontakt</th>
+            <th scope="col"> </th>
         </tr>
         </thead>
         <tbody>
         @foreach($contracts as $contract)
             @if($contract->certificate === 1)
-
+                <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
                 <tr id="{{$contract->id}}tr">
                     @foreach($users as $user)
                         @if($contract->users_id === $user->id)
                             <td>{{$user->firstname}}{{" "}}{{$user->lastname}}</td>
+                            <input hidden value="{{ $user->id }}" id="user_id" name="user_id">
                         @endif
                     @endforeach
                     @foreach($jobs as $job)
@@ -73,6 +75,12 @@
                             <td>{{$contact->firstname}}{{" "}}{{$contact->lastname}}</td>
                         @endif
                     @endforeach
+                    <td>
+                        <input hidden value="{{ $contract->id }}"  id="contract_id" name="contract_id">
+                        <input hidden value="{{ auth()->user()->id }}" id="ppp_id" name="ppp_id">
+                        <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Vytvoriť archív</button>
+                        <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Ukážka archívu</button>
+                    </td>
                 </tr>
             @endif
         @endforeach
