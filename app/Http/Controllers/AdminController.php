@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Contact;
+use App\Models\Contract;
+use App\Models\Job;
 use App\Models\Study_program;
 use App\Models\User_role;
 use App\Models\Year;
@@ -19,9 +22,17 @@ class AdminController extends Controller
         $companies = Company::all();
         $years = Year::all();
         $study_programs = Study_program::all();
-        $filter = 1;
 
-        return view('admin.adminView', compact('users', 'companies','years','study_programs','filter'));
+        return view('admin.adminView', compact('users', 'companies','years','study_programs'));
+    }
+
+    public function contractsindex(){
+        $contracts = Contract::all();
+        $users = User::all();
+        $jobs = Job::all();
+        $contacts = Contact::all();
+        $filter = 1;
+        return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
     }
 
     public function destroy($id)
@@ -79,5 +90,53 @@ class AdminController extends Controller
         }
 
         return view('admin.adminView', compact('users', 'companies','years','study_programs','filter'));
+    }
+
+    public function yearFilter(Request $request){
+
+        if($request->filter != 1){
+
+            $help = [];
+            $date = new \DateTime();
+            switch ($request->filter){
+                case 2:
+                    $date = new \DateTime('2022-09-01');
+                    break;
+                case 3:
+                    $date = new \DateTime('2023-09-01');
+                    break;
+            }
+
+            foreach (Contract::all() as $contract){
+                $contractStart = new \DateTime($contract->od);
+                if ($date < $contractStart){
+                    $diff = $date->diff($contractStart);
+                    if($diff->days < 365){
+                        array_push($help, $contract);
+                    }
+                }
+            }
+
+            $contracts = $help;
+            $users = User::all();
+            $jobs = Job::all();
+            $contacts = Contact::all();
+            $filter = $request->filter;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
+
+        }else{
+            $contracts = Contract::all();
+            $users = User::all();
+            $jobs = Job::all();
+            $contacts = Contact::all();
+            $filter = $request->filter;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
+        }
+    }
+
+    public function delete(Request $request){
+        $contract = Contract::find($request->id);
+        $contract->delete();
+        return redirect()->route('admin.contractsindex');
     }
 }

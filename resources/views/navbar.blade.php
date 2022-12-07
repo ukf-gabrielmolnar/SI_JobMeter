@@ -80,6 +80,7 @@
                                 <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
                                 <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
+                                <li><a class="dropdown-item" href="/adminViewContracts">Zobraziť zmluvy</a></li>
                             </ul>
                         </li>
 

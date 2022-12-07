@@ -58,6 +58,10 @@ Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adm
 Route::resource('admin',\App\Http\Controllers\AdminController::class);
 Route::get('/adminEdit','App\Http\Controllers\AdminController@edit')->name('admin.edit');
 Route::get('/adminFiltert','App\Http\Controllers\AdminController@filter')->name('admin.filter');
+Route::get('/adminViewContracts','App\Http\Controllers\AdminController@contractsindex')->name('admin.contractsindex');
+Route::get('/contractViewDestroy','App\Http\Controllers\AdminController@delete')->name('admin.delete');
+Route::get('/adminYearFilter','App\Http\Controllers\AdminController@yearFilter')->name('admin.yearFilter');
+
 
 Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
 Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');
