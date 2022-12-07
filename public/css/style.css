@@ -255,6 +255,15 @@ textarea {
     width: 100%;
 }
 
+.progress-bar {
+    background-color: #98d0da;
+}
+
+.progress-column {
+    width: 30%;
+    padding: 0;
+}
+
 /* Responsivity */
 @media screen and (max-width: 800px) {
     .custom-select {
