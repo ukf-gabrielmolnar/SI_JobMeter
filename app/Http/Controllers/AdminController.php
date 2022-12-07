@@ -44,7 +44,7 @@ class AdminController extends Controller
 
 
     public function edit(Request $request) {
-        $requestArray =$request->except('user_id','firstname','lastname','email','tel','companies_id','years_id');
+        $requestArray =$request->except('user_id','firstname','lastname','email','tel');
         $requestArray = array_values($requestArray);
 
         $user = User::find($request->user_id);
@@ -52,8 +52,15 @@ class AdminController extends Controller
         $user->lastname = $request->lastname;
         $user->email = $request->email;
         $user->tel = $request->tel;
-        $user->companies_id = $requestArray[0];
-        $user->years_id = $requestArray[1];
+        if(sizeof($requestArray) > 0){
+            if(sizeof($requestArray) >= 1){
+                $user->companies_id = $requestArray[0];
+            }
+            if(sizeof($requestArray) > 1){
+                $user->years_id = $requestArray[1];
+            }
+        }
+
 
         $user->save();
 
