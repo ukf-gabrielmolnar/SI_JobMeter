@@ -10,19 +10,31 @@
 
     @if (auth()->user()->inRole('manager'))
 
-        {{ route('manager.show_contracts') }}
+        @php
+            header("Location: manager/contracts");
+            exit();
+        @endphp
 
     @elseif (auth()->user()->inRole('ppp'))
 
-        {{ route('ppp.unapprovedContracts') }}
+        @php
+            header("Location: /unapprovedContracts");
+            exit();
+        @endphp
 
     @elseif (auth()->user()->inRole('admin'))
 
-        {{ route('majd ha marknak kesz') }}
+        @php
+            header("Location: /adminView");
+            exit();
+        @endphp
 
     @elseif (auth()->user()->inRole('ceo'))
 
-        {{ route('majd ha marknak kesz') }}
+        @php
+            header("Location: /");
+            exit();
+        @endphp
 
     @elseif (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
