@@ -93,8 +93,8 @@
                                                 }
                                             @endphp
 
-                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
-                                            <div class="modal" id="recordForm"  aria-hidden="true">
+                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#kommentarModal">Komentáre ({{$num}})</button>
+                                            <div class="modal" id="kommentarModal" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -342,7 +342,7 @@
                             $h = 0  ;
                         @endphp
                         @foreach($records as $record)
-                            @if($record->contracts_id == $contract->id)
+                            @if($record->contracts_id == $contract->id && $record->approved == 1)
                                 @php
                                     $h += $record->hours;
                                 @endphp
