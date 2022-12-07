@@ -45,7 +45,7 @@
 
 </head>
 <header>
-    <h1>Lorem ipsum dolor sit amet</h1>
+    <h1>Certifikát o praktickej činnosti</h1>
 </header>
 
 <body>

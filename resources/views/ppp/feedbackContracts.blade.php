@@ -5,6 +5,17 @@
 
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('ppp') || auth()->user()->inRole('dev'))
 
+    @php
+        $help = 0;
+            foreach ($contracts as $contract) {
+                $help++;
+            }
+    @endphp
+
+    @if ($help == 0)
+        <h1 style="text-align: center">Tabuľka je prázdna</h1>
+    @else
+
     <div class="alert alert-success alert-dismissible fade show" role="alert" id="successPopup" name="successPopup">
         <p id="popupText"></p>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -135,6 +146,8 @@
         }
 
     </script>
+
+    @endif
 
     @else
 
