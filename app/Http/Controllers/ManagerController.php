@@ -48,7 +48,8 @@ class ManagerController extends Controller
         $contracts = Contract::all();
         $contacts = Contact::all();
         $companies = Company::all();
-        return view('manager.show_certificates', compact('users', 'jobs', 'contracts', 'contacts', 'companies'));
+        $roles = User_role::all();
+        return view('manager.show_certificates', compact('users', 'jobs', 'contracts', 'contacts', 'companies','roles'));
     }
 
     public function addsupervisor(){
