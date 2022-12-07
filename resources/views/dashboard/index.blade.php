@@ -68,60 +68,58 @@
                                         <td>
                                             {{$job->job_type}}
                                         </td>
-                                            <td>
-                                                @php
-                                                    $num = 0;
-                                                    foreach ($feedbackReports as $feedback){
-                                                        if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
-                                                            if($feedback->subject == "Komentár"){
-                                                                $num++;
-                                                            }
+                                        <td>
+                                            @php
+                                                $num = 0;
+                                                foreach ($feedbackReports as $feedback){
+                                                    if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
+                                                        if($feedback->subject == "Komentár"){
+                                                            $num++;
                                                         }
                                                     }
-                                                @endphp
+                                                }
+                                            @endphp
 
-                                                <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
-                                                <div class="modal" id="recordForm"  aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
-                                                                <!-- x kilepes -->
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <form method="get" action="{{ route('dashboard.saveRecord') }}">
-                                                                <div class="modal-body">
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th scope="col">Meno</th>
-                                                                            <th scope="col">Email</th>
-                                                                            <th scope="col">Datum</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        @foreach($feedbackReports as $feedback)
-                                                                            @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
-                                                                                @if($feedback->subject == "Komentár")
-                                                                                    @foreach($users as $user)
-                                                                                        @if($user->id == $contract->ppp_id)
-                                                                                            <tr>
-                                                                                                <td>{{$user->fistname." ".$user->lastname}}</td>
-                                                                                                <td>{{$user->email}}</td>
-                                                                                                <td>{{$feedback->created_at}}</td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td colspan="3">{{$feedback->text}}</td>
-                                                                                            </tr>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                @endif
+                                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
+                                            <div class="modal" id="recordForm"  aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
+                                                            <!-- x kilepes -->
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                            <div class="modal-body">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Meno</th>
+                                                                        <th scope="col">Email</th>
+                                                                        <th scope="col">Datum</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($feedbackReports as $feedback)
+                                                                        @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
+                                                                            @if($feedback->subject == "Komentár")
+                                                                                @foreach($users as $user)
+                                                                                    @if($user->id == $contract->ppp_id)
+                                                                                        <tr>
+                                                                                            <td>{{$user->fistname." ".$user->lastname}}</td>
+                                                                                            <td>{{$user->email}}</td>
+                                                                                            <td>{{$feedback->created_at}}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="3">{{$feedback->text}}</td>
+                                                                                        </tr>
+                                                                                    @endif
+                                                                                @endforeach
                                                                             @endif
-                                                                        @endforeach
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </form>
+                                                                        @endif
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
