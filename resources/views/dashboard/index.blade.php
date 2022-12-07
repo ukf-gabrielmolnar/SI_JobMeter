@@ -166,6 +166,17 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <td>
+                                            @php
+                                                $start = new DateTime($contract->od);
+                                                $end = new DateTime($contract->do);
+                                                $today = new DateTime(date('Y-m-d'));
+                                                $fullInterval = $start->diff($end);
+                                                $intervalFromToday = $start->diff($today);
+                                                $currentInPercent = round(($intervalFromToday->days / $fullInterval->days ) * 100, 2);
+                                            @endphp
+                                            {{ $currentInPercent."%" }}
+                                        </td>
                                     @endif
                                 @endforeach
                                 <!--------------------------->
