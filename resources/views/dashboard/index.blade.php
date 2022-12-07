@@ -10,73 +10,97 @@
 
         @if (auth()->user()->inRole('manager'))
 
-            {{ route('manager.show_contracts') }}
+            @php
+                header("Location: manager/contracts");
+                exit();
+            @endphp
 
         @elseif (auth()->user()->inRole('ppp'))
 
-            {{ route('ppp.unapprovedContracts') }}
+            @php
+                header("Location: /unapprovedContracts");
+                exit();
+            @endphp
 
         @elseif (auth()->user()->inRole('admin'))
 
-            {{ route('majd ha marknak kesz') }}
+            @php
+                header("Location: /adminView");
+                exit();
+            @endphp
 
         @elseif (auth()->user()->inRole('ceo'))
 
-            {{ route('majd ha marknak kesz') }}
+            @php
+                header("Location: /");
+                exit();
+            @endphp
 
-        @elseif (auth()->user()->inRole('user') || auth()->user()->inRole('dev'))
+        @elseif (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
-            <div style="background-color: #e0eaec; padding: 20px">
-                <h1> Aktívna práca </h1>
+            @php
+                $help = 0;
+                    foreach ($contracts as $contract){
+                        if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed != 1){
+                            $help++;
+                        }
+                    }
+            @endphp
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Názov pracoviska</th>
-                        <th scope="col">Názov práce</th>
-                        <th scope="col">Komentáre</th>
-                        <th scope="col">Pridať záznam</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!----------Contract---------->
-                    @foreach($contracts as $contract)
+            @if ($help > 0)
+
+                <div style="background-color: #363d44; padding: 20px">
+                    <h1> Aktívna práca </h1>
+                    <br>
+
+                    <table class="table" style="vertical-align: middle">
+                        <thead>
                         <tr>
-                        @if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed == 0)
-                            <!----------Job---------->
-                            @foreach($jobs as $job)
-                                @if($job->id == $contract->jobs_id)
-                                    <!----------Company---------->
-                                        @foreach($companies as $company)
-                                            @if($company->id == $job->companies_id)
-                                                <td>
-                                                    {{$company->name}}
-                                                </td>
-                                                <td>
-                                                    {{$job->job_type}}
-                                                </td>
-                                                <td>
-                                                    @php
-                                                        $num = 0;
-                                                        foreach ($feedbackReports as $feedback){
-                                                            if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
-                                                                if($feedback->subject == "Komentár"){
-                                                                    $num++;
+                            <th scope="col">Názov pracoviska</th>
+                            <th scope="col">Názov práce</th>
+                            <th scope="col">Komentáre</th>
+                            <th scope="col">Končí</th>
+                            <th scope="col">Pridať záznam</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!----------Contract---------->
+                        @foreach($contracts as $contract)
+                            <tr>
+                            @if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed != 1)
+                                <!----------Job---------->
+                                @foreach($jobs as $job)
+                                    @if($job->id == $contract->jobs_id)
+                                        <!----------Company---------->
+                                            @foreach($companies as $company)
+                                                @if($company->id == $job->companies_id)
+                                                    <td>
+                                                        {{$company->name}}
+                                                    </td>
+                                                    <td>
+                                                        {{$job->job_type}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $num = 0;
+                                                            foreach ($feedbackReports as $feedback){
+                                                                if ($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id){
+                                                                    if($feedback->subject == "Komentár"){
+                                                                        $num++;
+                                                                    }
                                                                 }
                                                             }
-                                                        }
-                                                    @endphp
+                                                        @endphp
 
-                                                    <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Komentáre ({{$num}})</button>
-                                                    <div class="modal" id="recordForm"  aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
-                                                                    <!-- x kilepes -->
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <form method="get" action="{{ route('dashboard.saveRecord') }}">
+                                                        <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#kommentarModal">Komentáre ({{$num}})</button>
+                                                        <div class="modal" id="kommentarModal" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Komentáre</h1>
+                                                                        <!-- x kilepes -->
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
                                                                     <div class="modal-body">
                                                                         <table class="table">
                                                                             <thead>
@@ -108,167 +132,243 @@
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-primary">Ulozit</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Pridat zaznam</button>
-                                                    <div class="modal" id="recordForm"  aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pridat odpracovane hodiny</h1>
-                                                                    <!-- x kilepes -->
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <form method="get" action="{{ route('dashboard.saveRecord') }}">
-                                                                    <div class="modal-body">
-                                                                        <input hidden id="contracts_id" name="contracts_id" value="{{$contract->id}}">
-
-                                                                        <h5>Datum</h5>
-                                                                        <p><?php echo date('Y-m-d');?></p>
-                                                                        <input type="date" id="date" name="date" value='<?php echo date('Y-m-d');?>'>
-
-                                                                        <h5>Hodiny</h5>
-                                                                        <select id="hours" name="hours" style="border-radius: 3px; border-color: #41565b; width: 60px; height: 25px">
-                                                                            <?php
-                                                                            for ($i=1; $i<=12; $i ++)
-                                                                            {
-                                                                            ?>
-                                                                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                                                            <?php
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-primary">Ulozit</button>
-                                                                    </div>
-                                                                </form>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    @php
-                                                        $start = new DateTime($contract->od);
-                                                        $end = new DateTime($contract->do);
-                                                        $today = new DateTime(date('Y-m-d'));
-                                                        $fullInterval = $start->diff($end);
-                                                        $intervalFromToday = $start->diff($today);
-                                                        $currentInPercent = round(($intervalFromToday->days / $fullInterval->days ) * 100, 2);
-                                                    @endphp
-                                                    {{ $currentInPercent."%" }}
-                                                </td>
-                                            @endif
-                                        @endforeach
-                                    <!--------------------------->
-                                    @endif
-                                @endforeach
-                            <!----------------------->
+                                                    </td>
+                                                    <td>
+                                                        {{ $contract->do }}
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Pridat zaznam</button>
+                                                        <div class="modal" id="recordForm"  aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Pridat odpracovane hodiny</h1>
+                                                                        <!-- x kilepes -->
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form method="get" action="{{ route('dashboard.saveRecord') }}">
+                                                                        <div class="modal-body">
+                                                                            <input hidden id="contracts_id" name="contracts_id" value="{{$contract->id}}">
 
-                            @endif
-                        </tr>
-                    @endforeach
-                    <!---------------------------->
-                    </tbody>
-                </table>
-            </div>
+                                                                            <h5>Datum</h5>
+                                                                            <p><?php echo date('Y-m-d');?></p>
+                                                                            <input type="date" id="date" name="date" value='<?php echo date('Y-m-d');?>'>
 
-            <br><br>
+                                                                            <h5>Hodiny</h5>
+                                                                            <select id="hours" name="hours" style="border-radius: 3px; border-color: #41565b; width: 60px; height: 25px">
+                                                                                <?php
+                                                                                for ($i=1; $i<=12; $i ++)
+                                                                                {
+                                                                                ?>
+                                                                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                                                                <?php
+                                                                                }
+                                                                                ?>
+                                                                            </select>
 
-            <div style="background-color: #e0eaec; padding: 20px">
-                <h1> Archivované práce </h1>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-primary">Ulozit</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $start = new DateTime($contract->od);
+                                                            $end = new DateTime($contract->do);
+                                                            $today = new DateTime(date('Y-m-d'));
+                                                            $fullInterval = $start->diff($end);
+                                                            $intervalFromToday = $start->diff($today);
+                                                            $currentInPercent = round(($intervalFromToday->days / $fullInterval->days ) * 100, 2);
+                                                        @endphp
+                                                        {{ $currentInPercent."%" }}
+                                                    </td>
+                                                @endif
+                                            @endforeach
+                                        <!--------------------------->
+                                        @endif
+                                    @endforeach
+                                <!----------------------->
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Nazov pracoviska</th>
-                        <th scope="col">Nazov prace</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Hodnotenie</th>
-                        <th scope="col">Pracovne hodiny</th>
-                        <th scope="col">Certifikát</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!----------Contract---------->
-                    @foreach($contracts as $contract)
+                                @endif
+                            </tr>
+                        @endforeach
+                        <!---------------------------->
+                        </tbody>
+                    </table>
+                </div>
+
+            @endif
+
+            @php
+                $helper1 = 0;
+                $helper2 = 0;
+                    foreach ($contracts as $contract){
+                        if($contract->users_id == auth()->user()->id && $contract->approved != 1 && $contract->closed != 1){
+                            $helper1++;
+                        }
+                    }
+            @endphp
+
+            @if ($helper1 > 0)
+
+                <br>
+
+                <div style="background-color: #f0f9fc; padding: 20px">
+                    <h1>Ešte neschválené práce</h1>
+                    <br>
+
+                    <table class="table" style="vertical-align: middle">
+                        <thead>
                         <tr>
-                            @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
-                                <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
-                                <!----------Job---------->
-                                @foreach($jobs as $job)
-                                    @if($job->id == $contract->jobs_id)
-                                    <!----------Company---------->
-                                        @foreach($companies as $company)
-                                            @if($company->id == $job->companies_id)
-                                                <td>
-                                                    {{$company->name}}
-                                                </td>
+                            <th scope="col">Nazov pracoviska</th>
+                            <th scope="col">Nazov prace</th>
+                            <th scope="col">Datum</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!----------Contract---------->
+                        @foreach($contracts as $contract)
+                            <tr>
+                                @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                                    <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
+                                    <!----------Job---------->
+                                    @foreach($jobs as $job)
+                                        @if($job->id == $contract->jobs_id)
+                                        <!----------Company---------->
+                                            @foreach($companies as $company)
+                                                @if($company->id == $job->companies_id)
+                                                    <td>
+                                                        {{$company->name}}
+                                                    </td>
+                                                @endif
+                                            @endforeach
+                                        <!--------------------------->
+                                            <td>
+                                                {{$job->job_type}}
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                <!----------------------->
+                                    <td>
+                                        {{ $contract->od }}
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
+                        <!---------------------------->
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+
+            @php
+                $help2 = 0;
+                    foreach ($contracts as $contract){
+                        if($contract->users_id == auth()->user()->id && $contract->closed == 1){
+                            $help2++;
+                        }
+                    }
+            @endphp
+
+            @if ($help2 > 0)
+
+                <br>
+
+                <div style="background-color: #f0f9fc; padding: 20px">
+                    <h1> Archivované práce </h1>
+                    <br>
+
+                    <table class="table" style="vertical-align: middle">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nazov pracoviska</th>
+                            <th scope="col">Nazov prace</th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Hodnotenie</th>
+                            <th scope="col">Pracovne hodiny</th>
+                            <th scope="col">Certifikát</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!----------Contract---------->
+                        @foreach($contracts as $contract)
+                            <tr>
+                                @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                                    <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
+                                    <!----------Job---------->
+                                    @foreach($jobs as $job)
+                                        @if($job->id == $contract->jobs_id)
+                                        <!----------Company---------->
+                                            @foreach($companies as $company)
+                                                @if($company->id == $job->companies_id)
+                                                    <td>
+                                                        {{$company->name}}
+                                                    </td>
+                                                @endif
+                                            @endforeach
+                                        <!--------------------------->
+                                            <td>
+                                                {{$job->job_type}}
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                <!----------------------->
+                                    <td>
+                                        {{ $contract->do }}
+                                    </td>
+                                    <td>
+                                        @foreach($feedbackReports as $feedback)
+                                            @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
+                                                @if($feedback->subject == "Hodnotenie")
+                                                    {{ $feedback->text }}
+                                                @endif
                                             @endif
                                         @endforeach
-                                    <!--------------------------->
-                                        <td>
-                                            {{$job->job_type}}
-                                        </td>
-                                    @endif
-                                @endforeach
-                            <!----------------------->
-                                <td>
-                                    {{ $contract->do }}
-                                </td>
-                                <td>
-                                    @foreach($feedbackReports as $feedback)
-                                        @if($feedback->users_id == auth()->user()->id && $feedback->contracts_id == $contract->id)
-                                            @if($feedback->subject == "Hodnotenie")
-                                                {{ $feedback->text }}
+                                    </td>
+                                    <td>
+                                        @php
+                                            $h = 0  ;
+                                        @endphp
+                                        @foreach($records as $record)
+                                            @if($record->contracts_id == $contract->id && $record->approved == 1)
+                                                @php
+                                                    $h += $record->hours;
+                                                @endphp
                                             @endif
-                                        @endif
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @php
-                                        $h = 0  ;
-                                    @endphp
-                                    @foreach($records as $record)
-                                        @if($record->contracts_id == $contract->id)
-                                            @php
-                                                $h += $record->hours;
-                                            @endphp
-                                        @endif
-                                    @endforeach
-                                    @php
-                                        echo $h;
-                                    @endphp
-                                    <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
-                                        <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
-                                        <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
-                                        <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
-                                        <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
-                                    </form>
-                                </td>
-
-                                <td>
-
-                                </td>
-                            @endif
-                        </tr>
-                    @endforeach
-                    <!---------------------------->
-                    </tbody>
-                </table>
-            </div>
+                                        @endforeach
+                                        @php
+                                            echo $h;
+                                        @endphp
+                                    </td>
+                                    <td>
+                                        <form style="margin-bottom: 0px" method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
+                                            <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
+                                            <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
+                                            <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
+                                            @if ($contract->certificate != 1)
+                                                <button class="btn btn-sm btn-outline-warning" disabled type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                                            @else
+                                                <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                                            @endif
+                                        </form>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
+                        <!---------------------------->
+                        </tbody>
+                    </table>
+                </div>
+            @endif
         @endif
     @endauth
-
-
 
     <script>
 
