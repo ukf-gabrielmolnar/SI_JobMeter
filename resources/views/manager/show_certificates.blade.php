@@ -106,16 +106,14 @@
             selectedCompany = $(document.getElementById('company_select')).children(":selected").attr("value");
             var contracts = @json($contracts);
             var jobs = @json($jobs);
-            var nieco = 0;
-            if(selectedStudent == 0 && selectedCompany == 0) nieco = 0;
-            if(selectedStudent == 0 && selectedCompany != 0) nieco = 1;
-            if(selectedStudent != 0 && selectedCompany == 0) nieco = 2;
-            if(selectedStudent != 0 && selectedCompany != 0) nieco = 3;
-            console.log(nieco);
-            switch (nieco){
+            var podmienka = 0;
+            if(selectedStudent == 0 && selectedCompany == 0) podmienka = 0;
+            if(selectedStudent == 0 && selectedCompany != 0) podmienka = 1;
+            if(selectedStudent != 0 && selectedCompany == 0) podmienka = 2;
+            if(selectedStudent != 0 && selectedCompany != 0) podmienka = 3;
+            switch (podmienka){
                 case 0:{
                     $.each(contracts, function (index, contract){
-                        console.log(selectedStudent + " " + selectedCompany + " student0 company0");
                         document.getElementById(contract.id + "tr").style.display = "";
                     })
                     break;
@@ -125,7 +123,6 @@
                         $.each(jobs, function (jobindex, job){
                             if(contract.jobs_id === job.id){
                                 if(job.companies_id == selectedCompany){
-                                    console.log(selectedStudent + " " + selectedCompany + " student0 company?");
                                     document.getElementById(contract.id + "tr").style.display = "";
                                 }
                                 else{
@@ -140,7 +137,6 @@
                 case 2:{
                     $.each(contracts, function (index, contract){
                         if(contract.users_id == selectedStudent){
-                            console.log(selectedStudent + " " + selectedCompany + " student? company0");
                             document.getElementById(contract.id + "tr").style.display = "";
                         }
                         else{
@@ -155,7 +151,6 @@
                             if(contract.jobs_id === job.id){
                                 if(job.companies_id == selectedCompany){
                                     if(contract.users_id == selectedStudent){
-                                        console.log(contract.jobs_id + " " + job.id + " " + job.companies_id + " " + selectedCompany + " " + contract.users_id + " " + selectedStudent);
                                         document.getElementById(contract.id + "tr").style.display = "";
                                     }
                                     else{
