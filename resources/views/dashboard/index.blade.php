@@ -49,11 +49,11 @@
 
         @if ($help > 0)
 
-        <div style="background-color: #79838d; padding: 20px; width: 100%; overflow-x:auto;">
-        <h1 style="color: white"> Aktívna práca </h1>
+        <div style="background-color: #454a50; padding: 20px; width: 100%; overflow-x:auto;">
+        <h1 style="color: #b3dfe7"> Aktívna práca </h1>
             <br>
 
-        <table class="table" style="vertical-align: middle; color: white;">
+        <table class="table" style="vertical-align: middle; color: #b3dfe7;">
             <thead>
             <tr>
                 <th scope="col">Názov pracoviska</th>
