@@ -236,7 +236,7 @@
                     <!----------Contract---------->
                     @foreach($contracts as $contract)
                         <tr>
-                            @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                            @if($contract->users_id == auth()->user()->id && $contract->closed != 1 && $contract->approved != 1)
                                 <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
                                 <!----------Job---------->
                                 @foreach($jobs as $job)
@@ -271,7 +271,7 @@
         @php
         $help2 = 0;
             foreach ($contracts as $contract){
-                if($contract->users_id == auth()->user()->id && $contract->closed == 1){
+                if($contract->users_id == auth()->user()->id && $contract->closed == 1 && $contract->approved == 1){
                     $help2++;
                 }
             }
@@ -300,7 +300,7 @@
             <!----------Contract---------->
             @foreach($contracts as $contract)
                 <tr>
-                @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                @if($contract->users_id == auth()->user()->id && $contract->closed == 1 && $contract->approved == 1)
                     <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
                     <!----------Job---------->
                     @foreach($jobs as $job)
