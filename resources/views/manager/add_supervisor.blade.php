@@ -51,7 +51,7 @@
                          <select class="form-select" id="ppp_id" name="ppp_id">
                              <option value="0" selected="selected" hidden>Vyberte nadriadeneho</option>
                              @foreach($roles as $role)
-                                @if($role->role_id === 3)
+                                @if(($role->role_id === 3) || $role->role_id === 6)
                                     @foreach($users as $user)
                                         @if($role->user_id === $user->id)
                                             @if($contract->ppp_id === $user->id)
@@ -83,16 +83,6 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $
-
-        function clearTable(table){
-            var tableHeader = 1;
-            var tbl = table;
-            var rowCount = tbl.rows.length;
-            for(var i = tableHeader; i < rowCount; i++){
-                tbl.deleteRow(tableHeader);
-            }
-        }
 
         $('#povereny_pracovnik').on('change', function (){
             var selectedOption = 0;

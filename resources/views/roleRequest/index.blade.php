@@ -5,6 +5,17 @@
 
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
 
+        @php
+        $help = 0;
+            foreach ($role_requests as $rq) {
+                $help++;
+            }
+        @endphp
+
+        @if ($help == 0)
+            <h1 style="text-align: center">Žiadne používatelia nečakajú na schválenie rôl</h1>
+        @else
+
     <table class="table">
         <thead>
         <tr>
@@ -35,10 +46,10 @@
                             @endif
                         @endforeach
                     <td>
-                        <button type="submit" value="approve" name="action">
+                        <button class="btn btn-sm btn-outline-success" type="submit" value="approve" name="action">
                             Schváliť
                         </button>
-                        <button type="submit" value="reject" name="action">
+                        <button class="btn btn-sm btn-outline-danger" type="submit" value="reject" name="action">
                             Odmietnuť
                         </button>
                     </td>
@@ -47,6 +58,8 @@
         </tr>
         </tbody>
     </table>
+
+        @endif
 
     @else
 
