@@ -98,7 +98,7 @@
                         @else
                             <td>
                                 <input hidden id="company_id{{$user-> id}}" name="company_id{{$user-> id}}" value="">
-                                Nic
+                                Žiadna
                             </td>
                         @endif
                         @if($user->years_id != null)
