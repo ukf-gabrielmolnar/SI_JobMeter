@@ -107,14 +107,6 @@
                 </tbody>
             </table>
 
-
-
-
-
-
-
-
-
         @else
 
             @include('nopermission')

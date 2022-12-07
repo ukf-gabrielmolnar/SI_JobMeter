@@ -24,16 +24,29 @@
 
         {{ route('majd ha marknak kesz') }}
 
-    @elseif (auth()->user()->inRole('user') || auth()->user()->inRole('dev'))
+    @elseif (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
-        <div style="background-color: #e0eaec; padding: 20px">
+        @php
+            $help = 0;
+                foreach ($contracts as $contract){
+                    if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed != 1){
+                        $help++;
+                    }
+                }
+        @endphp
+
+        @if ($help > 0)
+
+        <div style="background-color: #363d44; padding: 20px">
         <h1> Aktívna práca </h1>
+            <br>
 
-        <table class="table">
+        <table class="table" style="vertical-align: middle">
             <thead>
             <tr>
                 <th scope="col">Názov pracoviska</th>
                 <th scope="col">Názov práce</th>
+                <th scope="col">Končí</th>
                 <th scope="col">Pridať záznam</th>
             </tr>
             </thead>
@@ -41,7 +54,7 @@
                 <!----------Contract---------->
                 @foreach($contracts as $contract)
                     <tr>
-                    @if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed == 0)
+                    @if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed != 1)
                         <!----------Job---------->
                         @foreach($jobs as $job)
                             @if($job->id == $contract->jobs_id)
@@ -53,6 +66,9 @@
                                         </td>
                                         <td>
                                             {{$job->job_type}}
+                                        </td>
+                                        <td>
+                                            {{ $contract->do }}
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#recordForm">Pridat zaznam</button>
@@ -108,12 +124,88 @@
         </table>
         </div>
 
-    <br><br>
+        @endif
 
-        <div style="background-color: #e0eaec; padding: 20px">
+        @php
+            $helper1 = 0;
+            $helper2 = 0;
+                foreach ($contracts as $contract){
+                    if($contract->users_id == auth()->user()->id && $contract->approved != 1 && $contract->closed != 1){
+                        $helper1++;
+                    }
+                }
+        @endphp
+
+        @if ($helper1 > 0)
+
+            <br>
+
+            <div style="background-color: #f0f9fc; padding: 20px">
+                <h1>Ešte neschválené práce</h1>
+                <br>
+
+                <table class="table" style="vertical-align: middle">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nazov pracoviska</th>
+                        <th scope="col">Nazov prace</th>
+                        <th scope="col">Datum</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!----------Contract---------->
+                    @foreach($contracts as $contract)
+                        <tr>
+                            @if($contract->users_id == auth()->user()->id && $contract->closed == 1)
+                                <input hidden name="contractIdIn" id="contractIdIn" value="{{$contract->id}}">
+                                <!----------Job---------->
+                                @foreach($jobs as $job)
+                                    @if($job->id == $contract->jobs_id)
+                                    <!----------Company---------->
+                                        @foreach($companies as $company)
+                                            @if($company->id == $job->companies_id)
+                                                <td>
+                                                    {{$company->name}}
+                                                </td>
+                                            @endif
+                                        @endforeach
+                                    <!--------------------------->
+                                        <td>
+                                            {{$job->job_type}}
+                                        </td>
+                                    @endif
+                                @endforeach
+                            <!----------------------->
+                                <td>
+                                    {{ $contract->od }}
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    <!---------------------------->
+                    </tbody>
+                </table>
+            </div>
+        @endif
+
+        @php
+        $help2 = 0;
+            foreach ($contracts as $contract){
+                if($contract->users_id == auth()->user()->id && $contract->closed == 1){
+                    $help2++;
+                }
+            }
+        @endphp
+
+        @if ($help2 > 0)
+
+            <br>
+
+        <div style="background-color: #f0f9fc; padding: 20px">
         <h1> Archivované práce </h1>
+            <br>
 
-    <table class="table">
+    <table class="table" style="vertical-align: middle">
         <thead>
         <tr>
             <th scope="col">Nazov pracoviska</th>
@@ -175,13 +267,16 @@
                             echo $h;
                         @endphp
                     </td>
-
                     <td>
-                        <form method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
+                        <form style="margin-bottom: 0px" method="get" action="{{ route('ppp.contractsPDF') }}" target="_blank">
                             <input hidden id="user_id" name="user_id" value="{{ auth()->user()->id }}">
                             <input hidden id="contract_id" name="contract_id" value="{{ $contract->id }}">
                             <input hidden id="ppp_id" name="ppp_id" value="{{ $contract->ppp_id }}">
-                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                            @if ($contract->certificate != 1)
+                                <button class="btn btn-sm btn-outline-warning" disabled type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                            @else
+                                <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Stiahnut certifikat</button>
+                            @endif
                         </form>
                     </td>
                 @endif
@@ -191,10 +286,9 @@
         </tbody>
     </table>
         </div>
+            @endif
         @endif
     @endauth
-
-
 
         <script>
 
