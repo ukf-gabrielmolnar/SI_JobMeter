@@ -37,7 +37,7 @@ return new class extends Migration
             $table->unsignedBigInteger('contacts_id')->nullable();
             $table->foreign('contacts_id')
                 ->references('id')
-                ->on('users')
+                ->on('contacts')
                 ->onDelete('set null');
 
             $table->date('od');

@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         @foreach($contracts as $contract)
-            @if($contract->closed === 1)
+            @if($contract->certificate === 1)
 
                 <tr id="{{$contract->id}}tr">
                     @foreach($users as $user)
@@ -25,12 +25,13 @@
                     @foreach($jobs as $job)
                         @if($contract->jobs_id === $job->id)
                             <td>{{$job->job_type}}</td>
+                            @foreach($companies as $company)
+                                @if($job->companies_id === $company->id)
+                                    <td>{{$company->name}}</td>
+                                @endif
+                            @endforeach
                         @endif
-                        @foreach($companies as $company)
-                            @if($job->companies_id === $company->id)
-                                <td>{{$company->name}}</td>
-                            @endif
-                        @endforeach
+
                     @endforeach
                     <td>{{$contract->do}}</td>
                     @foreach($users as $user)
@@ -38,11 +39,11 @@
                             <td>{{$user->firstname}}{{" "}}{{$user->lastname}}</td>
                         @endif
                     @endforeach
-                        @foreach($contacts as $contact)
-                            @if($contact->id === $contract->contact_id)
-                                <td>{{$contact->firstname}}{{" "}}{{$contact->lastname}}</td>
-                            @endif
-                        @endforeach
+                    @foreach($contacts as $contact)
+                        @if($contact->id === $contract->contacts_id)
+                            <td>{{$contact->firstname}}{{" "}}{{$contact->lastname}}</td>
+                        @endif
+                    @endforeach
                 </tr>
             @endif
         @endforeach
