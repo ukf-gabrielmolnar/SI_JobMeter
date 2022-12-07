@@ -105,6 +105,7 @@ class CompanyController extends Controller
     public function destroy(Request $request)
     {
         DB::table('jobs')->where('companies_id', $request->id)->delete();
+        DB::table('contacts')->where('companies_id', $request->id)->delete();
         $company = Company::find($request->id);
         $company->delete();
 
