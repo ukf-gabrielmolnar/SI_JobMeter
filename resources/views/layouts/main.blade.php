@@ -13,6 +13,128 @@
     <body class="bg" style="min-height: 100vh">
 
     @include('navbar')
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    @auth
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Student
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
+                                <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
+                                <li><a class="dropdown-item" href="/jobList">JobList</a></li>
+                                <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Manager
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidované študenti</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť povereného pracovníka pracoviska</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                PPPFpvAi
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
+                                <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
+                                <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CEO
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Nyisti</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Graphs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/rbac">RBAC</a></li>
+                                <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                            </ul>
+                        </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/roleRequest" role="button">
+                            Role request
+                        </a>
+                    </li>
+
+                    @if (auth()->user()->inRole('admin'))
+                    @endif
+
+                    @if (auth()->user()->inRole('student'))
+                    @endif
+
+                    @if (auth()->user()->inRole('manager'))
+                    @endif
+
+                    @if (auth()->user()->inRole('ppp'))
+                    @endif
+
+                    @if (auth()->user()->inRole('ceo'))
+                    @endif
+
+                    @if (auth()->user()->inRole('dev'))
+                    @endif
+                    @endauth
+
+                </ul>
+
+                <ul class="navbar-nav">
+                    <?php if (auth()->user()): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= auth()->user()->firstname. ' '. auth()->user()->lastname?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
+                            <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                    <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
 
     <div class="container blue customSelectContainer" style="padding-bottom: 80px">
         <div style="overflow-x:auto;">
