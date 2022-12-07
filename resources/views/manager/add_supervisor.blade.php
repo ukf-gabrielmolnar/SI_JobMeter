@@ -1,13 +1,22 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <select class="form-select form-select-lg mb-3" id="povereny_pracovnik" name="povereny_pracovnik">
+                <option value="0" selected>Vsetky praxe</option>
+                <option value="1">Praxe bez školitela</option>
+                <option value="2">Praxe so školitelom</option>
+            </select>
+        </div>
+    </div>
 
 @if (auth()->user())
 
     @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
 
 
-    <table class="table table-white table-hover">
+    <table class="table table-white table-hover" id="myTable">
         <thead>
         <tr>
             <th scope="col">Student</th>
@@ -20,8 +29,9 @@
         </thead>
         <tbody>
         @foreach($contracts as $contract)
-            @if($contract->approved === 1 && $contract->ppp_id === NULL)
-                <tr>
+
+                <tr id="{{$contract->id}}tr">
+
                     @foreach($users as $user)
                         @if($contract->users_id === $user->id)
                             <td>{{$user->firstname}}{{" "}}{{$user->lastname}}</td>
@@ -34,34 +44,95 @@
                     @endforeach
                     <td>{{$contract->od}}</td>
                     <td>{{$contract->do}}</td>
-                        <form method="get" action="{{ route('contract.add_ppp') }}">
-                            @csrf
-                            <td>
-                            <input hidden id="id" name="id" value="{{ $contract->id }}">
-
-                            <select class="form-select" id="ppp_id" name="ppp_id">
-                                <option value="0" selected="selected" hidden>
-                                    {{__('Vyberte nadriadeneho')}}
-                                </option>
-                                @foreach($users as $user)
-                                    <!-- ide jön az r(i)ba(n)c auth hogy csak azok legyenek ott akik tanarok -->
-                                    <option value="{{$user->id}}" id="ppp" name="ppp">
-                                        {{$user->firstname}}{{"  "}}{{$user->lastname}}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                            </td>
-                            <td>
+                    <form method="get" action="{{ route('contract.add_ppp') }}">
+                         @csrf
+                         <td>
+                         <input hidden id="id" name="id" value="{{ $contract->id }}">
+                         <select class="form-select" id="ppp_id" name="ppp_id">
+                             <option value="0" selected="selected" hidden>Vyberte nadriadeneho</option>
+                             @foreach($roles as $role)
+                                @if($role->role_id === 3)
+                                    @foreach($users as $user)
+                                        @if($role->user_id === $user->id)
+                                            @if($contract->ppp_id === $user->id)
+                                                 <option value="{{$user->id}}" id="ppp" name="ppp" selected>
+                                                     {{$user->firstname}}{{"  "}}{{$user->lastname}}
+                                                 </option>
+                                            @else
+                                                <option value="{{$user->id}}" id="ppp" name="ppp">
+                                                    {{$user->firstname}}{{"  "}}{{$user->lastname}}
+                                                </option>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                             @endforeach
+                         </select>
+                         </td>
+                         <td>
                             <input hidden id="id" name="id" value="{{ $contract->id }}">
                             <button class="btn btn-sm btn-outline-warning" type="submit">Ulozit</button>
-                        </form>
-                    </td>
+                         </td>
+                    </form>
+
                 </tr>
-            @endif
+
         @endforeach
         </tbody>
     </table>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $
+
+        function clearTable(table){
+            var tableHeader = 1;
+            var tbl = table;
+            var rowCount = tbl.rows.length;
+            for(var i = tableHeader; i < rowCount; i++){
+                tbl.deleteRow(tableHeader);
+            }
+        }
+
+        $('#povereny_pracovnik').on('change', function (){
+            var selectedOption = 0;
+            selectedOption = $(this).children(":selected").attr("value");
+            var contracts = @json($contracts);
+            switch (selectedOption){
+                case '0':{
+                    $.each(contracts, function (index, contract){
+                        document.getElementById(contract.id + "tr").style.display = "";
+                    })
+                    break;
+                }
+                case '1':{
+                    $.each(contracts, function (index, contract){
+                        if(contract.ppp_id === null){
+                            document.getElementById(contract.id + "tr").style.display = "";
+                        }else{
+                            document.getElementById(contract.id + "tr").style.display = "none";
+                        }
+
+                    })
+                    break;
+                }
+                case '2':{
+                    $.each(contracts, function (index, contract){
+                        if(contract.ppp_id === null){
+                            document.getElementById(contract.id + "tr").style.display = "none";
+                        }else{
+                            document.getElementById(contract.id + "tr").style.display = "";
+                        }
+
+                    })
+                    break;
+                }
+            }
+
+        })
+
+
+    </script>
 
     @else
 
