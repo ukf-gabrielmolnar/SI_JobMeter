@@ -121,9 +121,6 @@
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-primary">Ulozit</button>
-                                                                </div>
                                                             </form>
                                                         </div>
                                                     </div>
