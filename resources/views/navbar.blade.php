@@ -33,6 +33,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidované študenti</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
                             </ul>
                         </li>
 
@@ -74,12 +75,10 @@
                                 Admin
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/rbac/users">Používatelia</a></li>
-                                <li><a class="dropdown-item" href="/rbac/roles">Role</a></li>
                                 <li><a class="dropdown-item" href="/adminView">Zobraziť používateľov</a></li>
-                                <li><a class="dropdown-item" href="/adminViewCompanies">Show Companies</a></li>
-                                <li><a class="dropdown-item" href="/jobIndex">Show Jobs</a></li>
-                                <li><a class="dropdown-item" href="/contactView">Show ContactPersons</a></li>
+                                <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
+                                <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
                             </ul>
                         </li>
 
@@ -88,9 +87,17 @@
 
                     @if (auth()->user()->inRole('admin'))
 
-                        <li class="nav-item"><a class="nav-link" href="/rbac/users">Používatelia</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/rbac/roles">Role</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/adminView">Zobraziť používateľov</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Zobrazenie
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/adminView">Zobraziť používateľov</a></li>
+                                <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
+                                <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
+                            </ul>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -109,6 +116,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_users')}}">Evidované študenti</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
 
                     @endif
 
@@ -124,9 +132,7 @@
                         <li class="nav-item"><a class="nav-link" href="/praxReg">Registrácia na prax</a></li>
                         <li class="nav-item"><a class="nav-link" href="/jobAdd">Pridať pracoviska</a></li>
                         <li class="nav-item"><a class="nav-link" href="/jobList">Pracovné ponuky</a></li>
-                    @endif
-
-                    @if (auth()->user()->inRole('ceo'))
+                        <li class="nav-item"><a class="nav-link" href="/feedback">Spätná väzba</a></li>
 
                     @endif
 
