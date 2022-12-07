@@ -15,24 +15,25 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Student
+                                Študent
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/praxReg">PraxReg</a></li>
-                                <li><a class="dropdown-item" href="/jobAdd">JobAdd</a></li>
-                                <li><a class="dropdown-item" href="/jobList">JobList</a></li>
-                                <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
+                                <li><a class="dropdown-item" href="/praxReg">Registrácia na prax</a></li>
+                                <li><a class="dropdown-item" href="/jobAdd">Pridať prácu</a></li>
+                                <li><a class="dropdown-item" href="/jobList">Zoznam prác</a></li>
+                                <li><a class="dropdown-item" href="/feedback">Spätná väzba</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Manager
+                                Manažér
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
-                                <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
-                                <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_users')}}">Evidované študenti</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
                             </ul>
                         </li>
 
@@ -41,9 +42,9 @@
                                 PPPFpvAi
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/unapprovedContracts">View contracts</a></li>
-                                <li><a class="dropdown-item" href="/feedbackContracts">Write feedback</a></li>
-                                <li><a class="dropdown-item" href="/archiveContracts">Archive contracts</a></li>
+                                <li><a class="dropdown-item" href="/unapprovedContracts">Zobraziť zmluvy</a></li>
+                                <li><a class="dropdown-item" href="/feedbackContracts">Napísať spätnú väzbu</a></li>
+                                <li><a class="dropdown-item" href="/archiveContracts">Archivované zmluvy</a></li>
 
                             </ul>
                         </li>
@@ -60,7 +61,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Graphs
+                                Grafy
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
@@ -74,9 +75,10 @@
                                 Admin
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/rbac/users">Používatelia</a></li>
-                                <li><a class="dropdown-item" href="/rbac/roles">Role</a></li>
-                                <li><a class="dropdown-item" href="/adminView">Show Users</a></li>
+                                <li><a class="dropdown-item" href="/adminView">Zobraziť používateľov</a></li>
+                                <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
+                                <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
                             </ul>
                         </li>
 
@@ -85,17 +87,25 @@
 
                     @if (auth()->user()->inRole('admin'))
 
-                        <li class="nav-item"><a class="nav-link" href="/rbac/users">Používatelia</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/rbac/roles">Roly</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/adminView">Show Users</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Zobrazenie
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/adminView">Zobraziť používateľov</a></li>
+                                <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
+                                <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
+                                <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
+                            </ul>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Grafy
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graph_1</a></li>
-                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graph_2</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_1')}}">Graf 1</a></li>
+                                <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graf 2</a></li>
                             </ul>
                         </li>
 
@@ -103,17 +113,18 @@
 
                     @if (auth()->user()->inRole('manager'))
 
-                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_users')}}">Evidovane studenti</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidovane pracoviska</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidovane pracovne ponuky</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_users')}}">Evidované študenti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_companies')}}">Evidované pracoviská</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
 
                     @endif
 
                     @if (auth()->user()->inRole('ppp'))
 
-                        <li class="nav-item"><a class="nav-link" href="/unapprovedContracts">View contracts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/feedbackContracts">Write feedback</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/archiveContracts">Archive contracts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/unapprovedContracts">Zobraziť zmluvy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/feedbackContracts">Napísať spätnú väzbu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/archiveContracts">Archivované zmluvy</a></li>
 
                     @endif
 
@@ -121,9 +132,7 @@
                         <li class="nav-item"><a class="nav-link" href="/praxReg">Registrácia na prax</a></li>
                         <li class="nav-item"><a class="nav-link" href="/jobAdd">Pridať pracoviska</a></li>
                         <li class="nav-item"><a class="nav-link" href="/jobList">Pracovné ponuky</a></li>
-                    @endif
-
-                    @if (auth()->user()->inRole('ceo'))
+                        <li class="nav-item"><a class="nav-link" href="/feedback">Spätná väzba</a></li>
 
                     @endif
 
@@ -138,17 +147,17 @@
                         <?= auth()->user()->firstname. ' '. auth()->user()->lastname?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/userInfo">Profile</a></li>
-                        <li><a class="dropdown-item" href="/userSettings">Settings</a></li>
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="/userInfo">Konto</a></li>
+                        <li><a class="dropdown-item" href="/userSettings">Nastavenie</a></li>
+                        <li><a class="dropdown-item" href="/logout">Odhlásiť sa</a></li>
                     </ul>
                 </li>
                 <?php else: ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/login">Prihlásiť sa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="/register">Registrácia</a>
                 </li>
                 <?php endif; ?>
             </ul>

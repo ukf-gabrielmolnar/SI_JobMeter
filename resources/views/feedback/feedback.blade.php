@@ -22,19 +22,19 @@
 
                     <li class="list-group-item">
                         <p></p>
-                        <label for="subject"><h6> Subject </h6></label>
-                        <input type="text" id="subject" name="subject" required placeholder="Write subject here...">
+                        <label for="subject"><h6> Predmet </h6></label>
+                        <input type="text" id="subject" name="subject" required placeholder="Zadajte predmet sem...">
 
 
                     <li class="list-group-item">
                         <p></p>
                         <label for="text"><h6> Text </h6></label>
-                        <textarea type="text" id="text" name="text"  style="resize: none" required placeholder="Write message here..."></textarea>
+                        <textarea type="text" id="text" name="text"  style="resize: none" required placeholder="Píšte správu sem..."></textarea>
                     </li>
 
 
                 </ul>
-                <button id="buttonform" class="feedback_send_button"  type="submit"> Send </button>
+                <button id="buttonform" class="feedback_send_button"  type="submit"> Odoslať </button>
             </form>
 
         </div>
@@ -71,7 +71,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 

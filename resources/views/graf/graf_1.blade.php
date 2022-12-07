@@ -40,7 +40,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 

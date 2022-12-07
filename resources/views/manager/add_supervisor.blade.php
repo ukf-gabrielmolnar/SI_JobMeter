@@ -11,6 +11,11 @@
         </div>
     </div>
 
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
+
+
     <table class="table table-white table-hover" id="myTable">
         <thead>
         <tr>
@@ -124,15 +129,21 @@
                 }
             }
 
-
-
-
-
-
-
         })
 
 
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
 
 @endsection

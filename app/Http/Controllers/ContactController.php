@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contract;
 use App\Models\Job;
+use App\Models\Study_program;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -18,7 +21,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::all();
+        $companies = Company::all();
+
+        return view('admin.adminViewContact', compact('contacts', 'companies'));
     }
 
     /**
@@ -59,9 +65,23 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit(Request $request)
     {
+        $contact = Contact::find($request->contact_id);
 
+        if($request->action == 1){
+            $contact->approved = $request->approved;
+        }else{
+            $contact->firstname = $request->firstname;
+            $contact->lastname = $request->lastname;
+            $contact->email = $request->email;
+            $contact->tel = $request->tel;
+            $contact->companies_id = $request->companies_id;
+
+        }
+        $contact->save();
+
+        return redirect()->route('contact.index');
     }
 
     /**
@@ -82,8 +102,11 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Request $request)
     {
-        //
+        $contact = Contact::find($request->id);
+        $contact->delete();
+
+        return redirect()->route('contact.index');
     }
 }

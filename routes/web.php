@@ -55,9 +55,26 @@ Route::get('/roleApprove', 'App\Http\Controllers\RoleRequestController@update')-
 
 // ----------
 Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adminView');
-//Route::get('/adminView', 'App\Http\Controllers\AdminController@destroy');
-//Route::post('/delete', 'App\Http\Controllers\AdminController@destroy')->name('admin.destroy');
 Route::resource('admin',\App\Http\Controllers\AdminController::class);
+Route::get('/adminEdit','App\Http\Controllers\AdminController@edit')->name('admin.edit');
+Route::get('/adminFiltert','App\Http\Controllers\AdminController@filter')->name('admin.filter');
+
+Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
+Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');
+Route::get('/contactViewDestroy','App\Http\Controllers\ContactController@destroy')->name('contact.destroy');
+
+
+Route::get('/adminViewCompanies','App\Http\Controllers\CompanyController@index')->name('adminViewCompanies');
+Route::get('/companyDestroy', 'App\Http\Controllers\CompanyController@destroy')->name("company.destroy");
+Route::get('/companyEdit','App\Http\Controllers\CompanyController@edit')->name('company.edit');
+
+
+Route::get('/jobIndex','App\Http\Controllers\JobController@adminView')->name('job.index');
+Route::get('/jobEdit','App\Http\Controllers\JobController@edit')->name('job.edit');
+Route::get('/jobDestroy','App\Http\Controllers\JobController@destroy')->name('job.destroy');
+
+
+
 
 //grafy
 Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');

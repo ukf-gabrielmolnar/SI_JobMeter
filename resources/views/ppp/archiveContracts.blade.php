@@ -8,13 +8,13 @@
     <table class="table table-white table-hover">
         <thead>
         <tr>
-            <th scope="col">Student</th>
-            <th scope="col">Prace</th>
+            <th scope="col">Študent</th>
+            <th scope="col">Práce</th>
             <th scope="col">od</th>
             <th scope="col">do</th>
-            <th scope="col">Potvrdene</th>
-            <th scope="col">Ukoncene</th>
-            <th scope="col">Archive</th>
+            <th scope="col">Potvrdené</th>
+            <th scope="col">Ukončené</th>
+            <th scope="col">Archív</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +31,6 @@
                         @foreach($jobs as $job)
                             @if($contract->jobs_id === $job->id)
                                 <td>{{$job->job_type}}</td>
-                                <input hidden value="{{ $job->job_type }}" id="job_type" name="job_type">
                             @endif
                         @endforeach
                         <td>{{$contract->od}}</td>
@@ -53,8 +52,8 @@
                         <td>
                             <input hidden value="{{ $contract->id }}"  id="contract_id" name="contract_id">
                             <input hidden value="{{ auth()->user()->id }}" id="ppp_id" name="ppp_id">
-                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Create archive</button>
-                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Preview archive</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Vytvoriť archív</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Ukážka archívu</button>
                         </td>
                     </tr>
                 </form>
@@ -71,7 +70,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 

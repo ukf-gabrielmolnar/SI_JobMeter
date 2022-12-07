@@ -8,12 +8,12 @@
     <table class="table table-white table-hover">
         <thead>
         <tr>
-            <th scope="col">Student</th>
-            <th scope="col">Prace</th>
+            <th scope="col">Študent</th>
+            <th scope="col">Práce</th>
             <th scope="col">od</th>
             <th scope="col">do</th>
-            <th scope="col">Potvrdene</th>
-            <th scope="col">Ukoncene</th>
+            <th scope="col">Potvrdené</th>
+            <th scope="col">Ukončené</th>
             <th scope="col">Podrobnosti</th>
         </tr>
         </thead>
@@ -153,7 +153,7 @@
 
 @else
 
-    <h1 style="text-align: center;">You are not logged in!</h1>
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
 
 @endif
 
