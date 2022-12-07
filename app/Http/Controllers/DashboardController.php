@@ -51,6 +51,7 @@ class DashboardController extends Controller
                                         foreach (Contact::all() as $contact){
                                             if($contact->companies_id == $company->id){
                                                 array_push($contactArray, $contact);
+
                                             }
                                         }
                                     }
@@ -65,7 +66,6 @@ class DashboardController extends Controller
         $companies = array_unique($companyArray);
         $jobs = array_unique($jobArray);
         $contacts = array_unique($contactArray);
-
         return view('prax.praxRegistration', compact('companies','jobs','contacts'));
     }
 

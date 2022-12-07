@@ -373,6 +373,12 @@
         </div>
             @endif
         @endif
+
+    @if($help == 0 && $helper1 == 0 && $helper2 == 0 && $help2 == 0)
+        <div style="background-color: #cfe9f1; padding: 20px">
+            <h1>Ešte nemáte žiadné pridané práce</h1>
+        </div>
+    @endif
     @endauth
 
         <script>

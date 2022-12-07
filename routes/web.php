@@ -61,6 +61,7 @@ Route::get('/adminFiltert','App\Http\Controllers\AdminController@filter')->name(
 Route::get('/adminViewContracts','App\Http\Controllers\AdminController@contractsindex')->name('admin.contractsindex');
 Route::get('/contractViewDestroy','App\Http\Controllers\AdminController@delete')->name('admin.delete');
 Route::get('/adminYearFilter','App\Http\Controllers\AdminController@yearFilter')->name('admin.yearFilter');
+Route::get('/adminSPFilter','App\Http\Controllers\AdminController@spFilter')->name('admin.spFilter');
 
 Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
 Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');

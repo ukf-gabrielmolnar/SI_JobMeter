@@ -8,7 +8,7 @@
             <form method="get" action="{{ route('admin.filter') }}">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <div class="col-sm-2">
-                        <select class="form-select" id="filter" name="filter">
+                        <select class="form-select" id="filter" name="filter" onchange="this.form.submit()">
                             @if($filter == 1)
                                 <option value="1" selected>Všetky</option>
                                 <option value="2">Admin</option>
@@ -59,7 +59,6 @@
                             @endif
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-outline-secondary"> Použiť filtre </button>
                 </div>
             </form>
 

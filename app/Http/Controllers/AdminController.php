@@ -31,8 +31,10 @@ class AdminController extends Controller
         $users = User::all();
         $jobs = Job::all();
         $contacts = Contact::all();
+        $study_programs = Study_program::all();
         $filter = 1;
-        return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
+        $filter2 = 1;
+        return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','study_programs','filter','filter2'));
     }
 
     public function destroy($id)
@@ -128,16 +130,59 @@ class AdminController extends Controller
             $users = User::all();
             $jobs = Job::all();
             $contacts = Contact::all();
+            $study_programs = Study_program::all();
             $filter = $request->filter;
-            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
+            $filter2 = $request->filter2;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','study_programs','filter','filter2'));
 
         }else{
             $contracts = Contract::all();
             $users = User::all();
             $jobs = Job::all();
             $contacts = Contact::all();
+            $study_programs = Study_program::all();
             $filter = $request->filter;
-            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','filter'));
+            $filter2 = $request->filter2;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','study_programs','filter','filter2'));
+        }
+    }
+
+    public function spFilter(Request $request){
+        if($request->filter2 != 1){
+
+            $help = [];
+
+
+            foreach (Contract::all() as $contract){
+                foreach (Job::all() as $job){
+                    if($contract->jobs_id == $job->id){
+                        foreach (Study_program::all() as $sp){
+                            if($job->study_programs_id == $sp->id && $request->filter2-1 == $sp->id){
+                                array_push($help,$contract);
+                            }
+                        }
+                    }
+                }
+            }
+
+            $contracts = $help;
+            $users = User::all();
+            $jobs = Job::all();
+            $contacts = Contact::all();
+            $study_programs = Study_program::all();
+            $filter = $request->filter;
+            $filter2 = $request->filter2;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','study_programs','filter','filter2'));
+
+        }else{
+            $contracts = Contract::all();
+            $users = User::all();
+            $jobs = Job::all();
+            $contacts = Contact::all();
+            $study_programs = Study_program::all();
+            $filter = $request->filter;
+            $filter2 = $request->filter2;
+            return view('admin.adminViewContracts', compact('contracts','users','jobs','contacts','study_programs','filter','filter2'));
         }
     }
 
