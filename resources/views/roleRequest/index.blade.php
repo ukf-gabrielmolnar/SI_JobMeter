@@ -1,12 +1,16 @@
 @extends ('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
+
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">User name</th>
-            <th scope="col">Requested role</th>
-            <th scope="col">Approve</th>
+            <th scope="col">Prihlasovacie meno</th>
+            <th scope="col">Požadovaná rola</th>
+            <th scope="col">Schváliť</th>
         </tr>
         </thead>
         <tbody>
@@ -32,10 +36,10 @@
                         @endforeach
                     <td>
                         <button type="submit" value="approve" name="action">
-                            Approve
+                            Schváliť
                         </button>
                         <button type="submit" value="reject" name="action">
-                            Reject
+                            Odmietnuť
                         </button>
                     </td>
                 </form>
@@ -43,5 +47,17 @@
         </tr>
         </tbody>
     </table>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
 
 @endsection

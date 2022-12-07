@@ -1,6 +1,10 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
+
     <div class="row mb-3">
         <div class="col-md-6">
             <select class="form-select form-select-lg mb-3" id="study_id" name="study_id">
@@ -29,7 +33,7 @@
             <th scope="col">Meno</th>
             <th scope="col">Priezvisko</th>
             <th scope="col">E-mail</th>
-            <th scope="col">Studijný program</th>
+            <th scope="col">Študijný program</th>
             <th scope="col">Ročník</th>
             <th scope="col">Osvedčenia</th>
         </tr>
@@ -47,7 +51,7 @@
                                 <td>{{$stud->study_program}}</td>
                                 <td>{{$year->year}}</td>
                                 <td>
-                                    <a class="show-modal btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal({{$user->id}})">Podrobnosti</a>
+                                    <a class="show-modal btn btn-sm btn-outline-warning" style="border-radius: 1px" onclick="showModal({{$user->id}})">Podrobnosti</a>
                                 </td>
                             </tr>
                         @endif
@@ -69,7 +73,7 @@
                 <table class="table table-white table-hover" id="modal_table">
                     <thead>
                     <tr>
-                        <th scope="col">Pozicia</th>
+                        <th scope="col">Pozícia</th>
                         <th scope="col">Firma</th>
                         <th scope="col">Od</th>
                         <th scope="col">Do</th>
@@ -173,8 +177,18 @@
 
         })
 
-
-
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
 
 @endsection

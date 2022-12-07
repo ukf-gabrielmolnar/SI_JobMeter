@@ -1,15 +1,19 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
+
     <table class="table table-white table-hover">
         <thead>
         <tr>
-            <th scope="col">Student</th>
-            <th scope="col">Prace</th>
+            <th scope="col">Študent</th>
+            <th scope="col">Práce</th>
             <th scope="col">od</th>
             <th scope="col">do</th>
-            <th scope="col">Potvrdene</th>
-            <th scope="col">Ukoncene</th>
+            <th scope="col">Potvrdené</th>
+            <th scope="col">Ukončené</th>
             <th scope="col">Podrobnosti</th>
         </tr>
         </thead>
@@ -29,21 +33,21 @@
                 <td>{{$contract->od}}</td>
                 <td>{{$contract->do}}</td>
                 @if($contract->approved === 1)
-                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td>Áno</td>
                 @elseif($contract->approved === 0)
-                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td>Nie</td>
                 @else
-                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td>Prebieha</td>
                 @endif
                 @if($contract->closed === 1)
-                    <td align="center"><img src="https://www.pngfind.com/pngs/m/42-423686_clipart-transparent-check-mark-computer-icons-royalty-green.png" width="25" height="25"></td>
+                    <td>Áno</td>
                 @elseif($contract->closed === 0)
-                    <td align="center"><img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" width="25" height="25"></td>
+                    <td>Nie</td>
                 @else
-                    <td align="center"><img src="https://w7.pngwing.com/pngs/848/254/png-transparent-computer-icons-question-mark-window-window-blue-furniture-window-thumbnail.png" width="25" height="25"></td>
+                    <td>Prebieha</td>
                 @endif
                 <td>
-                    <a class="show-modal btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal({{$contract->id}})">Podrobnosti</a>
+                    <a class="show-modal btn btn-sm btn-outline-warning" style="border-radius: 1px" onclick="showModal({{$contract->id}})">Podrobnosti</a>
                 </td>
             </tr>
         @endforeach
@@ -93,6 +97,7 @@
         </div>
 
     </div>
+
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
@@ -139,4 +144,17 @@
             modal.style.display = "none";
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
+
 @endsection

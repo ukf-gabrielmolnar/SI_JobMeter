@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         h1 {
             text-align: center;
@@ -11,7 +12,7 @@
             margin-right: auto;
             font-family: arial, sans-serif;
             border-collapse: collapse;
-            width: 50%;
+            width: 90%;
             margin-top: 50px;
             margin-bottom: 50px;
         }
@@ -34,10 +35,14 @@
             margin-left: auto;
             margin-right: auto;
             font-family: arial, sans-serif;
-            width: 50%;
+            width: 80%;
             margin-top: 50px;
         }
+        body {
+            font-family: DejaVu Sans, sans-serif;
+        }
     </style>
+
 </head>
 <header>
     <h1>Lorem ipsum dolor sit amet</h1>
@@ -52,7 +57,7 @@
 <td>Odbor: </td><td>{{ $year->year." ".$sp->study_program }}</td>
     </tr>
     <tr>
-<td>Nadriadená osoba:</td><td> {{ $ppp->firstname." ".$ppp->lastname }}, email: {{ $ppp->email }}</td>
+<td>Nadriadená osoba:</td><td> Meno a priezvisko: 	&nbsp;	&nbsp;{{ $ppp->firstname." ".$ppp->lastname }}<br> E-mail: 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $ppp->email }}</td>
     </tr>
     <tr>
 <td>Pracovisko: </td><td>{{ $company->name }}</td>
@@ -61,8 +66,8 @@
         <td>Adresa pracovisku:</td><td> {{ $company->address }}</td>
     </tr>
     <tr>
-        <td>Kontaktná osoba:</td><td> {{ $contact->firstname." ".$contact->lastname }} {{ $contact->email }} {{ $contact->tel }}</td>
-    </tr>
+        <td>Kontaktná osoba:</td><td> Meno a priezvisko: &nbsp;	&nbsp;{{ $contact->firstname." ".$contact->lastname }}<br>E-mail:	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $contact->email }}<br>Tel. číslo:	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;{{ $contact->tel }}</td>
+    </tr
     <tr>
         <td>Pozícia v pracovisku:</td><td> {{ $job->job_type }}</td>
     </tr>
@@ -76,7 +81,23 @@
 
 <table>
     <tr>
-        <td>Počet odpracovaných hodín: </td> <td>itt lesz egy olyan h student mennyi orat dolgozott</td>
+        <td>Počet odpracovaných hodín: </td>
+        <td>
+            @php
+                $h = 0;
+            @endphp
+            @foreach($records as $record)
+                @if($record->contracts_id == $contract->id)
+                    @php
+                        $h += $record->hours;
+                    @endphp
+                @endif
+            @endforeach
+            @php
+                echo $h;
+            @endphp
+
+        </td>
     </tr>
     <tr>
         <td>Meno a priezvisko CEO</td><td>meno...</td>
@@ -88,7 +109,13 @@
 
 <div>
     <h4>Hodnotenie študenta:</h4>
-    <p>ide jön az értékelés...</p>
+    <p>@foreach($feedbackR as $feedback)
+            @if($feedback->users_id == $user->id && $feedback->contracts_id == $contract->id)
+                @if($feedback->subject == "Hodnotenie")
+                    {{ $feedback->text }}
+                @endif
+            @endif
+        @endforeach</p>
 </div>
 
 </body>

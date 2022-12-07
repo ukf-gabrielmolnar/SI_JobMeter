@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('content')
 
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
+
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -27,5 +31,17 @@
     <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
     </body>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
 
 @endsection

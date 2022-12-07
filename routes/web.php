@@ -25,7 +25,7 @@ Route::post('/login', 'App\Http\Controllers\UserController@auth')->name('login.a
 
 // ----------
 Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('user.logout');
-Route::get('userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
+Route::get('/userInfo','App\Http\Controllers\UserController@profileInfo' )->name('user.userInfo');
 Route::get('/userSettings' ,'App\Http\Controllers\UserController@profileSettings')->name('user.userSettings');
 Route::post('/userUpdate','App\Http\Controllers\UserController@update')->name('user.update');
 
@@ -48,15 +48,33 @@ Route::get('/addFeedback', 'App\Http\Controllers\FeedbackReportController@store'
 Route::get('/feedback', 'App\Http\Controllers\StudentFeedbackController@index')->name('feedback.feedback');
 Route::post('/feedback/store', 'App\Http\Controllers\StudentFeedbackController@store')->name('feedback.store');
 
+Route::get('/addRecord', 'App\Http\Controllers\DashboardController@saveRecord')->name('dashboard.saveRecord');
 Route::get('/roleRequest', 'App\Http\Controllers\RoleRequestController@index')->name('role.index');
 Route::get('/roleApprove', 'App\Http\Controllers\RoleRequestController@update')->name('role.update');
 // ----------
 
 // ----------
 Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adminView');
-//Route::get('/adminView', 'App\Http\Controllers\AdminController@destroy');
-//Route::post('/delete', 'App\Http\Controllers\AdminController@destroy')->name('admin.destroy');
 Route::resource('admin',\App\Http\Controllers\AdminController::class);
+Route::get('/adminEdit','App\Http\Controllers\AdminController@edit')->name('admin.edit');
+Route::get('/adminFiltert','App\Http\Controllers\AdminController@filter')->name('admin.filter');
+
+Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
+Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');
+Route::get('/contactViewDestroy','App\Http\Controllers\ContactController@destroy')->name('contact.destroy');
+
+
+Route::get('/adminViewCompanies','App\Http\Controllers\CompanyController@index')->name('adminViewCompanies');
+Route::get('/companyDestroy', 'App\Http\Controllers\CompanyController@destroy')->name("company.destroy");
+Route::get('/companyEdit','App\Http\Controllers\CompanyController@edit')->name('company.edit');
+
+
+Route::get('/jobIndex','App\Http\Controllers\JobController@adminView')->name('job.index');
+Route::get('/jobEdit','App\Http\Controllers\JobController@edit')->name('job.edit');
+Route::get('/jobDestroy','App\Http\Controllers\JobController@destroy')->name('job.destroy');
+
+
+
 
 //grafy
 Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');

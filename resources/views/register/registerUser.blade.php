@@ -1,5 +1,4 @@
 @extends('layouts.mainLoginRegister')
-
 @section('content')
 
     <style>
@@ -94,6 +93,8 @@
 
     </style>
 
+    @if (!auth()->user())
+
     <main class="form-signin d-flex align-items-center justify-content-center flex-grow-1">
         <form method="post" action="/register/user" class="box">
             <h1 class="h3 mb-3 fw-normal" style="padding: 5px">Registrácia</h1>
@@ -102,18 +103,18 @@
             <div class="form-group">
                 <li class="list-group-item">
                     <select style="border-radius: 0px" class="form-select form-select-lg mb-3" id="role_id" name="role_id" required>
-                        <option value="" disabled selected hidden>Rola</option>
+                        <option value="" disabled selected hidden>Role</option>
                         <option value="1">Admin</option>
-                        <option value="4">Student</option>
-                        <option value="3">PPP</option>
+                        <option value="4">Študent</option>
+                        <option value="3">Poverený pracovník pracoviska</option>
                         <option value="5">Ceo</option>
-                        <option value="2">Manager</option>
+                        <option value="2">Manažér</option>
                     </select>
                 </li>
             </div>
 
             <div class="form-group">
-                <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="Email" @endif>
+                <input name="email" type="email" class="form-control" id="floatingInput" @if($errors->has('email')) placeholder="{{ $errors->first('email') }}" style="::placeholder: color: red" @else placeholder="E-mail" @endif>
             </div>
 
             <div class="form-group">
@@ -131,8 +132,15 @@
             <div class="form-group">
                 <input name="repeatPassword" type="password" class="form-control" id="passwordRepeat" @if($errors->has('repeatPassword')) placeholder="{{ $errors->first('repeatPassword') }}" @else placeholder="Heslo ešte raz" @endif>
             </div>
-            <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Registrovať</button>
+            <button style="border-radius: 0px 0px; "  class="w-100 btn btn-lg btn-darkgrey" type="submit">Registrovať sa</button>
 
         </form>
     </main>
+
+    @else
+
+        <h1 style="text-align: center; padding-top: 120px">Nie ste prihlásený!</h1>
+
+    @endif
+
 @endsection

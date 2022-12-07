@@ -11,15 +11,8 @@
     </head>
 
     <body class="bg" style="min-height: 100vh">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mb-4 fixed-top">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand navbarpadding title" href="/">JobMeter</a>
-
+    @include('navbar')
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
@@ -143,42 +136,13 @@
     </nav>
     </div>
 
-
-    <div class="container blue customSelectContainer">
+    <div class="container blue customSelectContainer" style="padding-bottom: 80px">
         <div style="overflow-x:auto;">
             @yield('content')
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="container-fluid container bg-dark">
-        <footer class="bg-dark text-center text-lg-start text-white container">
-            <!-- Grid container -->
-            <div class="container p-4">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-6 col-md-12 ">
-                        <h5 class="text-uppercase">Footer text</h5>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                            molestias.
-                        </p>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-            </div>
-            <!-- Grid container -->
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-left: -24px; margin-right: -24px;">
-                © 2022 Copyright: <a style="color: #000000">Traditional Hungarian Devteam</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-    </div>
+@include('footer')
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>

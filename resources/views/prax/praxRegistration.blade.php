@@ -1,10 +1,16 @@
 @extends('layouts.main')
 @section('content')
-    @auth
-    @if(auth()->user()->years_id == null)
-        <h1> ide mar dizajnoltok vlm szepet :)</h1>
-        <a class="btn-danger" href="/userSettings"> GOMB Settingsre</a>
-    @else
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
+
+        @if(auth()->user()->years_id == null)
+            <div class="alert alert-warning" role="alert">
+                Zadajte študijný program v nastaveniách!
+            </div>
+            <a class="btn btn-secondary  btn-lg active" style="border-radius: 4px" href="/userSettings">Nastavenie profilu</a>
+        @else
     <form method="post" action="{{ route('contract.store') }}">
         @csrf
 
@@ -14,19 +20,19 @@
         <div class="h6" id="companyform">
             <label for="companies" class="form-label">Firma</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="companies" name="companies" required>
-                <option value="" selected disabled hidden>Choose here</option>
+                <option value="" selected disabled hidden>Vyberte možnosť</option>
             </select>
         </div>
 
         <div class="h6" id="jobform">
             <label for="jobs_id" class="form-label">Job</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="jobs_id" name="jobs_id" required>
-                <option value="" selected disabled hidden>Choose here</option>
+                <option value="" selected disabled hidden>Vyberte možnosť</option>
             </select>
         </div>
 
         <div class="h6" id="contactform">
-            <label for="contacts_id" class="form-label">Contact</label>
+            <label for="contacts_id" class="form-label">Kontakt</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
                 <option value="" selected disabled hidden>Choose here</option>
             </select>
@@ -48,7 +54,7 @@
         <button id="submitButtonPrax" style="width: 100%" class="btn" type="submit">Submit</button>
     </form>
     @endif
-    @endauth
+
     <script>
 
         var fades = [true,true,true];
@@ -126,5 +132,17 @@
             });
         }
     </script>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
 
 @endsection

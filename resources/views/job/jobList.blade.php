@@ -1,12 +1,16 @@
 @extends ('layouts.main')
 @section('content')
 
-    <table>
+@if (auth()->user())
+
+    @if (!(auth()->user()->inRole('ceo')))
+
+    <table class="jobList">
         <thead>
             <tr>
-                <th scope="col">Company</th>
-                <th scope="col">Job</th>
-                <th scope="col">Study program</th>
+                <th scope="col">Firma</th>
+                <th scope="col">Práca</th>
+                <th scope="col">Študijný program</th>
             </tr>
         </thead>
         <tbody>
@@ -27,4 +31,17 @@
             @endforeach
         </tbody>
     </table>
+
+    @else
+
+        @include('nopermission')
+
+    @endif
+
+@else
+
+    <h1 style="text-align: center;">Nie ste prihlásený!</h1>
+
+@endif
+
 @endsection

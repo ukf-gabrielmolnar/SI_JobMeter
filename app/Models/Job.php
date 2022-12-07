@@ -14,6 +14,7 @@ class Job extends Model
         'job_type',
         'companies_id',
         'study_programs_id',
+        'approved',
     ];
 
     public function company(): BelongsTo{
