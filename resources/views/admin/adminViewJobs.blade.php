@@ -13,6 +13,8 @@
                     <th scope="col">Študijný program</th>
                     <th scope="col">Organizácia</th>
                     <th scope="col">Schválená</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
                 </tr>
                 </thead>
                 <tbody>
