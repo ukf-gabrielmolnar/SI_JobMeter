@@ -83,16 +83,7 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $
 
-        function clearTable(table){
-            var tableHeader = 1;
-            var tbl = table;
-            var rowCount = tbl.rows.length;
-            for(var i = tableHeader; i < rowCount; i++){
-                tbl.deleteRow(tableHeader);
-            }
-        }
 
         $('#povereny_pracovnik').on('change', function (){
             var selectedOption = 0;

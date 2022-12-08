@@ -109,4 +109,12 @@ class FeedbackReportController extends Controller
     {
         //
     }
+
+    public function showfeedbacks(){
+        $feedbacks = FeedbackReport::all();
+        $contracts = Contract::all();
+        $users = User::all();
+        $jobs = Job::all();
+        return view('manager.show_feedback', compact('feedbacks','contracts','users','jobs'));
+    }
 }

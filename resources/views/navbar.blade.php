@@ -35,6 +35,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_feedback')}}">Prehliadať spätné väzby</a></li>
                             </ul>
                         </li>
 

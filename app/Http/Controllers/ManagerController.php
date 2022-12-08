@@ -39,7 +39,8 @@ class ManagerController extends Controller
         $users = User::all();
         $contracts = Contract::all();
         $companies = Company::all();
-        return view('manager.show_contracts', compact('jobs','users','contracts','companies'));
+        $roles = User_role::all();
+        return view('manager.show_contracts', compact('jobs','users','contracts','companies','roles'));
     }
 
     public function showcertificates(){
@@ -48,7 +49,8 @@ class ManagerController extends Controller
         $contracts = Contract::all();
         $contacts = Contact::all();
         $companies = Company::all();
-        return view('manager.show_certificates', compact('users', 'jobs', 'contracts', 'contacts', 'companies'));
+        $roles = User_role::all();
+        return view('manager.show_certificates', compact('users', 'jobs', 'contracts', 'contacts', 'companies','roles'));
     }
 
     public function addsupervisor(){

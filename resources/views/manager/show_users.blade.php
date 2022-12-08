@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
 
 @if (auth()->user())
@@ -6,24 +7,19 @@
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
 
     <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <select class="form-select form-select-lg mb-3" id="study_id" name="study_id">
-
-                <option value="0" selected="selected">
-                    {{__('Vsetky studijne programy')}}
-                </option>
-                @foreach($years as $year)
-                    @foreach($study_programs as $st)
-                        @if($year->study_programs_id === $st->id)
-                            <option value={{$year->id}}>
-                            {{$st->study_program}}{{"  "}}{{$year->year}}
-                            </option>
-                        @endif
-                    @endforeach
+                <option value="0" selected="selected">Vsetky studijné programy</option>
+                @foreach($study_programs as $st)
+                    <option value="{{$st->id}}">{{$st->study_program}}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="col-md-3">
+            <select class="form-select form-select-lg mb-3" id="year_id" name="year_id" style="display: none">
+                <option value="0" selected="selected">Vsetky ročníky</option>
 
-
+            </select>
         </div>
     </div>
 
@@ -44,7 +40,7 @@
                 @if($user->years_id === $year->id)
                     @foreach($study_programs as $stud)
                         @if($stud->id === $year->study_programs_id)
-                            <tr>
+                            <tr id="{{$user->id}}tr">
                                 <td>{{$user->firstname}}</td>
                                 <td>{{$user->lastname}}</td>
                                 <td>{{$user->email}}</td>
@@ -141,41 +137,96 @@
             }
         }
 
+
+        function populateDropdown(st){
+            var std = @json($study_programs);
+            var years = @json($years);
+            $("#year_id").empty();
+            var dd = document.getElementById('year_id');
+            var defOption = document.createElement('option');
+            defOption.appendChild(document.createTextNode("Vyberte ročník"));
+            defOption.setAttribute('value', '0');
+            dd.appendChild(defOption);
+            $.each(years, function (yearIndex, year){
+                if(year.study_programs_id == st){
+                    var newOption = document.createElement('option');
+                    newOption.appendChild(document.createTextNode(year.year));
+                    newOption.setAttribute('value',year.id);
+                    dd.appendChild(newOption);
+                }
+            })
+        }
+
         $('#study_id').on('change', function (){
-            var selectedYearId = 0;
-            selectedYearId = $(this).children(":selected").attr("value");
-            var data = @json($users);
-            var stdpln = @json($study_programs);
-            var year = @json($years);
-            var table = document.getElementById("myTable");
-            clearTable(table);
-            for(var i = 0; i < data.length; i++){
-                if (selectedYearId == 0 || selectedYearId == data[i].years_id){
-                    for(var k = 0; k< year.length; k++){
-                        if(data[i].years_id == year[k].id){
-                            for(var j = 0; j < stdpln.length; j++){
-                                if(year[k].study_programs_id == stdpln[j].id){
-                                    var row =  `<tr>
-                                        <td>${data[i].firstname}</td>
-                                        <td>${data[i].lastname}</td>
-                                        <td>${data[i].email}</td>
-                                        <td>${stdpln[j].study_program}</td>
-                                        <td>${year[k].year}</td>
-                                        <td>
-                                            <a class="btn btn-sm btn-warning" style="border-radius: 1px" onclick="showModal(${data[i].id})">Podrobnosti</a>
-                                        </td>
-                                    </tr>`
-                                    table.innerHTML += row;
+            document.getElementById('year_id').style.display = "";
+            var selectedStd = 0;
+            selectedStd = $(this).children(":selected").attr("value");
+            populateDropdown(selectedStd);
+            var users = @json($users);
+            var years = @json($years);
+            if(selectedStd == 0){
+                document.getElementById('year_id').style.display = "none";
+                $.each(users, function (index1, user){
+                    if(user.years_id != null) {
+                        document.getElementById(user.id + "tr").style.display = "";
+                    }
+                })
+            }
+            if(selectedStd != 0){
+                $.each(users, function (index, user){
+                    $.each(years, function (yearIndex, year){
+                        if(user.years_id === year.id){
+                            if(year.study_programs_id == selectedStd) {
+                                document.getElementById(user.id + "tr").style.display = "";
+                            }
+                            else{
+                                document.getElementById(user.id + "tr").style.display = "none";
+                            }
+
+
+                        }
+                    })
+                })
+            }
+        })
+
+        $('#year_id').on('change', function (){
+            var selectedYear = 0;
+            selectedYear = $(this).children(":selected").attr("value");
+            var selectedStd = 0;
+            selectedStd = $(document.getElementById('study_id')).children(":selected").attr("value");
+            var users = @json($users);
+            var years = @json($years);
+            if(selectedYear == 0){
+                $.each(users, function (index1, user){
+                    $.each(years, function (yearIndex, year){
+                        if(year.study_programs_id == selectedStd) {
+                            if(user.years_id != null) {
+                                document.getElementById(user.id + "tr").style.display = "";
+                            }
+                        }
+                    })
+                })
+            }
+            if(selectedYear != 0){
+                $.each(users, function (index, user){
+                    $.each(years, function (yearIndex, year){
+                        if(user.years_id === year.id){
+                            if(year.study_programs_id == selectedStd) {
+                                if(year.id == selectedYear){
+                                    document.getElementById(user.id + "tr").style.display = "";
+                                }
+                                else{
+                                    document.getElementById(user.id + "tr").style.display = "none";
                                 }
                             }
                         }
-                    }
-
-
-                }
+                    })
+                })
             }
-
         })
+
+
 
     </script>
 
