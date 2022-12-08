@@ -115,7 +115,9 @@
 
     @else
 
-        <h1 style="text-align: center;">You are not logged in!</h1>
+        <div class="alert alert-warning" role="alert">
+            Nie ste prihlásený!
+        </div>
 
     @endif
 
