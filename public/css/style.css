@@ -264,11 +264,8 @@ textarea {
     padding: 0;
 }
 
-.table {
-    vertical-align: middle;
-}
-
 form {
+    vertical-align: middle;
     margin-bottom: 0px;
 }
 

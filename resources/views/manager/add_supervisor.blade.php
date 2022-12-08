@@ -1,6 +1,21 @@
 @extends('layouts.main')
-
 @section('content')
+
+@if (auth()->user())
+
+    @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
+
+    @php
+        $help = 0;
+            foreach ($contracts as $contract) {
+                $help++;
+            }
+    @endphp
+
+    @if ($help == 0)
+        <h1 style="text-align: center">Tabuľka je prázdna</h1>
+    @else
+
     <div class="row mb-3">
         <div class="col-md-6">
             <select class="form-select form-select-lg mb-3" id="povereny_pracovnik" name="povereny_pracovnik">
@@ -10,11 +25,6 @@
             </select>
         </div>
     </div>
-
-@if (auth()->user())
-
-    @if (auth()->user()->inRole('manager') || auth()->user()->inRole('admin') || auth()->user()->inRole('dev'))
-
 
     <table class="table table-white table-hover" id="myTable">
         <thead>
@@ -51,7 +61,7 @@
                          <select class="form-select" id="ppp_id" name="ppp_id">
                              <option value="0" selected="selected" hidden>Vyberte nadriadeneho</option>
                              @foreach($roles as $role)
-                                @if($role->role_id === 3)
+                                @if(($role->role_id === 3) || $role->role_id === 6)
                                     @foreach($users as $user)
                                         @if($role->user_id === $user->id)
                                             @if($contract->ppp_id === $user->id)
@@ -83,7 +93,6 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-
 
         $('#povereny_pracovnik').on('change', function (){
             var selectedOption = 0;
@@ -124,6 +133,8 @@
 
 
     </script>
+
+    @endif
 
     @else
 

@@ -81,6 +81,7 @@
                                 <li><a class="dropdown-item" href="/adminViewCompanies">Zobraziť firiem a organizácií</a></li>
                                 <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
+                                <li><a class="dropdown-item" href="/roleRequest">Nové Registrácie</a></li>
                                 <li><a class="dropdown-item" href="/adminViewContracts">Zobraziť zmluvy</a></li>
                             </ul>
                         </li>
@@ -111,6 +112,8 @@
                                 <li><a class="dropdown-item" href="{{route('graf.graf_2')}}">Graf 2</a></li>
                             </ul>
                         </li>
+
+                        <li class="nav-item"><a class="nav-link" href="/roleRequest">Nové Registrácie</a></li>
 
                     @endif
 

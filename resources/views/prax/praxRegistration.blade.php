@@ -34,7 +34,7 @@
         <div class="h6" id="contactform">
             <label for="contacts_id" class="form-label">Kontakt</label>
             <select class="form-select form-select-lg mb-3 text-dark custom-select" id="contacts_id" name="contacts_id" required>
-                <option value="" selected disabled hidden>Choose here</option>
+                <option value="" selected disabled hidden>Vyberte možnosť</option>
             </select>
         </div>
 

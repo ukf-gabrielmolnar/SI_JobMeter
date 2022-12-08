@@ -5,6 +5,17 @@
 
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
 
+    @php
+        $help = 0;
+            foreach ($companies as $company) {
+                $help++;
+            }
+    @endphp
+
+    @if ($help == 0)
+        <h1 style="text-align: center">Tabuľka je prázdna</h1>
+    @else
+
     <table class="table table-white table-hover">
         <thead>
         <tr>
@@ -21,6 +32,8 @@
         @endforeach
         </tbody>
     </table>
+
+    @endif
 
     @else
 

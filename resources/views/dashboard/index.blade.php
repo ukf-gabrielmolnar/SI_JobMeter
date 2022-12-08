@@ -39,6 +39,25 @@
     @elseif (auth()->user()->inRole('student') || auth()->user()->inRole('dev'))
 
         @php
+            $empty = 0;
+                foreach ($contracts as $contract){
+                    if($contract->users_id == auth()->user()->id){
+                        $empty++;
+                    }
+                }
+        @endphp
+
+        @if ($empty == 0 && auth()->user()->years_id != null)
+
+            <h1 style="text-align: center">Registruj na prax!</h1>
+
+        @elseif ($empty == 0 && auth()->user()->years_id == null)
+
+            <h1 style="text-align: center">Aby si vedel zaregistrovať na prax, najprv zadaj svoj študijný program!</h1>
+
+        @endif
+
+        @php
             $help = 0;
                 foreach ($contracts as $contract){
                     if($contract->users_id == auth()->user()->id && $contract->approved == 1 && $contract->closed != 1){

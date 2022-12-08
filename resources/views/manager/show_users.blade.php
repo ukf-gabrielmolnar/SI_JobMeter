@@ -6,6 +6,17 @@
 
     @if (auth()->user()->inRole('admin') || auth()->user()->inRole('manager') || auth()->user()->inRole('dev'))
 
+    @php
+        $help = 0;
+            foreach ($years as $year) {
+                $help++;
+            }
+    @endphp
+
+    @if ($help == 0)
+        <h1 style="text-align: center">Tabuľka je prázdna</h1>
+    @else
+
     <div class="row mb-3">
         <div class="col-md-3">
             <select class="form-select form-select-lg mb-3" id="study_id" name="study_id">
@@ -229,6 +240,8 @@
 
 
     </script>
+
+    @endif
 
     @else
 
