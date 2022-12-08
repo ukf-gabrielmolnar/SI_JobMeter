@@ -13,7 +13,7 @@ use App\Http\Controllers\ManagerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//-----     alap        -----
+//----------
 Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard.index');
 
 Route::get('/register', 'App\Http\Controllers\RegisterController@registerUser')->name('register.user');
@@ -58,6 +58,10 @@ Route::get('/adminView','App\Http\Controllers\AdminController@index')->name('adm
 Route::resource('admin',\App\Http\Controllers\AdminController::class);
 Route::get('/adminEdit','App\Http\Controllers\AdminController@edit')->name('admin.edit');
 Route::get('/adminFiltert','App\Http\Controllers\AdminController@filter')->name('admin.filter');
+Route::get('/adminViewContracts','App\Http\Controllers\AdminController@contractsindex')->name('admin.contractsindex');
+Route::get('/contractViewDestroy','App\Http\Controllers\AdminController@delete')->name('admin.delete');
+Route::get('/adminYearFilter','App\Http\Controllers\AdminController@yearFilter')->name('admin.yearFilter');
+Route::get('/adminSPFilter','App\Http\Controllers\AdminController@spFilter')->name('admin.spFilter');
 
 Route::get('/contactView','App\Http\Controllers\ContactController@index')->name('contact.index');
 Route::get('/contactViewEdit','App\Http\Controllers\ContactController@edit')->name('contact.edit');
@@ -73,8 +77,9 @@ Route::get('/jobIndex','App\Http\Controllers\JobController@adminView')->name('jo
 Route::get('/jobEdit','App\Http\Controllers\JobController@edit')->name('job.edit');
 Route::get('/jobDestroy','App\Http\Controllers\JobController@destroy')->name('job.destroy');
 
-
-
+Route::get('/ceoView', 'App\Http\Controllers\CeoController@index')->name('ceo.index');
+Route::get('/ceoApprove', 'App\Http\Controllers\CeoController@edit')->name('ceo.edit');
+Route::get('/ceoShowHours', '\App\Http\Controllers\CeoController@show')->name('ceo.show');
 
 //grafy
 Route::get('/graf_1', [\App\Http\Controllers\GrafController::class, 'years_graph'])->name('graf.graf_1');
@@ -89,6 +94,7 @@ Route::get('/manager/contracts',[App\Http\Controllers\ManagerController::class,'
 Route::get('/manager/addSupervisor',[App\Http\Controllers\ManagerController::class,'addsupervisor'])->name('manager.add_supervisor');
 Route::get('/manager/saveSupervisor','App\Http\Controllers\ContractController@saveSupervisor')->name('contract.add_ppp');
 Route::get('/manager/certificates', [App\Http\Controllers\ManagerController::class, 'showcertificates'])->name('manager.show_certificates');
+Route::get('/manager/feedbacks',[App\Http\Controllers\FeedbackReportController::class, 'showfeedbacks'])->name('manager.show_feedback');
 Route::resource('manager', ManagerController::class);
 //-------------
 

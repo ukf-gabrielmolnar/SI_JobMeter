@@ -266,6 +266,7 @@ textarea {
 
 form {
     vertical-align: middle;
+    margin-bottom: 0px;
 }
 
 /* Responsivity */

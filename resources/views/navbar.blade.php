@@ -35,6 +35,7 @@
                                 <li><a class="dropdown-item" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
                                 <li><a class="dropdown-item" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
+                                <li><a class="dropdown-item" href="{{route('manager.show_feedback')}}">Prehliadať spätné väzby</a></li>
                             </ul>
                         </li>
 
@@ -55,7 +56,7 @@
                                 CEO
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Nyisti</a></li>
+                                <li><a class="dropdown-item" href="/ceoView">Ceo view</a></li>
 
                             </ul>
                         </li>
@@ -81,6 +82,7 @@
                                 <li><a class="dropdown-item" href="/jobIndex">Zobraziť pracovné ponuky</a></li>
                                 <li><a class="dropdown-item" href="/contactView">Zobraziť kontaktné osoby firmov</a></li>
                                 <li><a class="dropdown-item" href="/roleRequest">Nové Registrácie</a></li>
+                                <li><a class="dropdown-item" href="/adminViewContracts">Zobraziť zmluvy</a></li>
                             </ul>
                         </li>
 
