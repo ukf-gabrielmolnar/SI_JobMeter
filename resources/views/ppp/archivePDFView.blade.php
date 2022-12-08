@@ -87,7 +87,7 @@
                 $h = 0;
             @endphp
             @foreach($records as $record)
-                @if($record->contracts_id == $contract->id)
+                @if($record->contracts_id == $contract->id && $record->approved == 1)
                     @php
                         $h += $record->hours;
                     @endphp
@@ -100,10 +100,7 @@
         </td>
     </tr>
     <tr>
-        <td>Meno a priezvisko CEO</td><td>meno...</td>
-    </tr>
-    <tr>
-        <td>Potrvdil CEO</td><td>Ano/Nie</td>
+        <td>Meno a priezvisko CEO</td><td>{{ $ceo->firstname." ".$ceo->lastname }}</td>
     </tr>
 </table>
 

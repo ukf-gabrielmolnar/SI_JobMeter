@@ -52,8 +52,8 @@
                         <td>
                             <input hidden value="{{ $contract->id }}"  id="contract_id" name="contract_id">
                             <input hidden value="{{ auth()->user()->id }}" id="ppp_id" name="ppp_id">
-                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Vytvoriť archív</button>
-                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Ukážka archívu</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="pdf">Vygenerovať certifikát</button>
+                            <button class="btn btn-sm btn-outline-warning" type="submit" name="show_form" value="page">Náhľad certifikátu</button>
                         </td>
                     </tr>
                 </form>
