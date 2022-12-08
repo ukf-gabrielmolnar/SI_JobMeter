@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-    @auth()
+    @if (auth()->user())
 
     <div class="alert alert-success alert-dismissible fade show" role="alert" id="successPopup" name="successPopup">
         <p id="popupText"></p>
@@ -32,7 +32,7 @@
     @elseif (auth()->user()->inRole('ceo'))
 
         @php
-            header("Location: /");
+            header("Location: /ceoView");
             exit();
         @endphp
 
@@ -391,14 +391,21 @@
     </table>
         </div>
             @endif
-        @endif
 
-    @if($help == 0 && $helper1 == 0 && $helper2 == 0 && $help2 == 0)
-        <div style="background-color: #cfe9f1; padding: 20px">
-            <h1>Ešte nemáte žiadné pridané práce</h1>
-        </div>
+    @else
+
+        <h1 style="text-align: center">Počkajte, kým bude vaša rola prijatá.</h1>
+
     @endif
-    @endauth
+
+    @else
+
+        @php
+            header("Location: /login");
+            exit();
+        @endphp
+
+    @endif
 
         <script>
 

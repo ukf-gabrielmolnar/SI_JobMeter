@@ -124,6 +124,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_contracts')}}">Evidované pracovné ponuky</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.add_supervisor')}}">Priradiť pracovníka</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('manager.show_certificates')}}">Prehliadať certifikáty</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('manager.show_feedback')}}">Prehliadať spätné väzby</a></li>
 
                     @endif
 
@@ -140,6 +141,10 @@
                         <li class="nav-item"><a class="nav-link" href="/jobAdd">Pridať pracoviska</a></li>
                         <li class="nav-item"><a class="nav-link" href="/jobList">Pracovné ponuky</a></li>
                         <li class="nav-item"><a class="nav-link" href="/feedback">Spätná väzba</a></li>
+
+                    @endif
+
+                    @if (auth()->user()->inRole('ceo'))
 
                     @endif
 
